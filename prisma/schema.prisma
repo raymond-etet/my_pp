@@ -1,0 +1,25 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Prisma 的数据源配置，这里我们使用 SQLite 数据库
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db" // 数据库文件路径
+}
+
+// Prisma 的客户端生成器配置，用于生成 TypeScript 类型的 Prisma Client
+generator client {
+  provider = "prisma-client-js"
+}
+
+// “排盘”数据模型定义
+model PaiPan {
+  id        Int      @id @default(autoincrement()) // 唯一ID，自增
+  name      String?  // 用户名（可选）
+  year      Int      // 出生年份
+  month     Int      // 出生月份
+  day       Int      // 出生日期
+  hour      Int?     // 出生时辰（可选）
+  createdAt DateTime @default(now()) // 记录创建时间
+  result    Json     // 存储计算后的完整排盘结果，JSON格式
+}

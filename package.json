@@ -1,0 +1,17 @@
+{
+  "dependencies": {
+    "@pinia/nuxt": "^0.11.2",
+    "@prisma/client": "6.14.0",
+    "@unocss/nuxt": "^66.4.2",
+    "@vant/nuxt": "^1.0.7"
+  },
+  "devDependencies": {
+    "nuxt": "^4.0.3",
+    "prisma": "^6.14.0",
+    "kill-port": "^2.0.1"
+  },
+  "scripts": {
+    "dev": "nuxt dev",
+    "dev:force": "npx kill-port 3000 && nuxt dev"
+  }
+}
