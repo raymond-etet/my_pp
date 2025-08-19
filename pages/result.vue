@@ -1,128 +1,144 @@
 <template>
-  <div class="p-4 bg-gray-50 min-h-screen">
-    <h1 class="text-2xl font-bold text-center mb-6">排盘结果</h1>
+  <div class="p-2 md:p-4 bg-gray-100 min-h-screen font-sans">
+    <!-- 标题和返回按钮 -->
+    <header class="flex items-center justify-between p-2 mb-4">
+      <button
+        @click="goBack"
+        class="px-3 py-1 bg-white rounded-full shadow-sm text-gray-700"
+      >
+        < 返回
+      </button>
+      <h1 class="text-xl md:text-2xl font-bold text-center text-gray-800">
+        命盘分析
+      </h1>
+      <div class="w-12"></div>
+      <!-- 占位 -->
+    </header>
 
     <!-- Loading 状态 -->
-    <div v-if="isLoading" class="text-center py-10">
-      <van-loading size="24px">正在加载...</van-loading>
+    <div v-if="isLoading" class="text-center py-20">
+      <div
+        class="i-svg-spinners:12-dots-scale-rotate w-12 h-12 mx-auto text-blue-500"
+      ></div>
+      <p class="mt-2 text-gray-600">正在生成命盘...</p>
     </div>
 
     <!-- Error 状态 -->
-    <div v-else-if="errorMsg" class="text-center py-10">
-      <p class="text-red-500">{{ errorMsg }}</p>
-      <van-button type="primary" to="/" class="mt-4">返回首页</van-button>
+    <div
+      v-else-if="errorMsg"
+      class="text-center py-20 bg-white rounded-lg shadow-lg p-6 max-w-sm mx-auto"
+    >
+      <div class="i-carbon:warning-alt text-5xl text-red-500 mx-auto"></div>
+      <p class="text-red-600 font-semibold mt-4">出错了</p>
+      <p class="text-gray-500 text-sm mt-1">{{ errorMsg }}</p>
+      <button
+        @click="goToHome"
+        class="mt-6 px-6 py-2 bg-blue-500 text-white rounded-full shadow-md hover:bg-blue-600"
+      >
+        返回首页
+      </button>
     </div>
 
     <!-- 结果展示 -->
     <div v-else-if="result" class="space-y-4">
-      <!-- 基本信息 -->
-      <van-cell-group inset title="生辰信息">
-        <van-cell title="生辰" :value="formatBirthday" />
-        <van-cell title="记录ID" :value="result.id" />
-      </van-cell-group>
+      <!-- 生辰信息 -->
+      <section class="bg-white rounded-lg shadow p-4">
+        <h2 class="text-lg font-semibold text-gray-700 mb-2">基本信息</h2>
+        <div class="text-sm text-gray-600">
+          <p>
+            公历：{{
+              result.solar?.join(" ") ||
+              `${form.year}年 ${form.month}月 ${form.day}日 ${
+                form.hour ?? ""
+              }时`
+            }}
+          </p>
+          <p>农历：{{ result.lunar?.join(" ") || "N/A" }}</p>
+          <p>性别：{{ result.gender || form.gender }}</p>
+          <p>
+            记录ID：<span class="font-mono">{{ result.id }}</span>
+          </p>
+        </div>
+      </section>
 
       <!-- 八字四柱 -->
-      <van-cell-group inset title="八字四柱">
-        <van-cell title="年柱" :value="formatGanZhi(result.bazi.year)" />
-        <van-cell title="月柱" :value="formatGanZhi(result.bazi.month)" />
-        <van-cell title="日柱" :value="formatGanZhi(result.bazi.day)" />
-        <van-cell title="时柱" :value="formatGanZhi(result.bazi.hour)" />
-      </van-cell-group>
+      <section>
+        <h2 class="text-lg font-semibold text-gray-700 mb-2 pl-2">四柱结构</h2>
+        <div class="grid grid-cols-4 gap-2">
+          <BaziPillar title="年柱" :pillar-data="result.bazi.year" />
+          <BaziPillar title="月柱" :pillar-data="result.bazi.month" />
+          <BaziPillar title="日柱" :pillar-data="result.bazi.day" />
+          <BaziPillar title="时柱" :pillar-data="result.bazi.hour" />
+        </div>
+      </section>
 
-      <!-- 大运 -->
-      <van-cell-group inset title="大运">
-        <!-- 循环渲染大运 -->
-        <van-cell
-          v-for="(item, index) in result.dayun"
-          :key="index"
-          :title="`${item.age}岁起运`"
-          :value="item.ganZhi"
-        />
-      </van-cell-group>
-
-      <!-- 更多信息... 藏干、十神等可以类似地添加 -->
-
-      <div class="mt-6">
-        <van-button round block type="default" to="/">重新排盘</van-button>
-      </div>
+      <!-- 大运和流年 -->
+      <section>
+        <h2 class="text-lg font-semibold text-gray-700 mb-2 pl-2">
+          大运与流年
+        </h2>
+        <DaYunFlow :dayuns="result.dayun" />
+      </section>
     </div>
 
     <!-- 无数据状态 -->
-    <div v-else class="text-center py-10">
-      <p>没有找到排盘结果。</p>
-      <van-button type="primary" to="/" class="mt-4">去排盘</van-button>
+    <div v-else class="text-center py-20">
+      <p class="text-gray-500">此命盘记录不存在或已失效。</p>
+      <button
+        @click="goToHome"
+        class="mt-6 px-6 py-2 bg-blue-500 text-white rounded-full shadow-md hover:bg-blue-600"
+      >
+        重新排盘
+      </button>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref, computed, onMounted } from "vue";
+import { ref, onMounted } from "vue";
 import { useUserStore } from "~/stores/user";
-import { useRoute } from "vue-router";
+import { useRoute, useRouter } from "#app";
+import BaziPillar from "~/components/BaziPillar.vue";
+import DaYunFlow from "~/components/DaYunFlow.vue";
+import { storeToRefs } from "pinia";
 
-// 获取 store 和 route
-const userStore = useUserStore();
 const route = useRoute();
+const router = useRouter();
+const userStore = useUserStore();
 
-// state
-const isLoading = ref(false);
-const errorMsg = ref<string | null>(null);
+// 使用 storeToRefs 来保持响应性
+const {
+  result,
+  loading: isLoading,
+  error: errorMsg,
+  form,
+} = storeToRefs(userStore);
 
-// 从 store 获取结果
-const result = computed(() => userStore.result);
-const birthdayInfo = computed(() => userStore.form);
-
-// 格式化干支显示
-const formatGanZhi = (gz: string | { gan: string; zhi: string }) => {
-  if (!gz) return "未知";
-
-  // 如果是字符串格式（新算法）
-  if (typeof gz === "string") {
-    return gz;
-  }
-
-  // 如果是对象格式（旧算法兼容）
-  if (typeof gz === "object" && gz.gan) {
-    return `${gz.gan}${gz.zhi}`;
-  }
-
-  return "未知";
-};
-
-// 格式化生日显示
-const formatBirthday = computed(() => {
-  if (!birthdayInfo.value.year) return "未知";
-  return `${birthdayInfo.value.year}年${birthdayInfo.value.month}月${
-    birthdayInfo.value.day
-  }日 ${birthdayInfo.value.hour ?? "未知"}时`;
-});
-
-// 组件挂载时的逻辑
+// --- 生命周期 ---
 onMounted(async () => {
-  const id = route.query.id;
-  // 如果 store 中没有结果，但 URL 中有 id，则尝试从后端获取
-  if (!userStore.result && id) {
-    isLoading.value = true;
-    errorMsg.value = null;
-    try {
-      // TODO: 实现 /api/pai-pan/history?id=... 接口
-      const data = await $fetch(`/api/pai-pan/history?id=${id}`);
-      // @ts-ignore
-      userStore.result = data;
-      // 同时更新表单信息以供显示
-      // @ts-ignore
-      userStore.form.year = data.year;
-      // @ts-ignore
-      userStore.form.month = data.month;
-      // @ts-ignore
-      userStore.form.day = data.day;
-      // @ts-ignore
-      userStore.form.hour = data.hour;
-    } catch (e: any) {
-      errorMsg.value = e.data?.statusMessage || "查询历史记录失败。";
-    } finally {
-      isLoading.value = false;
-    }
+  const id = route.query.id as string | undefined;
+
+  // 如果 store 中没有结果，但 URL 中有 id，则从后端获取
+  // 这种场景通常是分享链接或刷新页面
+  if (!result.value && id) {
+    await userStore.fetchPaiPanById(id);
+  } else if (!result.value && !id) {
+    // 如果既没有结果也没有id，可能是直接访问了/result页面
+    errorMsg.value = "没有有效的命盘信息，请先从首页输入生辰。";
   }
 });
+
+// --- 方法 ---
+function goToHome() {
+  router.push("/");
+}
+
+function goBack() {
+  // 如果历史记录里有来源，则返回；否则去首页
+  if (window.history.length > 1) {
+    router.back();
+  } else {
+    router.push("/");
+  }
+}
 </script>

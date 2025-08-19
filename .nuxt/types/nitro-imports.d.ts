@@ -1,4 +1,6 @@
 declare global {
+  const Gan: typeof import('../../server/utils/baziData')['Gan']
+  const Zhi: typeof import('../../server/utils/baziData')['Zhi']
   const __buildAssetsURL: typeof import('../../node_modules/.pnpm/nuxt@4.0.3_@netlify+blobs@9_8184dc6e3cc90353bbc56ec2966327b6/node_modules/nuxt/dist/core/runtime/nitro/utils/paths')['buildAssetsURL']
   const __publicAssetsURL: typeof import('../../node_modules/.pnpm/nuxt@4.0.3_@netlify+blobs@9_8184dc6e3cc90353bbc56ec2966327b6/node_modules/nuxt/dist/core/runtime/nitro/utils/paths')['publicAssetsURL']
   const appendCorsHeaders: typeof import('../../node_modules/.pnpm/h3@1.15.4/node_modules/h3')['appendCorsHeaders']
@@ -10,7 +12,9 @@ declare global {
   const assertMethod: typeof import('../../node_modules/.pnpm/h3@1.15.4/node_modules/h3')['assertMethod']
   const cachedEventHandler: typeof import('../../node_modules/.pnpm/nitropack@2.12.4_@netlify+blobs@9.1.2/node_modules/nitropack/dist/runtime/internal/cache')['cachedEventHandler']
   const cachedFunction: typeof import('../../node_modules/.pnpm/nitropack@2.12.4_@netlify+blobs@9.1.2/node_modules/nitropack/dist/runtime/internal/cache')['cachedFunction']
+  const calcDayuns: typeof import('../../server/utils/baziCalc')['calcDayuns']
   const callNodeListener: typeof import('../../node_modules/.pnpm/h3@1.15.4/node_modules/h3')['callNodeListener']
+  const cangGan: typeof import('../../server/utils/baziData')['cangGan']
   const clearResponseHeaders: typeof import('../../node_modules/.pnpm/h3@1.15.4/node_modules/h3')['clearResponseHeaders']
   const clearSession: typeof import('../../node_modules/.pnpm/h3@1.15.4/node_modules/h3')['clearSession']
   const createApp: typeof import('../../node_modules/.pnpm/h3@1.15.4/node_modules/h3')['createApp']
@@ -18,8 +22,8 @@ declare global {
   const createError: typeof import('../../node_modules/.pnpm/h3@1.15.4/node_modules/h3')['createError']
   const createEvent: typeof import('../../node_modules/.pnpm/h3@1.15.4/node_modules/h3')['createEvent']
   const createEventStream: typeof import('../../node_modules/.pnpm/h3@1.15.4/node_modules/h3')['createEventStream']
+  const createGanZhiDetail: typeof import('../../server/utils/baziCalc')['createGanZhiDetail']
   const createRouter: typeof import('../../node_modules/.pnpm/h3@1.15.4/node_modules/h3')['createRouter']
-  const debugCalculation: typeof import('../../server/utils/testBazi')['debugCalculation']
   const defaultContentType: typeof import('../../node_modules/.pnpm/h3@1.15.4/node_modules/h3')['defaultContentType']
   const defineAppConfig: typeof import('../../node_modules/.pnpm/nuxt@4.0.3_@netlify+blobs@9_8184dc6e3cc90353bbc56ec2966327b6/node_modules/nuxt/dist/core/runtime/nitro/utils/config')['defineAppConfig']
   const defineCachedEventHandler: typeof import('../../node_modules/.pnpm/nitropack@2.12.4_@netlify+blobs@9.1.2/node_modules/nitropack/dist/runtime/internal/cache')['defineCachedEventHandler']
@@ -41,16 +45,17 @@ declare global {
   const dynamicEventHandler: typeof import('../../node_modules/.pnpm/h3@1.15.4/node_modules/h3')['dynamicEventHandler']
   const eventHandler: typeof import('../../node_modules/.pnpm/h3@1.15.4/node_modules/h3')['eventHandler']
   const fetchWithEvent: typeof import('../../node_modules/.pnpm/h3@1.15.4/node_modules/h3')['fetchWithEvent']
+  const fiveElementsColor: typeof import('../../server/utils/baziData')['fiveElementsColor']
   const fromNodeMiddleware: typeof import('../../node_modules/.pnpm/h3@1.15.4/node_modules/h3')['fromNodeMiddleware']
   const fromPlainHandler: typeof import('../../node_modules/.pnpm/h3@1.15.4/node_modules/h3')['fromPlainHandler']
   const fromWebHandler: typeof import('../../node_modules/.pnpm/h3@1.15.4/node_modules/h3')['fromWebHandler']
-  const getBaZi: typeof import('../../server/utils/bazi')['getBaZi']
+  const gan5: typeof import('../../server/utils/baziData')['gan5']
+  const getCangGan: typeof import('../../server/utils/baziCalc')['getCangGan']
   const getCookie: typeof import('../../node_modules/.pnpm/h3@1.15.4/node_modules/h3')['getCookie']
-  const getCorrectBaZi: typeof import('../../server/utils/correctBazi')['getCorrectBaZi']
-  const getFinalBaZi: typeof import('../../server/utils/finalBazi')['getFinalBaZi']
-  const getFullBaZiData: typeof import('../../server/utils/paiPan')['getFullBaZiData']
+  const getFullLunarBaziData: typeof import('../../server/utils/lunarBazi')['getFullLunarBaziData']
   const getHeader: typeof import('../../node_modules/.pnpm/h3@1.15.4/node_modules/h3')['getHeader']
   const getHeaders: typeof import('../../node_modules/.pnpm/h3@1.15.4/node_modules/h3')['getHeaders']
+  const getLunarBazi: typeof import('../../server/utils/lunarBazi')['getLunarBazi']
   const getMethod: typeof import('../../node_modules/.pnpm/h3@1.15.4/node_modules/h3')['getMethod']
   const getProxyRequestHeaders: typeof import('../../node_modules/.pnpm/h3@1.15.4/node_modules/h3')['getProxyRequestHeaders']
   const getQuery: typeof import('../../node_modules/.pnpm/h3@1.15.4/node_modules/h3')['getQuery']
@@ -71,6 +76,7 @@ declare global {
   const getRouterParam: typeof import('../../node_modules/.pnpm/h3@1.15.4/node_modules/h3')['getRouterParam']
   const getRouterParams: typeof import('../../node_modules/.pnpm/h3@1.15.4/node_modules/h3')['getRouterParams']
   const getSession: typeof import('../../node_modules/.pnpm/h3@1.15.4/node_modules/h3')['getSession']
+  const getShiShen: typeof import('../../server/utils/baziCalc')['getShiShen']
   const getValidatedQuery: typeof import('../../node_modules/.pnpm/h3@1.15.4/node_modules/h3')['getValidatedQuery']
   const getValidatedRouterParams: typeof import('../../node_modules/.pnpm/h3@1.15.4/node_modules/h3')['getValidatedRouterParams']
   const handleCacheHeaders: typeof import('../../node_modules/.pnpm/h3@1.15.4/node_modules/h3')['handleCacheHeaders']
@@ -84,6 +90,7 @@ declare global {
   const isStream: typeof import('../../node_modules/.pnpm/h3@1.15.4/node_modules/h3')['isStream']
   const isWebResponse: typeof import('../../node_modules/.pnpm/h3@1.15.4/node_modules/h3')['isWebResponse']
   const lazyEventHandler: typeof import('../../node_modules/.pnpm/h3@1.15.4/node_modules/h3')['lazyEventHandler']
+  const nayins: typeof import('../../server/utils/baziData')['nayins']
   const nitroPlugin: typeof import('../../node_modules/.pnpm/nitropack@2.12.4_@netlify+blobs@9.1.2/node_modules/nitropack/dist/runtime/internal/plugin')['nitroPlugin']
   const parseCookies: typeof import('../../node_modules/.pnpm/h3@1.15.4/node_modules/h3')['parseCookies']
   const promisifyNodeListener: typeof import('../../node_modules/.pnpm/h3@1.15.4/node_modules/h3')['promisifyNodeListener']
@@ -114,8 +121,8 @@ declare global {
   const setResponseHeaders: typeof import('../../node_modules/.pnpm/h3@1.15.4/node_modules/h3')['setResponseHeaders']
   const setResponseStatus: typeof import('../../node_modules/.pnpm/h3@1.15.4/node_modules/h3')['setResponseStatus']
   const splitCookiesString: typeof import('../../node_modules/.pnpm/h3@1.15.4/node_modules/h3')['splitCookiesString']
-  const test2025Aug19: typeof import('../../server/utils/correctBazi')['test2025Aug19']
-  const testSpecificDate: typeof import('../../server/utils/testBazi')['testSpecificDate']
+  const ten_deities: typeof import('../../server/utils/baziData')['ten_deities']
+  const testLunarBaziCalculation: typeof import('../../server/utils/lunarBazi')['testLunarBaziCalculation']
   const toEventHandler: typeof import('../../node_modules/.pnpm/h3@1.15.4/node_modules/h3')['toEventHandler']
   const toNodeListener: typeof import('../../node_modules/.pnpm/h3@1.15.4/node_modules/h3')['toNodeListener']
   const toPlainHandler: typeof import('../../node_modules/.pnpm/h3@1.15.4/node_modules/h3')['toPlainHandler']
@@ -131,18 +138,13 @@ declare global {
   const useSession: typeof import('../../node_modules/.pnpm/h3@1.15.4/node_modules/h3')['useSession']
   const useStorage: typeof import('../../node_modules/.pnpm/nitropack@2.12.4_@netlify+blobs@9.1.2/node_modules/nitropack/dist/runtime/internal/storage')['useStorage']
   const writeEarlyHints: typeof import('../../node_modules/.pnpm/h3@1.15.4/node_modules/h3')['writeEarlyHints']
+  const zhi5: typeof import('../../server/utils/baziData')['zhi5']
 }
 // for type re-export
 declare global {
   // @ts-ignore
-  export type { BaZiInput, BaZiResult } from '../../server/utils/bazi'
-  import('../../server/utils/bazi')
-  // @ts-ignore
-  export type { CorrectBaZiInput, CorrectBaZiResult } from '../../server/utils/correctBazi'
-  import('../../server/utils/correctBazi')
-  // @ts-ignore
-  export type { FinalBaZiInput, FinalBaZiResult } from '../../server/utils/finalBazi'
-  import('../../server/utils/finalBazi')
+  export type { LunarBaziInput, LunarBaziResult, FullLunarBaziResult } from '../../server/utils/lunarBazi'
+  import('../../server/utils/lunarBazi')
 }
 export { useNitroApp } from 'nitropack/runtime/internal/app';
 export { useRuntimeConfig, useAppConfig } from 'nitropack/runtime/internal/config';
@@ -158,8 +160,6 @@ export { defineNitroErrorHandler } from 'nitropack/runtime/internal/error/utils'
 export { appendCorsHeaders, appendCorsPreflightHeaders, appendHeader, appendHeaders, appendResponseHeader, appendResponseHeaders, assertMethod, callNodeListener, clearResponseHeaders, clearSession, createApp, createAppEventHandler, createError, createEvent, createEventStream, createRouter, defaultContentType, defineEventHandler, defineLazyEventHandler, defineNodeListener, defineNodeMiddleware, defineRequestMiddleware, defineResponseMiddleware, defineWebSocket, defineWebSocketHandler, deleteCookie, dynamicEventHandler, eventHandler, fetchWithEvent, fromNodeMiddleware, fromPlainHandler, fromWebHandler, getCookie, getHeader, getHeaders, getMethod, getProxyRequestHeaders, getQuery, getRequestFingerprint, getRequestHeader, getRequestHeaders, getRequestHost, getRequestIP, getRequestPath, getRequestProtocol, getRequestURL, getRequestWebStream, getResponseHeader, getResponseHeaders, getResponseStatus, getResponseStatusText, getRouterParam, getRouterParams, getSession, getValidatedQuery, getValidatedRouterParams, handleCacheHeaders, handleCors, isCorsOriginAllowed, isError, isEvent, isEventHandler, isMethod, isPreflightRequest, isStream, isWebResponse, lazyEventHandler, parseCookies, promisifyNodeListener, proxyRequest, readBody, readFormData, readMultipartFormData, readRawBody, readValidatedBody, removeResponseHeader, sanitizeStatusCode, sanitizeStatusMessage, sealSession, send, sendError, sendIterable, sendNoContent, sendProxy, sendRedirect, sendStream, sendWebResponse, serveStatic, setCookie, setHeader, setHeaders, setResponseHeader, setResponseHeaders, setResponseStatus, splitCookiesString, toEventHandler, toNodeListener, toPlainHandler, toWebHandler, toWebRequest, unsealSession, updateSession, useBase, useSession, writeEarlyHints } from 'h3';
 export { buildAssetsURL as __buildAssetsURL, publicAssetsURL as __publicAssetsURL } from 'D:/code_all/bazi/my_pp/node_modules/.pnpm/nuxt@4.0.3_@netlify+blobs@9_8184dc6e3cc90353bbc56ec2966327b6/node_modules/nuxt/dist/core/runtime/nitro/utils/paths';
 export { defineAppConfig } from 'D:/code_all/bazi/my_pp/node_modules/.pnpm/nuxt@4.0.3_@netlify+blobs@9_8184dc6e3cc90353bbc56ec2966327b6/node_modules/nuxt/dist/core/runtime/nitro/utils/config';
-export { getBaZi } from 'D:/code_all/bazi/my_pp/server/utils/bazi';
-export { getCorrectBaZi, test2025Aug19 } from 'D:/code_all/bazi/my_pp/server/utils/correctBazi';
-export { getFinalBaZi } from 'D:/code_all/bazi/my_pp/server/utils/finalBazi';
-export { getFullBaZiData } from 'D:/code_all/bazi/my_pp/server/utils/paiPan';
-export { testSpecificDate, debugCalculation } from 'D:/code_all/bazi/my_pp/server/utils/testBazi';
+export { getShiShen, getCangGan, calcDayuns, createGanZhiDetail } from 'D:/code_all/bazi/my_pp/server/utils/baziCalc';
+export { Gan, Zhi, gan5, zhi5, cangGan, fiveElementsColor, ten_deities, nayins } from 'D:/code_all/bazi/my_pp/server/utils/baziData';
+export { getLunarBazi, getFullLunarBaziData, testLunarBaziCalculation } from 'D:/code_all/bazi/my_pp/server/utils/lunarBazi';

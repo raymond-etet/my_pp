@@ -1116,22 +1116,7 @@ const plugins = [
 _3grAypzA3l48iUajIoOB4qWUwqZDLrRLrchJ7KePf4
 ];
 
-const assets = {
-  "/index.mjs": {
-    "type": "text/javascript; charset=utf-8",
-    "etag": "\"14644-Xb30orGEFcGFhBrWlx4ezuDCnLo\"",
-    "mtime": "2025-08-19T08:33:22.360Z",
-    "size": 83524,
-    "path": "index.mjs"
-  },
-  "/index.mjs.map": {
-    "type": "application/json",
-    "etag": "\"4d1fa-Dfe9521jyTZKVcOQZTARSLDkvMY\"",
-    "mtime": "2025-08-19T08:33:22.361Z",
-    "size": 315898,
-    "path": "index.mjs.map"
-  }
-};
+const assets = {};
 
 function readAsset (id) {
   const serverDir = dirname$1(fileURLToPath(globalThis._importMeta_.url));
@@ -1980,6 +1965,165 @@ function getSimplifiedDaYun(baziResult, birthYear, gender) {
   }
 }
 
+const Gan = ["\u7532", "\u4E59", "\u4E19", "\u4E01", "\u620A", "\u5DF1", "\u5E9A", "\u8F9B", "\u58EC", "\u7678"];
+const Zhi = [
+  "\u5B50",
+  "\u4E11",
+  "\u5BC5",
+  "\u536F",
+  "\u8FB0",
+  "\u5DF3",
+  "\u5348",
+  "\u672A",
+  "\u7533",
+  "\u9149",
+  "\u620C",
+  "\u4EA5"
+];
+const gan5 = {
+  \u7532: "\u6728",
+  \u4E59: "\u6728",
+  \u4E19: "\u706B",
+  \u4E01: "\u706B",
+  \u620A: "\u571F",
+  \u5DF1: "\u571F",
+  \u5E9A: "\u91D1",
+  \u8F9B: "\u91D1",
+  \u58EC: "\u6C34",
+  \u7678: "\u6C34"
+};
+const zhi5 = {
+  \u5B50: "\u6C34",
+  \u4E11: "\u571F",
+  \u5BC5: "\u6728",
+  \u536F: "\u6728",
+  \u8FB0: "\u571F",
+  \u5DF3: "\u706B",
+  \u5348: "\u706B",
+  \u672A: "\u571F",
+  \u7533: "\u91D1",
+  \u9149: "\u91D1",
+  \u620C: "\u571F",
+  \u4EA5: "\u6C34"
+};
+const cangGan = {
+  \u5B50: ["\u7678"],
+  \u4E11: ["\u5DF1", "\u7678", "\u8F9B"],
+  \u5BC5: "\u4E19\u7532\u620A",
+  \u536F: ["\u4E59"],
+  \u8FB0: ["\u620A", "\u4E59", "\u7678"],
+  \u5DF3: ["\u4E19", "\u5E9A", "\u620A"],
+  \u5348: ["\u4E01", "\u5DF1"],
+  \u672A: ["\u5DF1", "\u4E01", "\u4E59"],
+  \u7533: ["\u5E9A", "\u58EC", "\u620A"],
+  \u9149: ["\u8F9B"],
+  \u620C: ["\u620A", "\u8F9B", "\u4E01"],
+  \u4EA5: ["\u58EC", "\u7532"]
+};
+
+const getGanYinYang = (gan) => {
+  const index = Gan.indexOf(gan);
+  return index % 2 === 0 ? "\u9633" : "\u9634";
+};
+const getShiShen = (dayGan, targetGan) => {
+  const dayGanYinYang = getGanYinYang(dayGan);
+  const dayGanWuxing = gan5[dayGan];
+  const targetGanWuxing = gan5[targetGan];
+  const isSamePolarity = getGanYinYang(targetGan) === dayGanYinYang;
+  if (targetGanWuxing === dayGanWuxing) {
+    return isSamePolarity ? "\u6BD4\u80A9" : "\u52AB\u8D22";
+  } else if (dayGanWuxing === "\u6728") {
+    if (targetGanWuxing === "\u706B") return isSamePolarity ? "\u98DF\u795E" : "\u4F24\u5B98";
+    if (targetGanWuxing === "\u571F") return isSamePolarity ? "\u504F\u8D22" : "\u6B63\u8D22";
+    if (targetGanWuxing === "\u91D1") return isSamePolarity ? "\u4E03\u6740" : "\u6B63\u5B98";
+    if (targetGanWuxing === "\u6C34") return isSamePolarity ? "\u504F\u5370" : "\u6B63\u5370";
+  } else if (dayGanWuxing === "\u706B") {
+    if (targetGanWuxing === "\u571F") return isSamePolarity ? "\u98DF\u795E" : "\u4F24\u5B98";
+    if (targetGanWuxing === "\u91D1") return isSamePolarity ? "\u504F\u8D22" : "\u6B63\u8D22";
+    if (targetGanWuxing === "\u6C34") return isSamePolarity ? "\u4E03\u6740" : "\u6B63\u5B98";
+    if (targetGanWuxing === "\u6728") return isSamePolarity ? "\u504F\u5370" : "\u6B63\u5370";
+  } else if (dayGanWuxing === "\u571F") {
+    if (targetGanWuxing === "\u91D1") return isSamePolarity ? "\u98DF\u795E" : "\u4F24\u5B98";
+    if (targetGanWuxing === "\u6C34") return isSamePolarity ? "\u504F\u8D22" : "\u6B63\u8D22";
+    if (targetGanWuxing === "\u6728") return isSamePolarity ? "\u4E03\u6740" : "\u6B63\u5B98";
+    if (targetGanWuxing === "\u706B") return isSamePolarity ? "\u504F\u5370" : "\u6B63\u5370";
+  } else if (dayGanWuxing === "\u91D1") {
+    if (targetGanWuxing === "\u6C34") return isSamePolarity ? "\u98DF\u795E" : "\u4F24\u5B98";
+    if (targetGanWuxing === "\u6728") return isSamePolarity ? "\u504F\u8D22" : "\u6B63\u8D22";
+    if (targetGanWuxing === "\u706B") return isSamePolarity ? "\u4E03\u6740" : "\u6B63\u5B98";
+    if (targetGanWuxing === "\u571F") return isSamePolarity ? "\u504F\u5370" : "\u6B63\u5370";
+  } else if (dayGanWuxing === "\u6C34") {
+    if (targetGanWuxing === "\u6728") return isSamePolarity ? "\u98DF\u795E" : "\u4F24\u5B98";
+    if (targetGanWuxing === "\u706B") return isSamePolarity ? "\u504F\u8D22" : "\u6B63\u8D22";
+    if (targetGanWuxing === "\u571F") return isSamePolarity ? "\u4E03\u6740" : "\u6B63\u5B98";
+    if (targetGanWuxing === "\u91D1") return isSamePolarity ? "\u504F\u5370" : "\u6B63\u5370";
+  }
+  return "";
+};
+const getCangGan = (zhi) => {
+  const ganStr = cangGan[zhi];
+  if (!ganStr) {
+    return [];
+  }
+  return Array.isArray(ganStr) ? ganStr : ganStr.split("");
+};
+function calcDayuns(yearGan, monthGan, monthZhi, dayGan, isFemale) {
+  const yearGanIndex = Gan.indexOf(yearGan);
+  const yearGanYinYang = yearGanIndex % 2 === 0 ? "\u9633" : "\u9634";
+  const direction = yearGanYinYang === "\u9633" && !isFemale || yearGanYinYang === "\u9634" && isFemale ? 1 : -1;
+  let ganSeq = Gan.indexOf(monthGan);
+  let zhiSeq = Zhi.indexOf(monthZhi);
+  const dayuns = [];
+  for (let i = 0; i < 8; i++) {
+    ganSeq += direction;
+    zhiSeq += direction;
+    const currentGanIndex = (ganSeq % 10 + 10) % 10;
+    const currentZhiIndex = (zhiSeq % 12 + 12) % 12;
+    const gan = Gan[currentGanIndex];
+    const zhi = Zhi[currentZhiIndex];
+    const startAge = i * 10 + 1;
+    const dayunGanZhiDetail = createGanZhiDetail(gan, zhi, dayGan);
+    const liunians = [];
+    let liunianGanIndex = Gan.indexOf("\u7532");
+    let liunianZhiIndex = Zhi.indexOf("\u5B50");
+    for (let j = 0; j < 10; j++) {
+      const lGan = Gan[(liunianGanIndex + i * 10 + j) % 10];
+      const lZhi = Zhi[(liunianZhiIndex + i * 10 + j) % 12];
+      liunians.push(createGanZhiDetail(lGan, lZhi, dayGan));
+    }
+    dayuns.push({
+      startAge,
+      endAge: startAge + 9,
+      ganZhi: dayunGanZhiDetail,
+      liunians
+    });
+  }
+  return dayuns;
+}
+function createGanZhiDetail(gan, zhi, dayGan) {
+  const canggan = getCangGan(zhi).map((cg) => ({
+    char: cg,
+    wuxing: gan5[cg] || "",
+    shishen: getShiShen(dayGan, cg)
+  }));
+  return {
+    gan,
+    zhi,
+    wuxing: {
+      gan: gan5[gan] || "",
+      zhi: zhi5[zhi] || ""
+    },
+    shishen: {
+      gan: getShiShen(dayGan, gan),
+      zhi: getShiShen(dayGan, zhi)
+      // 地支十神通常看藏干，这里简化为主气
+    },
+    canggan,
+    naYin: "\u6682\u65E0"
+    // 纳音计算较复杂，暂不实现
+  };
+}
+
 const { PrismaClient: PrismaClient$1 } = pkg;
 const prisma$1 = new PrismaClient$1({
   log: ["query", "info", "warn", "error"]
@@ -1997,6 +2141,7 @@ const paiPan_post = defineEventHandler(async (event) => {
   const month = parseInt(monthStr, 10);
   const day = parseInt(dayStr, 10);
   const hour = hourStr ? parseInt(hourStr, 10) : 0;
+  const isFemale = gender === "\u5973";
   if (isNaN(year) || isNaN(month) || isNaN(day)) {
     throw createError({
       statusCode: 400,
@@ -2034,7 +2179,45 @@ const paiPan_post = defineEventHandler(async (event) => {
     });
   }
   try {
-    const resultPayload = getFullLunarBaziData(year, month, day, hour, gender);
+    const rawBaziData = getFullLunarBaziData(year, month, day, hour, gender);
+    const yearGanZhi = {
+      gan: rawBaziData.bazi.year[0],
+      zhi: rawBaziData.bazi.year[1]
+    };
+    const monthGanZhi = {
+      gan: rawBaziData.bazi.month[0],
+      zhi: rawBaziData.bazi.month[1]
+    };
+    const dayGanZhi = {
+      gan: rawBaziData.bazi.day[0],
+      zhi: rawBaziData.bazi.day[1]
+    };
+    const hourGanZhi = {
+      gan: rawBaziData.bazi.hour[0],
+      zhi: rawBaziData.bazi.hour[1]
+    };
+    const dayGan = dayGanZhi.gan;
+    const baziDetail = {
+      year: createGanZhiDetail(yearGanZhi.gan, yearGanZhi.zhi, dayGan),
+      month: createGanZhiDetail(monthGanZhi.gan, monthGanZhi.zhi, dayGan),
+      day: createGanZhiDetail(dayGanZhi.gan, dayGanZhi.zhi, dayGan),
+      hour: createGanZhiDetail(hourGanZhi.gan, hourGanZhi.zhi, dayGan)
+    };
+    const dayuns = calcDayuns(
+      yearGanZhi.gan,
+      monthGanZhi.gan,
+      monthGanZhi.zhi,
+      dayGan,
+      isFemale
+    );
+    const resultPayload = {
+      ...rawBaziData,
+      // 保留原始信息，如公历、农历等
+      bazi: baziDetail,
+      // 覆盖为详细的四柱对象
+      dayun: dayuns
+      // 覆盖为新的大运数据
+    };
     const savedRecord = await prisma$1.paiPan.create({
       data: {
         year,
@@ -2043,9 +2226,7 @@ const paiPan_post = defineEventHandler(async (event) => {
         hour,
         gender,
         result: JSON.parse(JSON.stringify(resultPayload))
-        // 确保类型兼容
       }
-      // 临时解决类型问题
     });
     return {
       id: savedRecord.id,
@@ -2055,7 +2236,7 @@ const paiPan_post = defineEventHandler(async (event) => {
     console.error("\u6392\u76D8\u6216\u6570\u636E\u5E93\u64CD\u4F5C\u5931\u8D25:", error);
     throw createError({
       statusCode: 500,
-      statusMessage: "\u670D\u52A1\u5668\u5185\u90E8\u9519\u8BEF\uFF0C\u6392\u76D8\u5931\u8D25"
+      statusMessage: error.message || "\u670D\u52A1\u5668\u5185\u90E8\u9519\u8BEF\uFF0C\u6392\u76D8\u5931\u8D25"
     });
   }
 });

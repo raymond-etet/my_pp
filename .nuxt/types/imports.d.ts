@@ -35,6 +35,9 @@ declare global {
   const getCurrentInstance: typeof import('../../node_modules/.pnpm/vue@3.5.18_typescript@5.9.2/node_modules/vue')['getCurrentInstance']
   const getCurrentScope: typeof import('../../node_modules/.pnpm/vue@3.5.18_typescript@5.9.2/node_modules/vue')['getCurrentScope']
   const getRouteRules: typeof import('../../node_modules/.pnpm/nuxt@4.0.3_@netlify+blobs@9_8184dc6e3cc90353bbc56ec2966327b6/node_modules/nuxt/dist/app/composables/manifest')['getRouteRules']
+  const getWuxingColorClass: typeof import('../../utils/color')['getWuxingColorClass']
+  const getWuxingColorStyle: typeof import('../../utils/color')['getWuxingColorStyle']
+  const getWuxingHexColor: typeof import('../../utils/color')['getWuxingHexColor']
   const h: typeof import('../../node_modules/.pnpm/vue@3.5.18_typescript@5.9.2/node_modules/vue')['h']
   const hasInjectionContext: typeof import('../../node_modules/.pnpm/vue@3.5.18_typescript@5.9.2/node_modules/vue')['hasInjectionContext']
   const inject: typeof import('../../node_modules/.pnpm/vue@3.5.18_typescript@5.9.2/node_modules/vue')['inject']
@@ -241,6 +244,9 @@ declare module 'vue' {
     readonly getCurrentInstance: UnwrapRef<typeof import('../../node_modules/.pnpm/vue@3.5.18_typescript@5.9.2/node_modules/vue')['getCurrentInstance']>
     readonly getCurrentScope: UnwrapRef<typeof import('../../node_modules/.pnpm/vue@3.5.18_typescript@5.9.2/node_modules/vue')['getCurrentScope']>
     readonly getRouteRules: UnwrapRef<typeof import('../../node_modules/.pnpm/nuxt@4.0.3_@netlify+blobs@9_8184dc6e3cc90353bbc56ec2966327b6/node_modules/nuxt/dist/app/composables/manifest')['getRouteRules']>
+    readonly getWuxingColorClass: UnwrapRef<typeof import('../../utils/color')['getWuxingColorClass']>
+    readonly getWuxingColorStyle: UnwrapRef<typeof import('../../utils/color')['getWuxingColorStyle']>
+    readonly getWuxingHexColor: UnwrapRef<typeof import('../../utils/color')['getWuxingHexColor']>
     readonly h: UnwrapRef<typeof import('../../node_modules/.pnpm/vue@3.5.18_typescript@5.9.2/node_modules/vue')['h']>
     readonly hasInjectionContext: UnwrapRef<typeof import('../../node_modules/.pnpm/vue@3.5.18_typescript@5.9.2/node_modules/vue')['hasInjectionContext']>
     readonly inject: UnwrapRef<typeof import('../../node_modules/.pnpm/vue@3.5.18_typescript@5.9.2/node_modules/vue')['inject']>
