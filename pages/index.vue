@@ -33,16 +33,15 @@
       </van-field>
 
       <!-- 便捷年代选择 -->
-      <!-- 便捷年代选择 -->
       <van-field name="decade" label="年代">
         <template #input>
           <div class="flex flex-wrap gap-2">
             <van-tag
               v-for="item in decadeOptions"
               :key="item.value"
-              :type="selectedDecade === item.value ? 'primary' : 'default'"
-              plain
-              round
+              :plain="false"
+              :color="decadeColors[item.value]?.bg"
+              :text-color="decadeColors[item.value]?.color"
               @click="selectDecade(item.value)"
             >
               {{ item.text }}
@@ -124,7 +123,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed, watch } from "vue";
+import { ref, computed, watch, onMounted } from "vue";
 import { useUserStore } from "~/stores/user";
 import { Lunar, Solar } from "lunar-javascript";
 import { showToast } from "vant";
@@ -158,6 +157,29 @@ const currentDate = ref([
 ]);
 
 const selectedDecade = ref("");
+// 年代标签颜色映射：背景色与文字色
+const decadeColors: Record<string, { bg: string; color: string }> = {
+  // 30后：淡紫
+  "30后": { bg: "#f3e5f5", color: "#6a1b9a" },
+  // 40后：浅蓝
+  "40后": { bg: "#e3f2fd", color: "#283593" },
+  // 50后：浅灰
+  "50后": { bg: "#eceff1", color: "#546e7a" },
+  // 60后：浅绿
+  "60后": { bg: "#e8f5e9", color: "#2e7d32" },
+  // 70后：薄荷
+  "70后": { bg: "#e0f2f1", color: "#00897b" },
+  // 80后：米黄
+  "80后": { bg: "#fffde7", color: "#f9a825" },
+  // 90后：粉珊瑚
+  "90后": { bg: "#ffebee", color: "#d84315" },
+  // 00后：粉棉
+  "00后": { bg: "#fce4ec", color: "#c2185b" },
+  // 10后：淡靛
+  "10后": { bg: "#e3f2fd", color: "#1976d2" },
+  // 20后：薰衣草雾
+  "20后": { bg: "#f3e5f5", color: "#8e24aa" },
+};
 // 便捷年代标签选项
 const decadeOptions = [
   { text: "30后", value: "30后" },
@@ -178,7 +200,7 @@ function selectDecade(val: string) {
 }
 const onDecadeChange = (val: string) => {
   const num = parseInt(val, 10);
-  const start = num >= 50 ? 1900 + num : 2000 + num;
+  const start = num <= 20 ? 2000 + num : 1900 + num;
   const mid = start + 5;
   form.value.year = mid;
   form.value.month = 1;
@@ -216,6 +238,30 @@ const birthDateText = computed(() => {
 const hourText = computed(() => {
   const selected = hourColumns.find((h) => h.value === form.value.hour);
   return selected ? selected.text : "";
+});
+
+// 监视出生年以同步年代标签
+watch(
+  () => form.value.year,
+  (year) => {
+    const tens = Math.floor((year % 100) / 10) * 10;
+    const decade = `${String(tens).padStart(2, "0")}后`;
+    if (decadeOptions.some((item) => item.value === decade)) {
+      selectedDecade.value = decade;
+    } else {
+      selectedDecade.value = "";
+    }
+  },
+  { immediate: true }
+);
+// 初始挂载时同步年代标签（仅客户端）
+onMounted(() => {
+  const year = form.value.year;
+  const tens = Math.floor((year % 100) / 10) * 10;
+  const decade = `${String(tens).padStart(2, "0")}后`;
+  if (decadeOptions.some((item) => item.value === decade)) {
+    selectedDecade.value = decade;
+  }
 });
 
 // 日期确认
