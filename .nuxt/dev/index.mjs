@@ -1118,22 +1118,7 @@ const plugins = [
 _3grAypzA3l48iUajIoOB4qWUwqZDLrRLrchJ7KePf4
 ];
 
-const assets = {
-  "/index.mjs": {
-    "type": "text/javascript; charset=utf-8",
-    "etag": "\"17bf0-uqYpKe/qniH8BamfbZstGDstV+w\"",
-    "mtime": "2025-08-19T16:53:57.073Z",
-    "size": 97264,
-    "path": "index.mjs"
-  },
-  "/index.mjs.map": {
-    "type": "application/json",
-    "etag": "\"598da-IF+dNlYt3RdewqbrFu2wCZUsM88\"",
-    "mtime": "2025-08-19T16:53:57.073Z",
-    "size": 366810,
-    "path": "index.mjs.map"
-  }
-};
+const assets = {};
 
 function readAsset (id) {
   const serverDir = dirname$1(fileURLToPath(globalThis._importMeta_.url));
@@ -2082,6 +2067,7 @@ const register_post$1 = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.definePro
 function getFullLunarBaziData(year, month, day, hour, gender, calendarType = "solar") {
   try {
     let solar;
+    const calcHour = hour === -1 ? 0 : hour;
     if (calendarType === "lunar") {
       const lunarForDate = new Lunar(year, month, day);
       const solarFromLunar = lunarForDate.getSolar();
@@ -2089,12 +2075,12 @@ function getFullLunarBaziData(year, month, day, hour, gender, calendarType = "so
         solarFromLunar.getYear(),
         solarFromLunar.getMonth(),
         solarFromLunar.getDay(),
-        hour,
+        calcHour,
         0,
         0
       );
     } else {
-      solar = hour > 0 ? Solar.fromYmdHms(year, month, day, hour, 0, 0) : Solar.fromYmd(year, month, day);
+      solar = Solar.fromYmdHms(year, month, day, calcHour, 0, 0);
     }
     const lunar = solar.getLunar();
     const eightChar = lunar.getEightChar();
@@ -2107,27 +2093,25 @@ function getFullLunarBaziData(year, month, day, hour, gender, calendarType = "so
     const lunarDateStr = lunar.toString();
     const solarDateStr = solar.toString();
     let daYunResult = [];
-    if (hour > 0) {
-      try {
-        const genderCode = gender === "\u7537" ? 1 : 0;
-        const yun = eightChar.getYun(genderCode);
-        if (yun) {
-          const daYuns = yun.getDaYun();
-          daYunResult = daYuns.slice(0, 10).map((dy) => ({
-            ageRange: `${dy.getStartAge()}-${dy.getEndAge()}`,
-            startYear: dy.getStartYear(),
-            endYear: dy.getEndYear(),
-            ganZhi: dy.getGanZhi(),
-            liuNian: dy.getLiuNian().slice(0, 10).map((ln) => ({
-              year: ln.getYear(),
-              ganZhi: ln.getGanZhi()
-            }))
-          }));
-        }
-      } catch (yunError) {
-        console.warn("\u83B7\u53D6\u5927\u8FD0\u65F6\u53D1\u751F\u9519\u8BEF\uFF0C\u4F7F\u7528\u7B80\u5316\u7B97\u6CD5:", yunError);
-        daYunResult = getSimplifiedDaYun(baziResult, year, gender);
+    try {
+      const genderCode = gender === "\u7537" ? 1 : 0;
+      const yun = eightChar.getYun(genderCode);
+      if (yun) {
+        const daYuns = yun.getDaYun();
+        daYunResult = daYuns.slice(0, 10).map((dy) => ({
+          ageRange: `${dy.getStartAge()}-${dy.getEndAge()}`,
+          startYear: dy.getStartYear(),
+          endYear: dy.getEndYear(),
+          ganZhi: dy.getGanZhi(),
+          liuNian: dy.getLiuNian().slice(0, 10).map((ln) => ({
+            year: ln.getYear(),
+            ganZhi: ln.getGanZhi()
+          }))
+        }));
       }
+    } catch (yunError) {
+      console.warn("\u83B7\u53D6\u5927\u8FD0\u65F6\u53D1\u751F\u9519\u8BEF\uFF0C\u4F7F\u7528\u7B80\u5316\u7B97\u6CD5:", yunError);
+      daYunResult = getSimplifiedDaYun(baziResult, year, gender);
     }
     const shiShenResult = {
       year: eightChar.getYearShiShenGan() || "\u672A\u77E5",
@@ -2340,7 +2324,7 @@ const paiPan_post = defineEventHandler(async (event) => {
   const year = parseInt(yearStr, 10);
   const month = parseInt(monthStr, 10);
   const day = parseInt(dayStr, 10);
-  const hour = hourStr ? parseInt(hourStr, 10) : 0;
+  const hour = hourStr !== void 0 && hourStr !== null ? parseInt(hourStr, 10) : -1;
   if (isNaN(year) || isNaN(month) || isNaN(day)) {
     throw createError({
       statusCode: 400,
@@ -2365,10 +2349,10 @@ const paiPan_post = defineEventHandler(async (event) => {
       statusMessage: "\u65E5\u671F\u5FC5\u987B\u57281-31\u8303\u56F4\u5185"
     });
   }
-  if (hourStr && (isNaN(hour) || hour < 0 || hour > 23)) {
+  if (isNaN(hour) || hour < -1 || hour > 23) {
     throw createError({
       statusCode: 400,
-      statusMessage: "\u65F6\u8FB0\u5FC5\u987B\u57280-23\u8303\u56F4\u5185"
+      statusMessage: "\u65F6\u8FB0\u5FC5\u987B\u4E3A -1 (\u672A\u77E5) \u6216 0-23 \u8303\u56F4\u5185\u7684\u6574\u6570"
     });
   }
   if (gender !== "\u7537" && gender !== "\u5973") {
@@ -2425,8 +2409,15 @@ const paiPan_post = defineEventHandler(async (event) => {
     const resultPayload = {
       ...rawBaziData,
       // 保留原始信息，如公历、农历等
-      form: { year, month, day, hour, gender, calendarType },
-      // 将表单信息也存进去
+      form: {
+        year,
+        month,
+        day,
+        // 在接口返回的表单里：未知时辰用 '*' 标记；已知则保留原始小时值
+        hour: hour === -1 ? "*" : hour,
+        gender,
+        calendarType
+      },
       bazi: baziDetail,
       // 覆盖为详细的四柱对象
       dayun: dayuns
@@ -2437,7 +2428,7 @@ const paiPan_post = defineEventHandler(async (event) => {
         year,
         month,
         day,
-        hour,
+        hour: hour === -1 ? null : hour,
         gender,
         // 性别是必填项
         result: JSON.parse(JSON.stringify(resultPayload)),
@@ -2532,6 +2523,7 @@ const history_get = defineEventHandler(async (event) => {
         day: true,
         hour: true,
         gender: true,
+        name: true,
         result: true,
         // 包含完整的排盘结果数据
         createdAt: true

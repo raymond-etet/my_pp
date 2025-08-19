@@ -26,7 +26,9 @@ export default defineEventHandler(async (event) => {
   const year = parseInt(yearStr, 10);
   const month = parseInt(monthStr, 10);
   const day = parseInt(dayStr, 10);
-  const hour = hourStr ? parseInt(hourStr, 10) : 0;
+  // 前端以 -1 表示“未知”，如果未传则视为 -1（未知）
+  const hour =
+    hourStr !== undefined && hourStr !== null ? parseInt(hourStr, 10) : -1;
   const isFemale = gender === "女";
 
   // --- 输入验证 ---
@@ -54,10 +56,11 @@ export default defineEventHandler(async (event) => {
       statusMessage: "日期必须在1-31范围内",
     });
   }
-  if (hourStr && (isNaN(hour) || hour < 0 || hour > 23)) {
+  // hour 允许为 -1（未知），或 0-23 的整数
+  if (isNaN(hour) || hour < -1 || hour > 23) {
     throw createError({
       statusCode: 400,
-      statusMessage: "时辰必须在0-23范围内",
+      statusMessage: "时辰必须为 -1 (未知) 或 0-23 范围内的整数",
     });
   }
   if (gender !== "男" && gender !== "女") {
@@ -122,20 +125,31 @@ export default defineEventHandler(async (event) => {
     });
 
     // 5. 整合最终返回给前端的结果
+    // 如果用户选择未知时辰，我们在 result.form.hour 中记录 '*'，
+    // 但用于计算的大运/流年我们会按传入的 calcHour 来处理（见下文）
     const resultPayload = {
       ...rawBaziData, // 保留原始信息，如公历、农历等
-      form: { year, month, day, hour, gender, calendarType }, // 将表单信息也存进去
+      form: {
+        year,
+        month,
+        day,
+        // 在接口返回的表单里：未知时辰用 '*' 标记；已知则保留原始小时值
+        hour: hour === -1 ? "*" : hour,
+        gender,
+        calendarType,
+      },
       bazi: baziDetail, // 覆盖为详细的四柱对象
       dayun: dayuns, // 覆盖为新的大运数据
     };
 
     // 6. 存入数据库
+    // 注意：数据库表的 hour 字段是 Int?，因此如果未知应该保存为 null
     const savedRecord = await prisma.paiPan.create({
       data: {
         year,
         month,
         day,
-        hour,
+        hour: hour === -1 ? null : hour,
         gender, // 性别是必填项
         result: JSON.parse(JSON.stringify(resultPayload)),
         userId: user.userId, // 关联用户ID

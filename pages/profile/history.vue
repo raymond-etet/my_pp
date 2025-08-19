@@ -27,7 +27,8 @@
             <div class="flex justify-between items-start">
               <div>
                 <h3 class="font-bold text-lg text-gray-800">
-                  {{ formatTitle(item) }}
+                  <span v-if="item.name">{{ item.name }}</span>
+                  <span v-else>{{ formatTitle(item) }}</span>
                 </h3>
                 <p class="text-sm text-gray-500 mt-1">
                   {{ formatDate(item.createdAt) }}

@@ -72,11 +72,9 @@ export function getLunarBazi({
   gender,
 }: LunarBaziInput): LunarBaziResult {
   try {
-    // 创建公历日期对象
-    const solar =
-      hour > 0
-        ? Solar.fromYmdHms(year, month, day, hour, 0, 0)
-        : Solar.fromYmd(year, month, day);
+    // 创建公历日期对象，若 hour 为 -1（未知），按子时 calcHour=0 处理
+    const calcHour = hour === -1 ? 0 : hour;
+    const solar = Solar.fromYmdHms(year, month, day, calcHour, 0, 0);
 
     // 转换为农历
     const lunar = solar.getLunar();
@@ -112,26 +110,25 @@ export function getFullLunarBaziData(
     let solar: Solar;
 
     // 根据历法类型创建日期对象
+    // 如果 hour 为 -1（未知），为了推算大运/流年按子时处理（即 00:00），
+    // 我们使用 calcHour 作为实际用于计算的小时，但保留传入的 hour 用于标识未知
+    const calcHour = hour === -1 ? 0 : hour;
     if (calendarType === "lunar") {
       // 用户输入的是农历
-      // 注意：lunar-javascript 对于时辰的处理需要基于公历，
-      // 所以我们先用农历年月日找到对应的公历日期，再附加时辰
+      // 先将农历转换为对应的公历日期，再附加 calcHour
       const lunarForDate = new (Lunar as any)(year, month, day);
       const solarFromLunar = lunarForDate.getSolar();
       solar = Solar.fromYmdHms(
         solarFromLunar.getYear(),
         solarFromLunar.getMonth(),
         solarFromLunar.getDay(),
-        hour,
+        calcHour,
         0,
         0
       );
     } else {
-      // 用户输入的是公历
-      solar =
-        hour > 0
-          ? Solar.fromYmdHms(year, month, day, hour, 0, 0)
-          : Solar.fromYmd(year, month, day);
+      // 用户输入的是公历，直接使用 calcHour（已处理未知为 0）
+      solar = Solar.fromYmdHms(year, month, day, calcHour, 0, 0);
     }
 
     // 转换为农历
@@ -152,35 +149,33 @@ export function getFullLunarBaziData(
     const lunarDateStr = lunar.toString();
     const solarDateStr = solar.toString();
 
-    // 获取大运（如果时辰已知）
+    // 获取大运（使用 calcHour 来计算；如果用户选择未知时辰，calcHour 已被设为 0 即子时）
     let daYunResult: Array<any> = [];
-    if (hour > 0) {
-      try {
-        // 尝试通过八字对象获取大运
-        const genderCode = gender === "男" ? 1 : 0;
-        const yun = eightChar.getYun(genderCode);
+    try {
+      // 尝试通过八字对象获取大运（genderCode: 1=男,0=女）
+      const genderCode = gender === "男" ? 1 : 0;
+      const yun = eightChar.getYun(genderCode);
 
-        if (yun) {
-          const daYuns = yun.getDaYun();
-          daYunResult = daYuns.slice(0, 10).map((dy: any) => ({
-            ageRange: `${dy.getStartAge()}-${dy.getEndAge()}`,
-            startYear: dy.getStartYear(),
-            endYear: dy.getEndYear(),
-            ganZhi: dy.getGanZhi(),
-            liuNian: dy
-              .getLiuNian()
-              .slice(0, 10)
-              .map((ln: any) => ({
-                year: ln.getYear(),
-                ganZhi: ln.getGanZhi(),
-              })),
-          }));
-        }
-      } catch (yunError) {
-        console.warn("获取大运时发生错误，使用简化算法:", yunError);
-        // 如果lunar-javascript的大运功能有问题，使用简化的大运计算
-        daYunResult = getSimplifiedDaYun(baziResult, year, gender);
+      if (yun) {
+        const daYuns = yun.getDaYun();
+        daYunResult = daYuns.slice(0, 10).map((dy: any) => ({
+          ageRange: `${dy.getStartAge()}-${dy.getEndAge()}`,
+          startYear: dy.getStartYear(),
+          endYear: dy.getEndYear(),
+          ganZhi: dy.getGanZhi(),
+          liuNian: dy
+            .getLiuNian()
+            .slice(0, 10)
+            .map((ln: any) => ({
+              year: ln.getYear(),
+              ganZhi: ln.getGanZhi(),
+            })),
+        }));
       }
+    } catch (yunError) {
+      console.warn("获取大运时发生错误，使用简化算法:", yunError);
+      // 如果 lunar-javascript 的大运功能有问题，使用简化的大运计算
+      daYunResult = getSimplifiedDaYun(baziResult, year, gender);
     }
 
     // 获取十神
