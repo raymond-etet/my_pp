@@ -24,6 +24,7 @@ export default defineEventHandler(async (event) => {
         day: true,
         hour: true,
         gender: true,
+        result: true, // 包含完整的排盘结果数据
         createdAt: true,
       },
       orderBy: {

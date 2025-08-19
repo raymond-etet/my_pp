@@ -47,12 +47,13 @@ interface FullBaziResult {
 // 定义 Store 的 state 类型
 interface UserState {
   form: {
+    name?: string; // 姓名，可选
     year: number;
     month: number;
     day: number;
-    hour: number; // 不再允许为 null
-    gender: "男" | "女";
-    calendarType: "solar" | "lunar"; // 新增历法类型
+    hour: number; // -1 代表未知
+    gender: string; // "男" | "女"
+    calendarType: string; // "solar" | "lunar"
   };
   result: FullBaziResult | null; // 使用详细类型，并允许为 null
   loading: boolean;

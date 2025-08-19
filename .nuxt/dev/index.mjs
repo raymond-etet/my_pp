@@ -1118,7 +1118,22 @@ const plugins = [
 _3grAypzA3l48iUajIoOB4qWUwqZDLrRLrchJ7KePf4
 ];
 
-const assets = {};
+const assets = {
+  "/index.mjs": {
+    "type": "text/javascript; charset=utf-8",
+    "etag": "\"17bf0-uqYpKe/qniH8BamfbZstGDstV+w\"",
+    "mtime": "2025-08-19T16:53:57.073Z",
+    "size": 97264,
+    "path": "index.mjs"
+  },
+  "/index.mjs.map": {
+    "type": "application/json",
+    "etag": "\"598da-IF+dNlYt3RdewqbrFu2wCZUsM88\"",
+    "mtime": "2025-08-19T16:53:57.073Z",
+    "size": 366810,
+    "path": "index.mjs.map"
+  }
+};
 
 function readAsset (id) {
   const serverDir = dirname$1(fileURLToPath(globalThis._importMeta_.url));
@@ -2517,6 +2532,8 @@ const history_get = defineEventHandler(async (event) => {
         day: true,
         hour: true,
         gender: true,
+        result: true,
+        // 包含完整的排盘结果数据
         createdAt: true
       },
       orderBy: {
