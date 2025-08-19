@@ -5,7 +5,7 @@
     <van-form>
       <!-- 年份输入 -->
       <van-field
-        v-model="userStore.form.year"
+        v-model.number="userStore.form.year"
         name="year"
         label="年份"
         placeholder="请输入出生年份"
@@ -14,7 +14,7 @@
       />
       <!-- 月份输入 -->
       <van-field
-        v-model="userStore.form.month"
+        v-model.number="userStore.form.month"
         name="month"
         label="月份"
         placeholder="请输入出生月份"
@@ -23,7 +23,7 @@
       />
       <!-- 日期输入 -->
       <van-field
-        v-model="userStore.form.day"
+        v-model.number="userStore.form.day"
         name="day"
         label="日期"
         placeholder="请输入出生日期"
@@ -32,12 +32,25 @@
       />
       <!-- 时辰输入 -->
       <van-field
-        v-model="userStore.form.hour"
+        v-model.number="userStore.form.hour"
         name="hour"
         label="时辰"
         placeholder="请输入出生时辰 (0-23)，未知可不填"
         type="number"
       />
+
+      <!-- 性别选择 -->
+      <van-field name="gender" label="性别">
+        <template #input>
+          <van-radio-group
+            v-model="userStore.form.gender"
+            direction="horizontal"
+          >
+            <van-radio name="男">男</van-radio>
+            <van-radio name="女">女</van-radio>
+          </van-radio-group>
+        </template>
+      </van-field>
 
       <!-- 错误提示 -->
       <div v-if="userStore.error" class="text-red-500 text-sm my-2 text-center">

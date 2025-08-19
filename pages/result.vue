@@ -73,9 +73,20 @@ const result = computed(() => userStore.result);
 const birthdayInfo = computed(() => userStore.form);
 
 // 格式化干支显示
-const formatGanZhi = (gz: { gan: string; zhi: string }) => {
-  if (!gz || !gz.gan) return "未知";
-  return `${gz.gan}${gz.zhi}`;
+const formatGanZhi = (gz: string | { gan: string; zhi: string }) => {
+  if (!gz) return "未知";
+
+  // 如果是字符串格式（新算法）
+  if (typeof gz === "string") {
+    return gz;
+  }
+
+  // 如果是对象格式（旧算法兼容）
+  if (typeof gz === "object" && gz.gan) {
+    return `${gz.gan}${gz.zhi}`;
+  }
+
+  return "未知";
 };
 
 // 格式化生日显示

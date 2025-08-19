@@ -36,13 +36,15 @@ export default defineEventHandler(async (event) => {
 
     // 5. 返回完整的记录数据
     // record.result 是一个 JSON 对象，我们把它和 record 的其他字段合并返回
+    // record.result 是一个 JSON 字符串，需要先解析
+    const result_json = JSON.parse(record.result as string);
     return {
       id: record.id,
       year: record.year,
       month: record.month,
       day: record.day,
       hour: record.hour,
-      ...(record.result as object), // 将 JSON 结果展开
+      ...result_json, // 将解析后的 JSON 结果展开
     };
   } catch (error: any) {
     // 如果是自己抛出的 error，重新抛出

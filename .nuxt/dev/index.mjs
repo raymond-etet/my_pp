@@ -6,6 +6,7 @@ import { parentPort, threadId } from 'node:worker_threads';
 import { defineEventHandler, handleCacheHeaders, splitCookiesString, createEvent, fetchWithEvent, isEvent, eventHandler, setHeaders, sendRedirect, proxyRequest, getRequestHeader, setResponseHeaders, setResponseStatus, send, getRequestHeaders, setResponseHeader, appendResponseHeader, getRequestURL, getResponseHeader, removeResponseHeader, createError, getQuery as getQuery$1, readBody, createApp, createRouter as createRouter$1, toNodeListener, lazyEventHandler, getResponseStatus, getRouterParam, getResponseStatusText } from 'file://D:/code_all/bazi/my_pp/node_modules/.pnpm/h3@1.15.4/node_modules/h3/dist/index.mjs';
 import { escapeHtml } from 'file://D:/code_all/bazi/my_pp/node_modules/.pnpm/@vue+shared@3.5.18/node_modules/@vue/shared/dist/shared.cjs.js';
 import pkg from 'file://D:/code_all/bazi/my_pp/node_modules/.pnpm/@prisma+client@6.14.0_prism_1307bfd5debd11780ac8d9f5d0df4285/node_modules/@prisma/client/default.js';
+import { Solar } from 'file://D:/code_all/bazi/my_pp/node_modules/.pnpm/lunar-javascript@1.7.3/node_modules/lunar-javascript/index.js';
 import { createRenderer, getRequestDependencies, getPreloadLinks, getPrefetchLinks } from 'file://D:/code_all/bazi/my_pp/node_modules/.pnpm/vue-bundle-renderer@2.1.2/node_modules/vue-bundle-renderer/dist/runtime.mjs';
 import { parseURL, withoutBase, joinURL, getQuery, withQuery, withTrailingSlash, decodePath, withLeadingSlash, withoutTrailingSlash, joinRelativeURL } from 'file://D:/code_all/bazi/my_pp/node_modules/.pnpm/ufo@1.6.1/node_modules/ufo/dist/index.mjs';
 import destr, { destr as destr$1 } from 'file://D:/code_all/bazi/my_pp/node_modules/.pnpm/destr@2.0.5/node_modules/destr/dist/index.mjs';
@@ -1012,7 +1013,7 @@ if (!window.__NUXT_DEVTOOLS_TIME_METRIC__) {
 window.__NUXT_DEVTOOLS_TIME_METRIC__.appInit = Date.now()
 `;
 
-const _EWhnM0vMusoip1gaJzNErb_SRiyOKi_2ATPbUGWcqSA = (function(nitro) {
+const _nvD9Owo4Qz944qlVNQuQKmuvPB9GCAvC7gdaQz26xfs = (function(nitro) {
   nitro.hooks.hook("render:html", (htmlContext) => {
     htmlContext.head.push(`<script>${script}<\/script>`);
   });
@@ -1041,7 +1042,7 @@ const devReducers = {
   URL: (data) => data instanceof URL ? data.toString() : void 0
 };
 const asyncContext = getContext("nuxt-dev", { asyncContext: true, AsyncLocalStorage });
-const _d5MjrQG02U2fA1tBVLAgI0L1wMFwQz9UNqFy2Y4AKno = (nitroApp) => {
+const _3grAypzA3l48iUajIoOB4qWUwqZDLrRLrchJ7KePf4 = (nitroApp) => {
   const handler = nitroApp.h3App.handler;
   nitroApp.h3App.handler = (event) => {
     return asyncContext.callAsync({ logs: [], event }, () => handler(event));
@@ -1111,11 +1112,26 @@ function onConsoleLog(callback) {
 }
 
 const plugins = [
-  _EWhnM0vMusoip1gaJzNErb_SRiyOKi_2ATPbUGWcqSA,
-_d5MjrQG02U2fA1tBVLAgI0L1wMFwQz9UNqFy2Y4AKno
+  _nvD9Owo4Qz944qlVNQuQKmuvPB9GCAvC7gdaQz26xfs,
+_3grAypzA3l48iUajIoOB4qWUwqZDLrRLrchJ7KePf4
 ];
 
-const assets = {};
+const assets = {
+  "/index.mjs": {
+    "type": "text/javascript; charset=utf-8",
+    "etag": "\"14644-Xb30orGEFcGFhBrWlx4ezuDCnLo\"",
+    "mtime": "2025-08-19T08:33:22.360Z",
+    "size": 83524,
+    "path": "index.mjs"
+  },
+  "/index.mjs.map": {
+    "type": "application/json",
+    "etag": "\"4d1fa-Dfe9521jyTZKVcOQZTARSLDkvMY\"",
+    "mtime": "2025-08-19T08:33:22.361Z",
+    "size": 315898,
+    "path": "index.mjs.map"
+  }
+};
 
 function readAsset (id) {
   const serverDir = dirname$1(fileURLToPath(globalThis._importMeta_.url));
@@ -1524,15 +1540,15 @@ async function getIslandContext(event) {
 
 const _lazy_Yu9wG8 = () => Promise.resolve().then(function () { return paiPan_post$1; });
 const _lazy_l1JEnX = () => Promise.resolve().then(function () { return history_get$1; });
-const _lazy_LnX2yk = () => Promise.resolve().then(function () { return renderer$1; });
+const _lazy_YUC4DA = () => Promise.resolve().then(function () { return renderer$1; });
 
 const handlers = [
   { route: '', handler: _ZQoRih, lazy: false, middleware: true, method: undefined },
   { route: '/api/pai-pan', handler: _lazy_Yu9wG8, lazy: true, middleware: false, method: "post" },
   { route: '/api/pai-pan/history', handler: _lazy_l1JEnX, lazy: true, middleware: false, method: "get" },
-  { route: '/__nuxt_error', handler: _lazy_LnX2yk, lazy: true, middleware: false, method: undefined },
+  { route: '/__nuxt_error', handler: _lazy_YUC4DA, lazy: true, middleware: false, method: undefined },
   { route: '/__nuxt_island/**', handler: _SxA8c9, lazy: false, middleware: false, method: undefined },
-  { route: '/**', handler: _lazy_LnX2yk, lazy: true, middleware: false, method: undefined }
+  { route: '/**', handler: _lazy_YUC4DA, lazy: true, middleware: false, method: undefined }
 ];
 
 function createNitroApp() {
@@ -1860,85 +1876,176 @@ const styles$1 = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
   default: styles
 }, Symbol.toStringTag, { value: 'Module' }));
 
-function getBaZi(year, month, day, hour) {
-  const yearGanZhi = getYearGanZhi();
-  const monthGanZhi = getMonthGanZhi();
-  const dayGanZhi = getDayGanZhi();
-  const hourGanZhi = getHourGanZhi(dayGanZhi.gan);
-  return {
-    year: yearGanZhi,
-    month: monthGanZhi,
-    day: dayGanZhi,
-    hour: hourGanZhi
-  };
+function getFullLunarBaziData(year, month, day, hour, gender) {
+  try {
+    const solar = hour > 0 ? Solar.fromYmdHms(year, month, day, hour, 0, 0) : Solar.fromYmd(year, month, day);
+    const lunar = solar.getLunar();
+    const eightChar = lunar.getEightChar();
+    const baziResult = {
+      year: eightChar.getYear(),
+      month: eightChar.getMonth(),
+      day: eightChar.getDay(),
+      hour: eightChar.getTime()
+    };
+    let daYunResult = [];
+    if (hour > 0) {
+      try {
+        const genderCode = gender === "\u7537" ? 1 : 0;
+        const yun = eightChar.getYun(genderCode);
+        if (yun) {
+          const daYuns = yun.getDaYun();
+          daYunResult = daYuns.slice(0, 10).map((dy) => ({
+            ageRange: `${dy.getStartAge()}-${dy.getEndAge()}`,
+            yearRange: `${dy.getStartYear()}-${dy.getEndYear()}`,
+            ganZhi: dy.getGanZhi(),
+            liuNian: dy.getLiuNian().slice(0, 10).map((ln) => ({
+              year: ln.getYear(),
+              ganZhi: ln.getGanZhi()
+            }))
+          }));
+        }
+      } catch (yunError) {
+        console.warn("\u83B7\u53D6\u5927\u8FD0\u65F6\u53D1\u751F\u9519\u8BEF\uFF0C\u4F7F\u7528\u7B80\u5316\u7B97\u6CD5:", yunError);
+        daYunResult = getSimplifiedDaYun(baziResult, year, gender);
+      }
+    }
+    const shiShenResult = {
+      year: eightChar.getYearShiShenGan() || "\u672A\u77E5",
+      month: eightChar.getMonthShiShenGan() || "\u672A\u77E5",
+      day: "\u6BD4\u80A9",
+      // 日干对日干是比肩
+      hour: eightChar.getTimeShiShenGan() || "\u672A\u77E5"
+    };
+    const cangGanResult = {
+      year: eightChar.getYearHideGan() || ["\u672A\u77E5"],
+      month: eightChar.getMonthHideGan() || ["\u672A\u77E5"],
+      day: eightChar.getDayHideGan() || ["\u672A\u77E5"],
+      hour: eightChar.getTimeHideGan() || ["\u672A\u77E5"]
+    };
+    return {
+      bazi: baziResult,
+      daYun: daYunResult,
+      shiShen: shiShenResult,
+      cangGan: cangGanResult
+    };
+  } catch (error) {
+    console.error("\u8BA1\u7B97\u5B8C\u6574\u516B\u5B57\u6392\u76D8\u65F6\u53D1\u751F\u9519\u8BEF:", error);
+    return {
+      bazi: {
+        year: "\u672A\u77E5",
+        month: "\u672A\u77E5",
+        day: "\u672A\u77E5",
+        hour: "\u672A\u77E5"
+      },
+      daYun: [],
+      shiShen: {
+        year: "\u672A\u77E5",
+        month: "\u672A\u77E5",
+        day: "\u672A\u77E5",
+        hour: "\u672A\u77E5"
+      },
+      cangGan: {
+        year: ["\u672A\u77E5"],
+        month: ["\u672A\u77E5"],
+        day: ["\u672A\u77E5"],
+        hour: ["\u672A\u77E5"]
+      }
+    };
+  }
 }
-function getYearGanZhi(year, month, day) {
-  return { gan: "\u7532", zhi: "\u5B50" };
-}
-function getMonthGanZhi(year, month, day) {
-  return { gan: "\u4E19", zhi: "\u5BC5" };
-}
-function getDayGanZhi(year, month, day) {
-  return { gan: "\u4E01", zhi: "\u536F" };
-}
-function getHourGanZhi(dayGan, hour) {
-  return { gan: "\u620A", zhi: "\u8FB0" };
-}
-function getDaYun(bazi) {
-  return [{ year: 2025, age: 8, ganZhi: "\u4E01\u536F" }];
-}
-function getLiuNian(bazi) {
-  return [{ year: 2024, ganZhi: "\u7532\u8FB0" }];
-}
-function getCangGan(diZhi) {
-  const cangGanMap = {
-    \u5B50: ["\u7678"],
-    \u4E11: ["\u7678", "\u8F9B", "\u5DF1"]
-    // ... 其他地支
-  };
-  return cangGanMap[diZhi] || [];
-}
-function getShiShen(bazi, targetGanZhi) {
-  return "\u6B63\u5B98";
+function getSimplifiedDaYun(baziResult, birthYear, gender) {
+  try {
+    const daYuns = [];
+    const monthPillar = baziResult.month;
+    const startAge = 3;
+    for (let i = 0; i < 10; i++) {
+      const age = startAge + i * 10;
+      const year = birthYear + age;
+      daYuns.push({
+        ageRange: `${age}-${age + 9}`,
+        yearRange: `${year}-${year + 9}`,
+        ganZhi: monthPillar,
+        // 简化：都用月柱
+        liuNian: Array.from({ length: 10 }, (_, j) => ({
+          year: year + j,
+          ganZhi: monthPillar
+          // 简化：都用月柱
+        }))
+      });
+    }
+    return daYuns;
+  } catch (error) {
+    console.error("\u7B80\u5316\u5927\u8FD0\u8BA1\u7B97\u9519\u8BEF:", error);
+    return [];
+  }
 }
 
 const { PrismaClient: PrismaClient$1 } = pkg;
-const prisma$1 = new PrismaClient$1();
+const prisma$1 = new PrismaClient$1({
+  log: ["query", "info", "warn", "error"]
+});
 const paiPan_post = defineEventHandler(async (event) => {
   const body = await readBody(event);
-  const { year: yearStr, month: monthStr, day: dayStr, hour: hourStr } = body;
+  const {
+    year: yearStr,
+    month: monthStr,
+    day: dayStr,
+    hour: hourStr,
+    gender
+  } = body;
   const year = parseInt(yearStr, 10);
   const month = parseInt(monthStr, 10);
   const day = parseInt(dayStr, 10);
-  const hour = hourStr ? parseInt(hourStr, 10) : null;
+  const hour = hourStr ? parseInt(hourStr, 10) : 0;
   if (isNaN(year) || isNaN(month) || isNaN(day)) {
     throw createError({
       statusCode: 400,
       statusMessage: "\u5E74\u4EFD\u3001\u6708\u4EFD\u548C\u65E5\u671F\u662F\u5FC5\u586B\u9879"
     });
   }
+  if (year < 1900 || year > 2100) {
+    throw createError({
+      statusCode: 400,
+      statusMessage: "\u5E74\u4EFD\u5FC5\u987B\u57281900-2100\u8303\u56F4\u5185"
+    });
+  }
+  if (month < 1 || month > 12) {
+    throw createError({
+      statusCode: 400,
+      statusMessage: "\u6708\u4EFD\u5FC5\u987B\u57281-12\u8303\u56F4\u5185"
+    });
+  }
+  if (day < 1 || day > 31) {
+    throw createError({
+      statusCode: 400,
+      statusMessage: "\u65E5\u671F\u5FC5\u987B\u57281-31\u8303\u56F4\u5185"
+    });
+  }
+  if (hourStr && (isNaN(hour) || hour < 0 || hour > 23)) {
+    throw createError({
+      statusCode: 400,
+      statusMessage: "\u65F6\u8FB0\u5FC5\u987B\u57280-23\u8303\u56F4\u5185"
+    });
+  }
+  if (gender !== "\u7537" && gender !== "\u5973") {
+    throw createError({
+      statusCode: 400,
+      statusMessage: "\u6027\u522B\u5FC5\u987B\u662F'\u7537'\u6216'\u5973'"
+    });
+  }
   try {
-    const bazi = getBaZi(year, month, day, hour || 0);
-    const dayun = getDaYun(bazi);
-    const liunian = getLiuNian(bazi);
-    const canggan = bazi.day.zhi ? getCangGan(bazi.day.zhi) : [];
-    const shishen = getShiShen(bazi, dayun[0]);
-    const resultPayload = {
-      bazi,
-      dayun,
-      liunian,
-      canggan,
-      shishen
-    };
+    const resultPayload = getFullLunarBaziData(year, month, day, hour, gender);
     const savedRecord = await prisma$1.paiPan.create({
       data: {
         year,
         month,
         day,
         hour,
-        result: resultPayload
-        // 将整个结果对象存为 JSON
+        gender,
+        result: JSON.parse(JSON.stringify(resultPayload))
+        // 确保类型兼容
       }
+      // 临时解决类型问题
     });
     return {
       id: savedRecord.id,
@@ -1981,14 +2088,15 @@ const history_get = defineEventHandler(async (event) => {
         statusMessage: "\u672A\u627E\u5230\u8BE5\u8BB0\u5F55"
       });
     }
+    const result_json = JSON.parse(record.result);
     return {
       id: record.id,
       year: record.year,
       month: record.month,
       day: record.day,
       hour: record.hour,
-      ...record.result
-      // 将 JSON 结果展开
+      ...result_json
+      // 将解析后的 JSON 结果展开
     };
   } catch (error) {
     if (error.statusCode) {
