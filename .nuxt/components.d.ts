@@ -27,6 +27,7 @@ interface _GlobalComponents {
     'NuxtRouteAnnouncer': typeof import("../node_modules/.pnpm/nuxt@4.0.3_@netlify+blobs@9_8184dc6e3cc90353bbc56ec2966327b6/node_modules/nuxt/dist/app/components/nuxt-route-announcer")['default']
     'NuxtImg': typeof import("../node_modules/.pnpm/nuxt@4.0.3_@netlify+blobs@9_8184dc6e3cc90353bbc56ec2966327b6/node_modules/nuxt/dist/app/components/nuxt-stubs")['NuxtImg']
     'NuxtPicture': typeof import("../node_modules/.pnpm/nuxt@4.0.3_@netlify+blobs@9_8184dc6e3cc90353bbc56ec2966327b6/node_modules/nuxt/dist/app/components/nuxt-stubs")['NuxtPicture']
+    'VanSegmented': typeof import("../node_modules/.pnpm/@vant+nuxt@1.0.7_magicast@0_f08296079c0846f4141d55a9813817f6/node_modules/@vant/nuxt/dist/vant/es/segmented/Segmented")['default']
     'VanActionBar': typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/action-bar/ActionBar")['default']
     'VanActionBarButton': typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/action-bar-button/ActionBarButton")['default']
     'VanActionBarIcon': typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/action-bar-icon/ActionBarIcon")['default']
@@ -154,6 +155,7 @@ interface _GlobalComponents {
     'LazyNuxtRouteAnnouncer': LazyComponent<typeof import("../node_modules/.pnpm/nuxt@4.0.3_@netlify+blobs@9_8184dc6e3cc90353bbc56ec2966327b6/node_modules/nuxt/dist/app/components/nuxt-route-announcer")['default']>
     'LazyNuxtImg': LazyComponent<typeof import("../node_modules/.pnpm/nuxt@4.0.3_@netlify+blobs@9_8184dc6e3cc90353bbc56ec2966327b6/node_modules/nuxt/dist/app/components/nuxt-stubs")['NuxtImg']>
     'LazyNuxtPicture': LazyComponent<typeof import("../node_modules/.pnpm/nuxt@4.0.3_@netlify+blobs@9_8184dc6e3cc90353bbc56ec2966327b6/node_modules/nuxt/dist/app/components/nuxt-stubs")['NuxtPicture']>
+    'LazyVanSegmented': LazyComponent<typeof import("../node_modules/.pnpm/@vant+nuxt@1.0.7_magicast@0_f08296079c0846f4141d55a9813817f6/node_modules/@vant/nuxt/dist/vant/es/segmented/Segmented")['default']>
     'LazyVanActionBar': LazyComponent<typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/action-bar/ActionBar")['default']>
     'LazyVanActionBarButton': LazyComponent<typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/action-bar-button/ActionBarButton")['default']>
     'LazyVanActionBarIcon': LazyComponent<typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/action-bar-icon/ActionBarIcon")['default']>
@@ -287,6 +289,7 @@ export const NuxtTime: typeof import("../node_modules/.pnpm/nuxt@4.0.3_@netlify+
 export const NuxtRouteAnnouncer: typeof import("../node_modules/.pnpm/nuxt@4.0.3_@netlify+blobs@9_8184dc6e3cc90353bbc56ec2966327b6/node_modules/nuxt/dist/app/components/nuxt-route-announcer")['default']
 export const NuxtImg: typeof import("../node_modules/.pnpm/nuxt@4.0.3_@netlify+blobs@9_8184dc6e3cc90353bbc56ec2966327b6/node_modules/nuxt/dist/app/components/nuxt-stubs")['NuxtImg']
 export const NuxtPicture: typeof import("../node_modules/.pnpm/nuxt@4.0.3_@netlify+blobs@9_8184dc6e3cc90353bbc56ec2966327b6/node_modules/nuxt/dist/app/components/nuxt-stubs")['NuxtPicture']
+export const VanSegmented: typeof import("../node_modules/.pnpm/@vant+nuxt@1.0.7_magicast@0_f08296079c0846f4141d55a9813817f6/node_modules/@vant/nuxt/dist/vant/es/segmented/Segmented")['default']
 export const VanActionBar: typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/action-bar/ActionBar")['default']
 export const VanActionBarButton: typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/action-bar-button/ActionBarButton")['default']
 export const VanActionBarIcon: typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/action-bar-icon/ActionBarIcon")['default']
@@ -414,6 +417,7 @@ export const LazyNuxtTime: LazyComponent<typeof import("../node_modules/.pnpm/nu
 export const LazyNuxtRouteAnnouncer: LazyComponent<typeof import("../node_modules/.pnpm/nuxt@4.0.3_@netlify+blobs@9_8184dc6e3cc90353bbc56ec2966327b6/node_modules/nuxt/dist/app/components/nuxt-route-announcer")['default']>
 export const LazyNuxtImg: LazyComponent<typeof import("../node_modules/.pnpm/nuxt@4.0.3_@netlify+blobs@9_8184dc6e3cc90353bbc56ec2966327b6/node_modules/nuxt/dist/app/components/nuxt-stubs")['NuxtImg']>
 export const LazyNuxtPicture: LazyComponent<typeof import("../node_modules/.pnpm/nuxt@4.0.3_@netlify+blobs@9_8184dc6e3cc90353bbc56ec2966327b6/node_modules/nuxt/dist/app/components/nuxt-stubs")['NuxtPicture']>
+export const LazyVanSegmented: LazyComponent<typeof import("../node_modules/.pnpm/@vant+nuxt@1.0.7_magicast@0_f08296079c0846f4141d55a9813817f6/node_modules/@vant/nuxt/dist/vant/es/segmented/Segmented")['default']>
 export const LazyVanActionBar: LazyComponent<typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/action-bar/ActionBar")['default']>
 export const LazyVanActionBarButton: LazyComponent<typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/action-bar-button/ActionBarButton")['default']>
 export const LazyVanActionBarIcon: LazyComponent<typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/action-bar-icon/ActionBarIcon")['default']>

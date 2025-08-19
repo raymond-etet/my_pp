@@ -33,22 +33,23 @@
       </van-field>
 
       <!-- 便捷年代选择 -->
-      <div class="mb-4">
-        <van-radio-group
-          v-model="selectedDecade"
-          direction="horizontal"
-          @change="onDecadeChange"
-        >
-          <van-radio name="50后">50后</van-radio>
-          <van-radio name="60后">60后</van-radio>
-          <van-radio name="70后">70后</van-radio>
-          <van-radio name="80后">80后</van-radio>
-          <van-radio name="90后">90后</van-radio>
-          <van-radio name="00后">00后</van-radio>
-          <van-radio name="10后">10后</van-radio>
-          <van-radio name="20后">20后</van-radio>
-        </van-radio-group>
-      </div>
+      <!-- 便捷年代选择 -->
+      <van-field name="decade" label="年代">
+        <template #input>
+          <div class="flex flex-wrap gap-2">
+            <van-tag
+              v-for="item in decadeOptions"
+              :key="item.value"
+              :type="selectedDecade === item.value ? 'primary' : 'default'"
+              plain
+              round
+              @click="selectDecade(item.value)"
+            >
+              {{ item.text }}
+            </van-tag>
+          </div>
+        </template>
+      </van-field>
       <!-- 出生日期选择 -->
       <van-field
         v-model="birthDateText"
@@ -123,7 +124,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed } from "vue";
+import { ref, computed, watch } from "vue";
 import { useUserStore } from "~/stores/user";
 import { Lunar, Solar } from "lunar-javascript";
 import { showToast } from "vant";
@@ -157,6 +158,24 @@ const currentDate = ref([
 ]);
 
 const selectedDecade = ref("");
+// 便捷年代标签选项
+const decadeOptions = [
+  { text: "30后", value: "30后" },
+  { text: "40后", value: "40后" },
+  { text: "50后", value: "50后" },
+  { text: "60后", value: "60后" },
+  { text: "70后", value: "70后" },
+  { text: "80后", value: "80后" },
+  { text: "90后", value: "90后" },
+  { text: "00后", value: "00后" },
+  { text: "10后", value: "10后" },
+  { text: "20后", value: "20后" },
+];
+// 选择标签触发
+function selectDecade(val: string) {
+  selectedDecade.value = val;
+  onDecadeChange(val);
+}
 const onDecadeChange = (val: string) => {
   const num = parseInt(val, 10);
   const start = num >= 50 ? 1900 + num : 2000 + num;
