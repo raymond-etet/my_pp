@@ -62,15 +62,23 @@
           isCurrentLiunian(liunian) ? getCurrentLiunianStyle(liunian) : {}
         "
       >
-        <!-- 天干部分 -->
-        <div class="flex flex-col items-start">
-          <div class="font-mono text-xl">
-            <span :style="getWuxingColorStyle(liunian.wuxing.gan)">{{
-              liunian.gan
-            }}</span>
+        <!-- 天干与年份 -->
+        <div class="flex items-center space-x-4">
+          <div class="flex flex-col items-start">
+            <div class="font-mono text-xl">
+              <span :style="getWuxingColorStyle(liunian.wuxing.gan)">{{
+                liunian.gan
+              }}</span>
+            </div>
+            <div
+              class="text-sm"
+              :style="getWuxingColorStyle(liunian.wuxing.gan)"
+            >
+              {{ liunian.shishen.gan }}
+            </div>
           </div>
-          <div class="text-sm" :style="getWuxingColorStyle(liunian.wuxing.gan)">
-            {{ liunian.shishen.gan }}
+          <div class="text-xs text-gray-400 font-mono">
+            {{ liunian.year }}
           </div>
         </div>
 

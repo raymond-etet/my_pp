@@ -11,7 +11,9 @@
     </div>
     <div class="shishen-display text-sm text-gray-500 mb-2">
       <!-- 日柱天干特殊显示 -->
-      <span v-if="title === '日柱'" class="day-master-shishen"> 日主 </span>
+      <span v-if="title === '日柱'" :style="dayMasterGradientStyle">
+        日主
+      </span>
       <span v-else :style="getWuxingColorStyle(pillarData.wuxing.gan)">
         {{ pillarData.shishen.gan }}
       </span>
@@ -35,8 +37,8 @@
 </template>
 
 <script setup lang="ts">
-import { defineProps } from "vue";
-import { getWuxingColorStyle } from "@/utils/color";
+import { defineProps, computed } from "vue";
+import { getWuxingColorStyle, getWuxingHexColor } from "@/utils/color";
 
 // 定义组件接收的 props
 interface GanZhiDetail {
@@ -48,10 +50,23 @@ interface GanZhiDetail {
   naYin: string;
 }
 
-defineProps<{
+const props = defineProps<{
   title: string;
   pillarData: GanZhiDetail;
 }>();
+
+const dayMasterGradientStyle = computed(() => {
+  if (props.title !== "日柱") return {};
+  const ganColor = getWuxingHexColor(props.pillarData.wuxing.gan);
+  const zhiColor = getWuxingHexColor(props.pillarData.wuxing.zhi);
+  return {
+    background: `linear-gradient(to bottom right, ${ganColor}, ${zhiColor})`,
+    color: "transparent",
+    "-webkit-background-clip": "text",
+    "background-clip": "text",
+    "font-weight": "bold",
+  };
+});
 </script>
 
 <style scoped>
@@ -66,11 +81,4 @@ defineProps<{
 }
 
 /* 日主渐变色样式 */
-.day-master-shishen {
-  background: linear-gradient(45deg, #f87171, #fbbf24);
-  color: transparent;
-  -webkit-background-clip: text;
-  background-clip: text;
-  font-weight: bold;
-}
 </style>
