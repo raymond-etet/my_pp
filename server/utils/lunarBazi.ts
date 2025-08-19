@@ -109,27 +109,9 @@ export function getFullLunarBaziData(
   try {
     let solar: Solar;
 
-    // 根据历法类型创建日期对象
-    // 如果 hour 为 -1（未知），为了推算大运/流年按子时处理（即 00:00），
-    // 我们使用 calcHour 作为实际用于计算的小时，但保留传入的 hour 用于标识未知
+    // 直接使用传入的公历年月日进行计算（前端已处理农历转换）
     const calcHour = hour === -1 ? 0 : hour;
-    if (calendarType === "lunar") {
-      // 用户输入的是农历
-      // 先将农历转换为对应的公历日期，再附加 calcHour
-      const lunarForDate = new (Lunar as any)(year, month, day);
-      const solarFromLunar = lunarForDate.getSolar();
-      solar = Solar.fromYmdHms(
-        solarFromLunar.getYear(),
-        solarFromLunar.getMonth(),
-        solarFromLunar.getDay(),
-        calcHour,
-        0,
-        0
-      );
-    } else {
-      // 用户输入的是公历，直接使用 calcHour（已处理未知为 0）
-      solar = Solar.fromYmdHms(year, month, day, calcHour, 0, 0);
-    }
+    solar = Solar.fromYmdHms(year, month, day, calcHour, 0, 0);
 
     // 转换为农历
     const lunar = solar.getLunar();

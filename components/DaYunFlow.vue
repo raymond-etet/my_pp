@@ -249,7 +249,7 @@ function getCurrentLiunianStyle(liunian: GanZhiDetail) {
   const ganColor = hexToRgba(ganHex, 0.2);
   const zhiColor = hexToRgba(zhiHex, 0.2);
   return {
-    background: `linear-gradient(to bottom right, ${ganColor}, ${zhiColor})`,
+    background: `linear-gradient(to bottom right, ${zhiColor}, ${ganColor})`,
     color: "#333",
   };
 }

@@ -7,7 +7,7 @@ import { defineEventHandler, handleCacheHeaders, splitCookiesString, createEvent
 import { escapeHtml } from 'file://D:/code_all/bazi/my_pp/node_modules/.pnpm/@vue+shared@3.5.18/node_modules/@vue/shared/dist/shared.cjs.js';
 import bcrypt from 'file://D:/code_all/bazi/my_pp/node_modules/.pnpm/bcrypt@6.0.0/node_modules/bcrypt/bcrypt.js';
 import jwt from 'file://D:/code_all/bazi/my_pp/node_modules/.pnpm/jsonwebtoken@9.0.2/node_modules/jsonwebtoken/index.js';
-import { Lunar, Solar } from 'file://D:/code_all/bazi/my_pp/node_modules/.pnpm/lunar-javascript@1.7.3/node_modules/lunar-javascript/index.js';
+import { Solar } from 'file://D:/code_all/bazi/my_pp/node_modules/.pnpm/lunar-javascript@1.7.3/node_modules/lunar-javascript/index.js';
 import { createRenderer, getRequestDependencies, getPreloadLinks, getPrefetchLinks } from 'file://D:/code_all/bazi/my_pp/node_modules/.pnpm/vue-bundle-renderer@2.1.2/node_modules/vue-bundle-renderer/dist/runtime.mjs';
 import { parseURL, withoutBase, joinURL, getQuery, withQuery, withTrailingSlash, decodePath, withLeadingSlash, withoutTrailingSlash, joinRelativeURL } from 'file://D:/code_all/bazi/my_pp/node_modules/.pnpm/ufo@1.6.1/node_modules/ufo/dist/index.mjs';
 import destr, { destr as destr$1 } from 'file://D:/code_all/bazi/my_pp/node_modules/.pnpm/destr@2.0.5/node_modules/destr/dist/index.mjs';
@@ -2068,20 +2068,7 @@ function getFullLunarBaziData(year, month, day, hour, gender, calendarType = "so
   try {
     let solar;
     const calcHour = hour === -1 ? 0 : hour;
-    if (calendarType === "lunar") {
-      const lunarForDate = new Lunar(year, month, day);
-      const solarFromLunar = lunarForDate.getSolar();
-      solar = Solar.fromYmdHms(
-        solarFromLunar.getYear(),
-        solarFromLunar.getMonth(),
-        solarFromLunar.getDay(),
-        calcHour,
-        0,
-        0
-      );
-    } else {
-      solar = Solar.fromYmdHms(year, month, day, calcHour, 0, 0);
-    }
+    solar = Solar.fromYmdHms(year, month, day, calcHour, 0, 0);
     const lunar = solar.getLunar();
     const eightChar = lunar.getEightChar();
     const baziResult = {
@@ -2314,6 +2301,7 @@ const paiPan_post = defineEventHandler(async (event) => {
   }
   const body = await readBody(event);
   const {
+    name,
     year: yearStr,
     month: monthStr,
     day: dayStr,
@@ -2425,6 +2413,8 @@ const paiPan_post = defineEventHandler(async (event) => {
     };
     const savedRecord = await prisma.paiPan.create({
       data: {
+        name,
+        // 姓名（可选）
         year,
         month,
         day,

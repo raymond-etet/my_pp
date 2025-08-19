@@ -15,6 +15,7 @@ export default defineEventHandler(async (event) => {
 
   const body = await readBody(event);
   const {
+    name,
     year: yearStr,
     month: monthStr,
     day: dayStr,
@@ -146,6 +147,7 @@ export default defineEventHandler(async (event) => {
     // 注意：数据库表的 hour 字段是 Int?，因此如果未知应该保存为 null
     const savedRecord = await prisma.paiPan.create({
       data: {
+        name, // 姓名（可选）
         year,
         month,
         day,
