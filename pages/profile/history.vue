@@ -81,9 +81,6 @@ const formatDate = (dateString: string) => {
 };
 
 const viewRecord = (id: number) => {
-  // TODO: 后续需要实现根据ID查询单条记录的接口
-  // router.push(`/result/${id}`);
-  // 暂时先提示
-  showToast("详情页待开发");
+  router.push(`/result?id=${id}`);
 };
 </script>

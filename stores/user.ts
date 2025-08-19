@@ -1,5 +1,7 @@
 // stores/user.ts
+// stores/user.ts
 import { defineStore } from "pinia";
+import { useAuthStore } from "./auth"; // 导入 auth store
 
 // --- Bazi 结果的详细类型定义 ---
 
@@ -82,10 +84,24 @@ export const useUserStore = defineStore("user", {
       this.loading = true;
       this.error = null;
 
+      // 获取 auth store
+      const authStore = useAuthStore();
+      const token = authStore.token;
+
+      // 如果未登录，直接报错
+      if (!token) {
+        this.error = "请先登录后再进行排盘";
+        this.loading = false;
+        return null;
+      }
+
       try {
         const response = await $fetch<FullBaziResult>("/api/pai-pan", {
           method: "POST",
           body: this.form,
+          headers: {
+            Authorization: `Bearer ${token}`, // 添加 token 到请求头
+          },
         });
 
         this.result = response;
@@ -109,9 +125,23 @@ export const useUserStore = defineStore("user", {
     async fetchPaiPanById(id: number | string) {
       this.loading = true;
       this.error = null;
+      //  获取 auth store
+      const authStore = useAuthStore();
+      const token = authStore.token;
+      // 如果未登录，直接报错
+      if (!token) {
+        this.error = "请先登录";
+        this.loading = false;
+        return null;
+      }
       try {
         const response = await $fetch<FullBaziResult>(
-          `/api/pai-pan/history?id=${id}`
+          `/api/pai-pan/${id}`, // <--- 更新为新的动态路由
+          {
+            headers: {
+              Authorization: `Bearer ${token}`, // 添加 token 到请求头
+            },
+          }
         );
         this.result = response;
         return response;

@@ -94,11 +94,11 @@ const onSubmit = async () => {
     });
   } else {
     showToast({
-      message: "注册成功，请登录",
+      message: "注册成功，已自动登录",
       type: "success",
       position: "top",
     });
-    // action 内部已处理路由跳转到登录页
+    // action 内部已处理路由跳转到个人中心页
   }
 };
 

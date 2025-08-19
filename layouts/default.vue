@@ -28,7 +28,7 @@ import { useRoute } from "vue-router";
 const route = useRoute();
 
 // 定义需要显示底部导航栏的页面
-const tabbarPages = ["/", "/profile"];
+const tabbarPages = ["/", "/result", "/profile"];
 
 // 计算属性，判断当前页面是否需要显示底部导航栏
 const showTabbar = computed(() => tabbarPages.includes(route.path));

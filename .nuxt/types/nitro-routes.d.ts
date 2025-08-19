@@ -15,6 +15,9 @@ declare module "nitropack/types" {
     '/api/pai-pan': {
       'post': Simplify<Serialize<Awaited<ReturnType<typeof import('../../server/api/pai-pan.post').default>>>>
     }
+    '/api/pai-pan/:id': {
+      'get': Simplify<Serialize<Awaited<ReturnType<typeof import('../../server/api/pai-pan/[id].get').default>>>>
+    }
     '/api/pai-pan/history': {
       'get': Simplify<Serialize<Awaited<ReturnType<typeof import('../../server/api/pai-pan/history.get').default>>>>
     }

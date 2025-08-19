@@ -1,7 +1,10 @@
 import bcrypt from "bcrypt";
+import jwt from "jsonwebtoken"; // 导入 jwt
 import prisma from "~/server/utils/prisma";
 
 const SALT_ROUNDS = 10; // 密码加盐轮数
+// TODO: JWT 密钥应该存储在 .env 文件中
+const JWT_SECRET = "your-super-secret-key-that-should-be-in-env-file";
 
 export default defineEventHandler(async (event) => {
   try {
@@ -47,14 +50,24 @@ export default defineEventHandler(async (event) => {
       },
     });
 
-    // 6. 返回成功响应（不包含密码）
-    // Nuxt3会自动处理JSON序列化
-    // H3会自动设置Content-Type为application/json
+    // 6. 生成 JWT，实现注册后自动登录
+    const token = jwt.sign(
+      {
+        userId: user.id,
+        username: user.username,
+      },
+      JWT_SECRET,
+      { expiresIn: "7d" } // Token 有效期为 7 天
+    );
+
+    // 7. 返回 Token 和用户信息
     setResponseStatus(event, 201); // Created
     return {
-      id: user.id,
-      username: user.username,
-      createdAt: user.createdAt,
+      token,
+      user: {
+        id: user.id,
+        username: user.username,
+      },
     };
   } catch (error: any) {
     // 错误处理

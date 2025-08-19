@@ -27,7 +27,7 @@ export const useAuthStore = defineStore("auth", () => {
   // --- getters ---
 
   // 用户是否已登录
-  const isLoggedIn = computed(() => !!token.value && !!user.value);
+  const isLoggedIn = computed(() => !!token.value);
 
   // --- actions ---
 
@@ -58,24 +58,25 @@ export const useAuthStore = defineStore("auth", () => {
     }
   }
 
-  // 注册
+  // 注册并自动登录
   async function register(password: string, username: string) {
     loading.value = true;
     error.value = null;
     try {
-      await $fetch("/api/auth/register", {
+      const response = await $fetch("/api/auth/register", {
         method: "POST",
         body: { username, password },
       });
 
-      // 注册成功后，可以提示用户去登录，或者直接调用登录 action
-      // 这里我们选择提示用户，并跳转到登录页
+      // 注册成功后，后端直接返回 token 和 user，实现自动登录
+      // @ts-ignore
+      token.value = response.token;
+      // @ts-ignore
+      user.value = response.user;
+
+      // 跳转到个人中心
       const router = useRouter();
-      router.push("/auth/login");
-      //
-      //
-      //
-      //... 在登录页面可以用 Toast 等组件显示 "注册成功，请登录"
+      router.push("/profile");
     } catch (e: any) {
       error.value = e.data?.message || "注册失败";
       console.error(e);

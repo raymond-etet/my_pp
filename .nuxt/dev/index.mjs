@@ -1214,7 +1214,7 @@ const prismaClientSingleton = () => {
 const prisma = (_a = globalThis.__prisma) != null ? _a : prismaClientSingleton();
 globalThis.__prisma = prisma;
 
-const JWT_SECRET$1 = "your-super-secret-key-that-should-be-in-env-file";
+const JWT_SECRET$2 = "your-super-secret-key-that-should-be-in-env-file";
 const _VHx3Yj = defineEventHandler(async (event) => {
   const publicRoutes = ["/api/auth/login", "/api/auth/register"];
   const path = getRequestPath(event);
@@ -1230,7 +1230,7 @@ const _VHx3Yj = defineEventHandler(async (event) => {
   }
   const token = authHeader.substring(7);
   try {
-    const decoded = jwt.verify(token, JWT_SECRET$1);
+    const decoded = jwt.verify(token, JWT_SECRET$2);
     const user = await prisma.user.findUnique({
       where: { id: decoded.userId },
       select: { id: true, username: true }
@@ -1568,6 +1568,7 @@ const _lazy_LLZ5I8 = () => Promise.resolve().then(function () { return login_pos
 const _lazy_dAB4z0 = () => Promise.resolve().then(function () { return me_get$1; });
 const _lazy_VWJwvT = () => Promise.resolve().then(function () { return register_post$1; });
 const _lazy_Yu9wG8 = () => Promise.resolve().then(function () { return paiPan_post$1; });
+const _lazy_Dw1uGB = () => Promise.resolve().then(function () { return _id__get$1; });
 const _lazy_l1JEnX = () => Promise.resolve().then(function () { return history_get$1; });
 const _lazy_YUC4DA = () => Promise.resolve().then(function () { return renderer$1; });
 
@@ -1578,6 +1579,7 @@ const handlers = [
   { route: '/api/auth/me', handler: _lazy_dAB4z0, lazy: true, middleware: false, method: "get" },
   { route: '/api/auth/register', handler: _lazy_VWJwvT, lazy: true, middleware: false, method: "post" },
   { route: '/api/pai-pan', handler: _lazy_Yu9wG8, lazy: true, middleware: false, method: "post" },
+  { route: '/api/pai-pan/:id', handler: _lazy_Dw1uGB, lazy: true, middleware: false, method: "get" },
   { route: '/api/pai-pan/history', handler: _lazy_l1JEnX, lazy: true, middleware: false, method: "get" },
   { route: '/__nuxt_error', handler: _lazy_YUC4DA, lazy: true, middleware: false, method: undefined },
   { route: '/__nuxt_island/**', handler: _SxA8c9, lazy: false, middleware: false, method: undefined },
@@ -1909,7 +1911,7 @@ const styles$1 = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
   default: styles
 }, Symbol.toStringTag, { value: 'Module' }));
 
-const JWT_SECRET = "your-super-secret-key-that-should-be-in-env-file";
+const JWT_SECRET$1 = "your-super-secret-key-that-should-be-in-env-file";
 const login_post = defineEventHandler(async (event) => {
   try {
     const body = await readBody(event);
@@ -1943,7 +1945,7 @@ const login_post = defineEventHandler(async (event) => {
         userId: user.id,
         username: user.username
       },
-      JWT_SECRET,
+      JWT_SECRET$1,
       { expiresIn: "7d" }
       // Token 有效期为 7 天
     );
@@ -1994,6 +1996,7 @@ const me_get$1 = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
 }, Symbol.toStringTag, { value: 'Module' }));
 
 const SALT_ROUNDS = 10;
+const JWT_SECRET = "your-super-secret-key-that-should-be-in-env-file";
 const register_post = defineEventHandler(async (event) => {
   try {
     const body = await readBody(event);
@@ -2027,11 +2030,22 @@ const register_post = defineEventHandler(async (event) => {
         password: hashedPassword
       }
     });
+    const token = jwt.sign(
+      {
+        userId: user.id,
+        username: user.username
+      },
+      JWT_SECRET,
+      { expiresIn: "7d" }
+      // Token 有效期为 7 天
+    );
     setResponseStatus(event, 201);
     return {
-      id: user.id,
-      username: user.username,
-      createdAt: user.createdAt
+      token,
+      user: {
+        id: user.id,
+        username: user.username
+      }
     };
   } catch (error) {
     if (error.statusCode) {
@@ -2432,6 +2446,54 @@ const paiPan_post = defineEventHandler(async (event) => {
 const paiPan_post$1 = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
   __proto__: null,
   default: paiPan_post
+}, Symbol.toStringTag, { value: 'Module' }));
+
+const _id__get = defineEventHandler(async (event) => {
+  var _a;
+  const user = event.context.user;
+  if (!user) {
+    throw createError({
+      statusCode: 401,
+      statusMessage: "\u7528\u6237\u672A\u767B\u5F55"
+    });
+  }
+  const id = (_a = event.context.params) == null ? void 0 : _a.id;
+  if (!id) {
+    throw createError({
+      statusCode: 400,
+      statusMessage: "\u7F3A\u5C11\u5FC5\u8981\u7684ID\u53C2\u6570"
+    });
+  }
+  try {
+    const record = await prisma.paiPan.findUnique({
+      where: {
+        id: Number(id),
+        userId: user.userId
+        // 核心安全检查：确保只能查询到自己的记录
+      }
+    });
+    if (!record) {
+      throw createError({
+        statusCode: 404,
+        statusMessage: "\u627E\u4E0D\u5230\u8BE5\u6761\u8BB0\u5F55"
+      });
+    }
+    return record.result;
+  } catch (error) {
+    if (!error.statusCode) {
+      console.error("\u67E5\u8BE2\u5355\u6761\u8BB0\u5F55\u5931\u8D25:", error);
+      throw createError({
+        statusCode: 500,
+        statusMessage: "\u670D\u52A1\u5668\u5185\u90E8\u9519\u8BEF"
+      });
+    }
+    throw error;
+  }
+});
+
+const _id__get$1 = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
+  __proto__: null,
+  default: _id__get
 }, Symbol.toStringTag, { value: 'Module' }));
 
 const history_get = defineEventHandler(async (event) => {
