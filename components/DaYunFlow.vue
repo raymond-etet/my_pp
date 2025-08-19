@@ -26,11 +26,17 @@
         >
           {{ dayun.ganZhi.shishen.gan }}
         </div>
-        <div
-          class="text-sm"
-          :style="getWuxingColorStyle(dayun.ganZhi.wuxing.zhi)"
-        >
-          {{ dayun.ganZhi.shishen.zhi }}
+        <div class="text-xs flex items-center justify-center gap-x-1 mt-1">
+          <div
+            v-for="(cg, cgIndex) in dayun.ganZhi.canggan"
+            :key="cgIndex"
+            class="flex flex-col items-center"
+          >
+            <span :style="getWuxingColorStyle(cg.wuxing)">{{ cg.char }}</span>
+            <span :style="getWuxingColorStyle(cg.wuxing)"
+              >({{ cg.shishen }})</span
+            >
+          </div>
         </div>
         <div class="text-xs mt-1">
           {{ dayun.startAge }} - {{ dayun.endAge }}岁
@@ -46,37 +52,38 @@
       <div
         v-for="(liunian, lIndex) in selectedDayun.liunians"
         :key="lIndex"
-        class="liunian-item flex flex-col items-start p-2 rounded-md transition-colors hover:bg-gray-50 border-b"
+        class="liunian-item grid grid-cols-2 items-center p-2 rounded-md transition-colors hover:bg-gray-50 border-b"
       >
-        <div class="w-full flex items-center justify-between">
-          <div class="ganzhi-part font-mono text-xl">
+        <!-- 天干部分 -->
+        <div class="flex flex-col items-start">
+          <div class="font-mono text-xl">
             <span :style="getWuxingColorStyle(liunian.wuxing.gan)">{{
               liunian.gan
             }}</span>
+          </div>
+          <div class="text-sm" :style="getWuxingColorStyle(liunian.wuxing.gan)">
+            {{ liunian.shishen.gan }}
+          </div>
+        </div>
+
+        <!-- 地支部分 -->
+        <div class="flex flex-col items-end">
+          <div class="font-mono text-xl">
             <span :style="getWuxingColorStyle(liunian.wuxing.zhi)">{{
               liunian.zhi
             }}</span>
           </div>
-          <div class="shishen-part text-sm flex items-center gap-x-2">
-            <span :style="getWuxingColorStyle(liunian.wuxing.gan)">{{
-              liunian.shishen.gan
-            }}</span>
-            <span :style="getWuxingColorStyle(liunian.wuxing.zhi)">{{
-              liunian.shishen.zhi
-            }}</span>
-          </div>
-        </div>
-        <div class="canggan-part text-xs text-gray-500 mt-1 pl-1 flex gap-x-2">
-          <span>藏干:</span>
-          <div
-            v-for="(cg, cgIndex) in liunian.canggan"
-            :key="cgIndex"
-            class="flex items-center"
-          >
-            <span :style="getWuxingColorStyle(cg.wuxing)">{{ cg.char }}</span>
-            <span :style="getWuxingColorStyle(cg.wuxing)"
-              >({{ cg.shishen }})</span
+          <div class="text-xs text-gray-500 flex gap-x-2">
+            <div
+              v-for="(cg, cgIndex) in liunian.canggan"
+              :key="cgIndex"
+              class="flex items-center"
             >
+              <span :style="getWuxingColorStyle(cg.wuxing)">{{ cg.char }}</span>
+              <span :style="getWuxingColorStyle(cg.wuxing)"
+                >({{ cg.shishen }})</span
+              >
+            </div>
           </div>
         </div>
       </div>

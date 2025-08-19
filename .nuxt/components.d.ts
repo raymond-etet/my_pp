@@ -78,8 +78,8 @@ interface _GlobalComponents {
     'VanList': typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/list/List")['default']
     'VanLoading': typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/loading/Loading")['default']
     'VanNavBar': typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/nav-bar/NavBar")['default']
-    'VanNotify': typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/notify/Notify")['default']
     'VanNoticeBar': typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/notice-bar/NoticeBar")['default']
+    'VanNotify': typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/notify/Notify")['default']
     'VanNumberKeyboard': typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/number-keyboard/NumberKeyboard")['default']
     'VanOverlay': typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/overlay/Overlay")['default']
     'VanPagination': typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/pagination/Pagination")['default']
@@ -120,8 +120,8 @@ interface _GlobalComponents {
     'VanTabbar': typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/tabbar/Tabbar")['default']
     'VanTabbarItem': typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/tabbar-item/TabbarItem")['default']
     'VanTabs': typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/tabs/Tabs")['default']
-    'VanTextEllipsis': typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/text-ellipsis/TextEllipsis")['default']
     'VanTag': typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/tag/Tag")['default']
+    'VanTextEllipsis': typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/text-ellipsis/TextEllipsis")['default']
     'VanTimePicker': typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/time-picker/TimePicker")['default']
     'VanToast': typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/toast/Toast")['default']
     'VanTreeSelect': typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/tree-select/TreeSelect")['default']
@@ -205,8 +205,8 @@ interface _GlobalComponents {
     'LazyVanList': LazyComponent<typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/list/List")['default']>
     'LazyVanLoading': LazyComponent<typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/loading/Loading")['default']>
     'LazyVanNavBar': LazyComponent<typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/nav-bar/NavBar")['default']>
-    'LazyVanNotify': LazyComponent<typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/notify/Notify")['default']>
     'LazyVanNoticeBar': LazyComponent<typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/notice-bar/NoticeBar")['default']>
+    'LazyVanNotify': LazyComponent<typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/notify/Notify")['default']>
     'LazyVanNumberKeyboard': LazyComponent<typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/number-keyboard/NumberKeyboard")['default']>
     'LazyVanOverlay': LazyComponent<typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/overlay/Overlay")['default']>
     'LazyVanPagination': LazyComponent<typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/pagination/Pagination")['default']>
@@ -247,8 +247,8 @@ interface _GlobalComponents {
     'LazyVanTabbar': LazyComponent<typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/tabbar/Tabbar")['default']>
     'LazyVanTabbarItem': LazyComponent<typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/tabbar-item/TabbarItem")['default']>
     'LazyVanTabs': LazyComponent<typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/tabs/Tabs")['default']>
-    'LazyVanTextEllipsis': LazyComponent<typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/text-ellipsis/TextEllipsis")['default']>
     'LazyVanTag': LazyComponent<typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/tag/Tag")['default']>
+    'LazyVanTextEllipsis': LazyComponent<typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/text-ellipsis/TextEllipsis")['default']>
     'LazyVanTimePicker': LazyComponent<typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/time-picker/TimePicker")['default']>
     'LazyVanToast': LazyComponent<typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/toast/Toast")['default']>
     'LazyVanTreeSelect': LazyComponent<typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/tree-select/TreeSelect")['default']>
@@ -338,8 +338,8 @@ export const VanIndexBar: typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3
 export const VanList: typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/list/List")['default']
 export const VanLoading: typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/loading/Loading")['default']
 export const VanNavBar: typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/nav-bar/NavBar")['default']
-export const VanNotify: typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/notify/Notify")['default']
 export const VanNoticeBar: typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/notice-bar/NoticeBar")['default']
+export const VanNotify: typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/notify/Notify")['default']
 export const VanNumberKeyboard: typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/number-keyboard/NumberKeyboard")['default']
 export const VanOverlay: typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/overlay/Overlay")['default']
 export const VanPagination: typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/pagination/Pagination")['default']
@@ -380,8 +380,8 @@ export const VanTab: typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18
 export const VanTabbar: typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/tabbar/Tabbar")['default']
 export const VanTabbarItem: typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/tabbar-item/TabbarItem")['default']
 export const VanTabs: typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/tabs/Tabs")['default']
-export const VanTextEllipsis: typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/text-ellipsis/TextEllipsis")['default']
 export const VanTag: typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/tag/Tag")['default']
+export const VanTextEllipsis: typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/text-ellipsis/TextEllipsis")['default']
 export const VanTimePicker: typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/time-picker/TimePicker")['default']
 export const VanToast: typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/toast/Toast")['default']
 export const VanTreeSelect: typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/tree-select/TreeSelect")['default']
@@ -465,8 +465,8 @@ export const LazyVanIndexBar: LazyComponent<typeof import("../node_modules/.pnpm
 export const LazyVanList: LazyComponent<typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/list/List")['default']>
 export const LazyVanLoading: LazyComponent<typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/loading/Loading")['default']>
 export const LazyVanNavBar: LazyComponent<typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/nav-bar/NavBar")['default']>
-export const LazyVanNotify: LazyComponent<typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/notify/Notify")['default']>
 export const LazyVanNoticeBar: LazyComponent<typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/notice-bar/NoticeBar")['default']>
+export const LazyVanNotify: LazyComponent<typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/notify/Notify")['default']>
 export const LazyVanNumberKeyboard: LazyComponent<typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/number-keyboard/NumberKeyboard")['default']>
 export const LazyVanOverlay: LazyComponent<typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/overlay/Overlay")['default']>
 export const LazyVanPagination: LazyComponent<typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/pagination/Pagination")['default']>
@@ -507,8 +507,8 @@ export const LazyVanTab: LazyComponent<typeof import("../node_modules/.pnpm/vant
 export const LazyVanTabbar: LazyComponent<typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/tabbar/Tabbar")['default']>
 export const LazyVanTabbarItem: LazyComponent<typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/tabbar-item/TabbarItem")['default']>
 export const LazyVanTabs: LazyComponent<typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/tabs/Tabs")['default']>
-export const LazyVanTextEllipsis: LazyComponent<typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/text-ellipsis/TextEllipsis")['default']>
 export const LazyVanTag: LazyComponent<typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/tag/Tag")['default']>
+export const LazyVanTextEllipsis: LazyComponent<typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/text-ellipsis/TextEllipsis")['default']>
 export const LazyVanTimePicker: LazyComponent<typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/time-picker/TimePicker")['default']>
 export const LazyVanToast: LazyComponent<typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/toast/Toast")['default']>
 export const LazyVanTreeSelect: LazyComponent<typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/tree-select/TreeSelect")['default']>
