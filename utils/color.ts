@@ -34,6 +34,20 @@ export function getWuxingColorStyle(wuxing: string) {
 }
 
 /**
+ * 将 hex 颜色转为 rgba
+ * @param hex - 颜色的 hex 代码 e.g. #ef5350
+ * @param alpha - 透明度 (0-1)
+ * @returns rgba 颜色字符串
+ */
+export function hexToRgba(hex: string, alpha = 1): string {
+  const bigint = parseInt(hex.slice(1), 16);
+  const r = (bigint >> 16) & 255;
+  const g = (bigint >> 8) & 255;
+  const b = bigint & 255;
+  return `rgba(${r}, ${g}, ${b}, ${alpha})`;
+}
+
+/**
  * (备用) 根据五行获取 CSS 类名
  * @param wuxing - 五行名称
  * @returns UnoCSS 的文本颜色类名

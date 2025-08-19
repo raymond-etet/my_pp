@@ -1,7 +1,10 @@
 <template>
   <div class="dayun-flow-container bg-white rounded-lg shadow-md p-4">
     <!-- 大运列表 -->
-    <div class="dayun-tabs flex space-x-2 overflow-x-auto pb-2 mb-4 border-b">
+    <div
+      ref="dayunTabsRef"
+      class="dayun-tabs flex space-x-2 overflow-x-auto pb-2 mb-4 border-b"
+    >
       <div
         v-for="(dayun, index) in dayuns"
         :key="dayun.startAge"
@@ -54,6 +57,10 @@
         v-for="(liunian, lIndex) in selectedDayun.liunians"
         :key="lIndex"
         class="liunian-item grid grid-cols-2 items-center p-2 rounded-md transition-colors hover:bg-gray-50 border-b"
+        :class="{ 'bg-gradient-to-br': isCurrentLiunian(liunian) }"
+        :style="
+          isCurrentLiunian(liunian) ? getCurrentLiunianStyle(liunian) : {}
+        "
       >
         <!-- 天干部分 -->
         <div class="flex flex-col items-start">
@@ -93,8 +100,12 @@
 </template>
 
 <script setup lang="ts">
-import { ref, watch, defineProps, computed } from "vue";
-import { getWuxingColorStyle } from "~/utils/color";
+import { ref, watch, defineProps, computed, onMounted, nextTick } from "vue";
+import {
+  getWuxingColorStyle,
+  getWuxingHexColor,
+  hexToRgba,
+} from "~/utils/color";
 
 // --- Types ---
 interface GanZhiDetail {
@@ -104,6 +115,7 @@ interface GanZhiDetail {
   shishen: { gan: string; zhi: string };
   canggan: { char: string; wuxing: string; shishen: string }[];
   naYin: string;
+  year?: number; // 流年年份
 }
 
 interface Dayun {
@@ -111,15 +123,20 @@ interface Dayun {
   endAge: number;
   ganZhi: GanZhiDetail;
   liunians: GanZhiDetail[];
+  startYear: number;
+  endYear: number;
 }
 
 // --- Props ---
 const props = defineProps<{
   dayuns: Dayun[];
+  birthYear: number;
 }>();
 
 // --- State ---
 const activeIndex = ref(0);
+const currentYear = new Date().getFullYear();
+const dayunTabsRef = ref<HTMLDivElement | null>(null); // DOM 元素引用
 
 // --- Computed ---
 const selectedDayun = computed(() => {
@@ -133,12 +150,80 @@ function selectDayun(index: number) {
   activeIndex.value = index;
 }
 
+// 滚动到激活的 tab
+function scrollActiveTabToCenter() {
+  nextTick(() => {
+    if (dayunTabsRef.value) {
+      const activeTab = dayunTabsRef.value.children[
+        activeIndex.value
+      ] as HTMLElement;
+      if (activeTab) {
+        const container = dayunTabsRef.value;
+        const scrollLeft =
+          activeTab.offsetLeft -
+          container.offsetWidth / 2 +
+          activeTab.offsetWidth / 2;
+        container.scrollTo({ left: scrollLeft, behavior: "smooth" });
+      }
+    }
+  });
+}
+
+function isCurrentLiunian(liunian: GanZhiDetail): boolean {
+  if (!selectedDayun.value || !liunian.year) {
+    return false;
+  }
+  const currentAge = currentYear - props.birthYear;
+  return (
+    liunian.year === currentYear &&
+    currentAge >= selectedDayun.value.startAge &&
+    currentAge <= selectedDayun.value.endAge
+  );
+}
+
+function getCurrentLiunianStyle(liunian: GanZhiDetail) {
+  const ganHex = getWuxingHexColor(liunian.wuxing.gan);
+  const zhiHex = getWuxingHexColor(liunian.wuxing.zhi);
+
+  // 从左上到右下渐变，透明度20%
+  const ganColor = hexToRgba(ganHex, 0.2);
+  const zhiColor = hexToRgba(zhiHex, 0.2);
+
+  return {
+    background: `linear-gradient(to bottom right, ${ganColor}, ${zhiColor})`,
+    color: "#333", // 在半透明背景上使用深色字体以保证可读性
+  };
+}
+
+// --- Lifecycle Hooks ---
+onMounted(() => {
+  if (props.dayuns && props.dayuns.length > 0) {
+    const currentAge = currentYear - props.birthYear;
+    const currentDayunIndex = props.dayuns.findIndex(
+      (d) => currentAge >= d.startAge && currentAge <= d.endAge
+    );
+    if (currentDayunIndex !== -1) {
+      activeIndex.value = currentDayunIndex;
+      scrollActiveTabToCenter(); // 新增：滚动到激活的 tab
+    }
+  }
+});
+
 // --- Watchers ---
 watch(
   () => props.dayuns,
   (newDayuns) => {
     if (newDayuns && newDayuns.length > 0) {
-      activeIndex.value = 0;
+      const currentAge = currentYear - props.birthYear;
+      const currentDayunIndex = newDayuns.findIndex(
+        (d) => currentAge >= d.startAge && currentAge <= d.endAge
+      );
+      if (currentDayunIndex !== -1) {
+        activeIndex.value = currentDayunIndex;
+      } else {
+        activeIndex.value = 0; // 默认
+      }
+      scrollActiveTabToCenter(); // 新增：滚动到激活的 tab
     }
   },
   { immediate: true }

@@ -40,6 +40,7 @@ declare global {
   const getWuxingHexColor: typeof import('../../utils/color')['getWuxingHexColor']
   const h: typeof import('../../node_modules/.pnpm/vue@3.5.18_typescript@5.9.2/node_modules/vue')['h']
   const hasInjectionContext: typeof import('../../node_modules/.pnpm/vue@3.5.18_typescript@5.9.2/node_modules/vue')['hasInjectionContext']
+  const hexToRgba: typeof import('../../utils/color')['hexToRgba']
   const inject: typeof import('../../node_modules/.pnpm/vue@3.5.18_typescript@5.9.2/node_modules/vue')['inject']
   const injectHead: typeof import('../../node_modules/.pnpm/nuxt@4.0.3_@netlify+blobs@9_8184dc6e3cc90353bbc56ec2966327b6/node_modules/nuxt/dist/app/composables/head')['injectHead']
   const isNuxtError: typeof import('../../node_modules/.pnpm/nuxt@4.0.3_@netlify+blobs@9_8184dc6e3cc90353bbc56ec2966327b6/node_modules/nuxt/dist/app/composables/error')['isNuxtError']
@@ -249,6 +250,7 @@ declare module 'vue' {
     readonly getWuxingHexColor: UnwrapRef<typeof import('../../utils/color')['getWuxingHexColor']>
     readonly h: UnwrapRef<typeof import('../../node_modules/.pnpm/vue@3.5.18_typescript@5.9.2/node_modules/vue')['h']>
     readonly hasInjectionContext: UnwrapRef<typeof import('../../node_modules/.pnpm/vue@3.5.18_typescript@5.9.2/node_modules/vue')['hasInjectionContext']>
+    readonly hexToRgba: UnwrapRef<typeof import('../../utils/color')['hexToRgba']>
     readonly inject: UnwrapRef<typeof import('../../node_modules/.pnpm/vue@3.5.18_typescript@5.9.2/node_modules/vue')['inject']>
     readonly injectHead: UnwrapRef<typeof import('../../node_modules/.pnpm/nuxt@4.0.3_@netlify+blobs@9_8184dc6e3cc90353bbc56ec2966327b6/node_modules/nuxt/dist/app/composables/head')['injectHead']>
     readonly isNuxtError: UnwrapRef<typeof import('../../node_modules/.pnpm/nuxt@4.0.3_@netlify+blobs@9_8184dc6e3cc90353bbc56ec2966327b6/node_modules/nuxt/dist/app/composables/error')['isNuxtError']>

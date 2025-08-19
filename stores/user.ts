@@ -25,8 +25,10 @@ interface BaziDetail {
 interface Dayun {
   startAge: number;
   endAge: number;
+  startYear: number;
+  endYear: number;
   ganZhi: GanZhiDetail;
-  liunians: GanZhiDetail[];
+  liunians: (GanZhiDetail & { year: number })[]; // 流年加上年份
 }
 
 // 完整的排盘结果 (API 返回)
@@ -46,8 +48,9 @@ interface UserState {
     year: number;
     month: number;
     day: number;
-    hour: number | null; // 允许为 null
+    hour: number; // 不再允许为 null
     gender: "男" | "女";
+    calendarType: "solar" | "lunar"; // 新增历法类型
   };
   result: FullBaziResult | null; // 使用详细类型，并允许为 null
   loading: boolean;
@@ -63,6 +66,7 @@ export const useUserStore = defineStore("user", {
       day: 19,
       hour: 10,
       gender: "男",
+      calendarType: "solar", // 默认为公历
     },
     result: null, // 初始值为 null
     loading: false,

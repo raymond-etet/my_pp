@@ -40,8 +40,8 @@ interface _GlobalComponents {
     'VanButton': typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/button/Button")['default']
     'VanCalendar': typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/calendar/Calendar")['default']
     'VanCard': typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/card/Card")['default']
-    'VanCell': typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/cell/Cell")['default']
     'VanCascader': typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/cascader/Cascader")['default']
+    'VanCell': typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/cell/Cell")['default']
     'VanCellGroup': typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/cell-group/CellGroup")['default']
     'VanCheckbox': typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/checkbox/Checkbox")['default']
     'VanCheckboxGroup': typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/checkbox-group/CheckboxGroup")['default']
@@ -91,8 +91,8 @@ interface _GlobalComponents {
     'VanProgress': typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/progress/Progress")['default']
     'VanPullRefresh': typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/pull-refresh/PullRefresh")['default']
     'VanRadio': typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/radio/Radio")['default']
-    'VanRadioGroup': typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/radio-group/RadioGroup")['default']
     'VanRate': typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/rate/Rate")['default']
+    'VanRadioGroup': typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/radio-group/RadioGroup")['default']
     'VanRollingText': typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/rolling-text/RollingText")['default']
     'VanRow': typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/row/Row")['default']
     'VanSearch': typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/search/Search")['default']
@@ -101,8 +101,8 @@ interface _GlobalComponents {
     'VanSidebarItem': typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/sidebar-item/SidebarItem")['default']
     'VanSignature': typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/signature/Signature")['default']
     'VanSkeleton': typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/skeleton/Skeleton")['default']
-    'VanSkeletonAvatar': typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/skeleton-avatar/SkeletonAvatar")['default']
     'VanSkeletonImage': typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/skeleton-image/SkeletonImage")['default']
+    'VanSkeletonAvatar': typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/skeleton-avatar/SkeletonAvatar")['default']
     'VanSkeletonParagraph': typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/skeleton-paragraph/SkeletonParagraph")['default']
     'VanSkeletonTitle': typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/skeleton-title/SkeletonTitle")['default']
     'VanSlider': typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/slider/Slider")['default']
@@ -167,8 +167,8 @@ interface _GlobalComponents {
     'LazyVanButton': LazyComponent<typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/button/Button")['default']>
     'LazyVanCalendar': LazyComponent<typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/calendar/Calendar")['default']>
     'LazyVanCard': LazyComponent<typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/card/Card")['default']>
-    'LazyVanCell': LazyComponent<typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/cell/Cell")['default']>
     'LazyVanCascader': LazyComponent<typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/cascader/Cascader")['default']>
+    'LazyVanCell': LazyComponent<typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/cell/Cell")['default']>
     'LazyVanCellGroup': LazyComponent<typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/cell-group/CellGroup")['default']>
     'LazyVanCheckbox': LazyComponent<typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/checkbox/Checkbox")['default']>
     'LazyVanCheckboxGroup': LazyComponent<typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/checkbox-group/CheckboxGroup")['default']>
@@ -218,8 +218,8 @@ interface _GlobalComponents {
     'LazyVanProgress': LazyComponent<typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/progress/Progress")['default']>
     'LazyVanPullRefresh': LazyComponent<typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/pull-refresh/PullRefresh")['default']>
     'LazyVanRadio': LazyComponent<typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/radio/Radio")['default']>
-    'LazyVanRadioGroup': LazyComponent<typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/radio-group/RadioGroup")['default']>
     'LazyVanRate': LazyComponent<typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/rate/Rate")['default']>
+    'LazyVanRadioGroup': LazyComponent<typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/radio-group/RadioGroup")['default']>
     'LazyVanRollingText': LazyComponent<typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/rolling-text/RollingText")['default']>
     'LazyVanRow': LazyComponent<typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/row/Row")['default']>
     'LazyVanSearch': LazyComponent<typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/search/Search")['default']>
@@ -228,8 +228,8 @@ interface _GlobalComponents {
     'LazyVanSidebarItem': LazyComponent<typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/sidebar-item/SidebarItem")['default']>
     'LazyVanSignature': LazyComponent<typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/signature/Signature")['default']>
     'LazyVanSkeleton': LazyComponent<typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/skeleton/Skeleton")['default']>
-    'LazyVanSkeletonAvatar': LazyComponent<typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/skeleton-avatar/SkeletonAvatar")['default']>
     'LazyVanSkeletonImage': LazyComponent<typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/skeleton-image/SkeletonImage")['default']>
+    'LazyVanSkeletonAvatar': LazyComponent<typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/skeleton-avatar/SkeletonAvatar")['default']>
     'LazyVanSkeletonParagraph': LazyComponent<typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/skeleton-paragraph/SkeletonParagraph")['default']>
     'LazyVanSkeletonTitle': LazyComponent<typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/skeleton-title/SkeletonTitle")['default']>
     'LazyVanSlider': LazyComponent<typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/slider/Slider")['default']>
@@ -300,8 +300,8 @@ export const VanBarrage: typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.
 export const VanButton: typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/button/Button")['default']
 export const VanCalendar: typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/calendar/Calendar")['default']
 export const VanCard: typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/card/Card")['default']
-export const VanCell: typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/cell/Cell")['default']
 export const VanCascader: typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/cascader/Cascader")['default']
+export const VanCell: typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/cell/Cell")['default']
 export const VanCellGroup: typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/cell-group/CellGroup")['default']
 export const VanCheckbox: typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/checkbox/Checkbox")['default']
 export const VanCheckboxGroup: typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/checkbox-group/CheckboxGroup")['default']
@@ -351,8 +351,8 @@ export const VanPopup: typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.
 export const VanProgress: typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/progress/Progress")['default']
 export const VanPullRefresh: typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/pull-refresh/PullRefresh")['default']
 export const VanRadio: typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/radio/Radio")['default']
-export const VanRadioGroup: typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/radio-group/RadioGroup")['default']
 export const VanRate: typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/rate/Rate")['default']
+export const VanRadioGroup: typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/radio-group/RadioGroup")['default']
 export const VanRollingText: typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/rolling-text/RollingText")['default']
 export const VanRow: typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/row/Row")['default']
 export const VanSearch: typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/search/Search")['default']
@@ -361,8 +361,8 @@ export const VanSidebar: typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.
 export const VanSidebarItem: typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/sidebar-item/SidebarItem")['default']
 export const VanSignature: typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/signature/Signature")['default']
 export const VanSkeleton: typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/skeleton/Skeleton")['default']
-export const VanSkeletonAvatar: typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/skeleton-avatar/SkeletonAvatar")['default']
 export const VanSkeletonImage: typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/skeleton-image/SkeletonImage")['default']
+export const VanSkeletonAvatar: typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/skeleton-avatar/SkeletonAvatar")['default']
 export const VanSkeletonParagraph: typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/skeleton-paragraph/SkeletonParagraph")['default']
 export const VanSkeletonTitle: typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/skeleton-title/SkeletonTitle")['default']
 export const VanSlider: typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/slider/Slider")['default']
@@ -427,8 +427,8 @@ export const LazyVanBarrage: LazyComponent<typeof import("../node_modules/.pnpm/
 export const LazyVanButton: LazyComponent<typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/button/Button")['default']>
 export const LazyVanCalendar: LazyComponent<typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/calendar/Calendar")['default']>
 export const LazyVanCard: LazyComponent<typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/card/Card")['default']>
-export const LazyVanCell: LazyComponent<typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/cell/Cell")['default']>
 export const LazyVanCascader: LazyComponent<typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/cascader/Cascader")['default']>
+export const LazyVanCell: LazyComponent<typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/cell/Cell")['default']>
 export const LazyVanCellGroup: LazyComponent<typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/cell-group/CellGroup")['default']>
 export const LazyVanCheckbox: LazyComponent<typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/checkbox/Checkbox")['default']>
 export const LazyVanCheckboxGroup: LazyComponent<typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/checkbox-group/CheckboxGroup")['default']>
@@ -478,8 +478,8 @@ export const LazyVanPopup: LazyComponent<typeof import("../node_modules/.pnpm/va
 export const LazyVanProgress: LazyComponent<typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/progress/Progress")['default']>
 export const LazyVanPullRefresh: LazyComponent<typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/pull-refresh/PullRefresh")['default']>
 export const LazyVanRadio: LazyComponent<typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/radio/Radio")['default']>
-export const LazyVanRadioGroup: LazyComponent<typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/radio-group/RadioGroup")['default']>
 export const LazyVanRate: LazyComponent<typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/rate/Rate")['default']>
+export const LazyVanRadioGroup: LazyComponent<typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/radio-group/RadioGroup")['default']>
 export const LazyVanRollingText: LazyComponent<typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/rolling-text/RollingText")['default']>
 export const LazyVanRow: LazyComponent<typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/row/Row")['default']>
 export const LazyVanSearch: LazyComponent<typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/search/Search")['default']>
@@ -488,8 +488,8 @@ export const LazyVanSidebar: LazyComponent<typeof import("../node_modules/.pnpm/
 export const LazyVanSidebarItem: LazyComponent<typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/sidebar-item/SidebarItem")['default']>
 export const LazyVanSignature: LazyComponent<typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/signature/Signature")['default']>
 export const LazyVanSkeleton: LazyComponent<typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/skeleton/Skeleton")['default']>
-export const LazyVanSkeletonAvatar: LazyComponent<typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/skeleton-avatar/SkeletonAvatar")['default']>
 export const LazyVanSkeletonImage: LazyComponent<typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/skeleton-image/SkeletonImage")['default']>
+export const LazyVanSkeletonAvatar: LazyComponent<typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/skeleton-avatar/SkeletonAvatar")['default']>
 export const LazyVanSkeletonParagraph: LazyComponent<typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/skeleton-paragraph/SkeletonParagraph")['default']>
 export const LazyVanSkeletonTitle: LazyComponent<typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/skeleton-title/SkeletonTitle")['default']>
 export const LazyVanSlider: LazyComponent<typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/slider/Slider")['default']>

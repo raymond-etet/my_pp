@@ -6,7 +6,7 @@ import { parentPort, threadId } from 'node:worker_threads';
 import { defineEventHandler, handleCacheHeaders, splitCookiesString, createEvent, fetchWithEvent, isEvent, eventHandler, setHeaders, sendRedirect, proxyRequest, getRequestHeader, setResponseHeaders, setResponseStatus, send, getRequestHeaders, setResponseHeader, appendResponseHeader, getRequestURL, getResponseHeader, removeResponseHeader, createError, getQuery as getQuery$1, readBody, createApp, createRouter as createRouter$1, toNodeListener, lazyEventHandler, getResponseStatus, getRouterParam, getResponseStatusText } from 'file://D:/code_all/bazi/my_pp/node_modules/.pnpm/h3@1.15.4/node_modules/h3/dist/index.mjs';
 import { escapeHtml } from 'file://D:/code_all/bazi/my_pp/node_modules/.pnpm/@vue+shared@3.5.18/node_modules/@vue/shared/dist/shared.cjs.js';
 import pkg from 'file://D:/code_all/bazi/my_pp/node_modules/.pnpm/@prisma+client@6.14.0_prism_1307bfd5debd11780ac8d9f5d0df4285/node_modules/@prisma/client/default.js';
-import { Solar } from 'file://D:/code_all/bazi/my_pp/node_modules/.pnpm/lunar-javascript@1.7.3/node_modules/lunar-javascript/index.js';
+import { Lunar, Solar } from 'file://D:/code_all/bazi/my_pp/node_modules/.pnpm/lunar-javascript@1.7.3/node_modules/lunar-javascript/index.js';
 import { createRenderer, getRequestDependencies, getPreloadLinks, getPrefetchLinks } from 'file://D:/code_all/bazi/my_pp/node_modules/.pnpm/vue-bundle-renderer@2.1.2/node_modules/vue-bundle-renderer/dist/runtime.mjs';
 import { parseURL, withoutBase, joinURL, getQuery, withQuery, withTrailingSlash, decodePath, withLeadingSlash, withoutTrailingSlash, joinRelativeURL } from 'file://D:/code_all/bazi/my_pp/node_modules/.pnpm/ufo@1.6.1/node_modules/ufo/dist/index.mjs';
 import destr, { destr as destr$1 } from 'file://D:/code_all/bazi/my_pp/node_modules/.pnpm/destr@2.0.5/node_modules/destr/dist/index.mjs';
@@ -1861,9 +1861,23 @@ const styles$1 = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
   default: styles
 }, Symbol.toStringTag, { value: 'Module' }));
 
-function getFullLunarBaziData(year, month, day, hour, gender) {
+function getFullLunarBaziData(year, month, day, hour, gender, calendarType = "solar") {
   try {
-    const solar = hour > 0 ? Solar.fromYmdHms(year, month, day, hour, 0, 0) : Solar.fromYmd(year, month, day);
+    let solar;
+    if (calendarType === "lunar") {
+      const lunarForDate = new Lunar(year, month, day);
+      const solarFromLunar = lunarForDate.getSolar();
+      solar = Solar.fromYmdHms(
+        solarFromLunar.getYear(),
+        solarFromLunar.getMonth(),
+        solarFromLunar.getDay(),
+        hour,
+        0,
+        0
+      );
+    } else {
+      solar = hour > 0 ? Solar.fromYmdHms(year, month, day, hour, 0, 0) : Solar.fromYmd(year, month, day);
+    }
     const lunar = solar.getLunar();
     const eightChar = lunar.getEightChar();
     const baziResult = {
@@ -1872,6 +1886,8 @@ function getFullLunarBaziData(year, month, day, hour, gender) {
       day: eightChar.getDay(),
       hour: eightChar.getTime()
     };
+    const lunarDateStr = lunar.toString();
+    const solarDateStr = solar.toString();
     let daYunResult = [];
     if (hour > 0) {
       try {
@@ -1881,7 +1897,8 @@ function getFullLunarBaziData(year, month, day, hour, gender) {
           const daYuns = yun.getDaYun();
           daYunResult = daYuns.slice(0, 10).map((dy) => ({
             ageRange: `${dy.getStartAge()}-${dy.getEndAge()}`,
-            yearRange: `${dy.getStartYear()}-${dy.getEndYear()}`,
+            startYear: dy.getStartYear(),
+            endYear: dy.getEndYear(),
             ganZhi: dy.getGanZhi(),
             liuNian: dy.getLiuNian().slice(0, 10).map((ln) => ({
               year: ln.getYear(),
@@ -1908,6 +1925,8 @@ function getFullLunarBaziData(year, month, day, hour, gender) {
       hour: eightChar.getTimeHideGan() || ["\u672A\u77E5"]
     };
     return {
+      lunarDate: lunarDateStr,
+      solarDate: solarDateStr,
       bazi: baziResult,
       daYun: daYunResult,
       shiShen: shiShenResult,
@@ -1916,6 +1935,8 @@ function getFullLunarBaziData(year, month, day, hour, gender) {
   } catch (error) {
     console.error("\u8BA1\u7B97\u5B8C\u6574\u516B\u5B57\u6392\u76D8\u65F6\u53D1\u751F\u9519\u8BEF:", error);
     return {
+      lunarDate: "\u672A\u77E5",
+      solarDate: "\u672A\u77E5",
       bazi: {
         year: "\u672A\u77E5",
         month: "\u672A\u77E5",
@@ -1966,20 +1987,6 @@ function getSimplifiedDaYun(baziResult, birthYear, gender) {
 }
 
 const Gan = ["\u7532", "\u4E59", "\u4E19", "\u4E01", "\u620A", "\u5DF1", "\u5E9A", "\u8F9B", "\u58EC", "\u7678"];
-const Zhi = [
-  "\u5B50",
-  "\u4E11",
-  "\u5BC5",
-  "\u536F",
-  "\u8FB0",
-  "\u5DF3",
-  "\u5348",
-  "\u672A",
-  "\u7533",
-  "\u9149",
-  "\u620C",
-  "\u4EA5"
-];
 const gan5 = {
   \u7532: "\u6728",
   \u4E59: "\u6728",
@@ -2067,46 +2074,13 @@ const getCangGan = (zhi) => {
   }
   return Array.isArray(ganStr) ? ganStr : ganStr.split("");
 };
-function calcDayuns(yearGan, monthGan, monthZhi, dayGan, isFemale) {
-  const yearGanIndex = Gan.indexOf(yearGan);
-  const yearGanYinYang = yearGanIndex % 2 === 0 ? "\u9633" : "\u9634";
-  const direction = yearGanYinYang === "\u9633" && !isFemale || yearGanYinYang === "\u9634" && isFemale ? 1 : -1;
-  let ganSeq = Gan.indexOf(monthGan);
-  let zhiSeq = Zhi.indexOf(monthZhi);
-  const dayuns = [];
-  for (let i = 0; i < 8; i++) {
-    ganSeq += direction;
-    zhiSeq += direction;
-    const currentGanIndex = (ganSeq % 10 + 10) % 10;
-    const currentZhiIndex = (zhiSeq % 12 + 12) % 12;
-    const gan = Gan[currentGanIndex];
-    const zhi = Zhi[currentZhiIndex];
-    const startAge = i * 10 + 1;
-    const dayunGanZhiDetail = createGanZhiDetail(gan, zhi, dayGan);
-    const liunians = [];
-    let liunianGanIndex = Gan.indexOf("\u7532");
-    let liunianZhiIndex = Zhi.indexOf("\u5B50");
-    for (let j = 0; j < 10; j++) {
-      const lGan = Gan[(liunianGanIndex + i * 10 + j) % 10];
-      const lZhi = Zhi[(liunianZhiIndex + i * 10 + j) % 12];
-      liunians.push(createGanZhiDetail(lGan, lZhi, dayGan));
-    }
-    dayuns.push({
-      startAge,
-      endAge: startAge + 9,
-      ganZhi: dayunGanZhiDetail,
-      liunians
-    });
-  }
-  return dayuns;
-}
-function createGanZhiDetail(gan, zhi, dayGan) {
+function createGanZhiDetail(gan, zhi, dayGan, year) {
   const canggan = getCangGan(zhi).map((cg) => ({
     char: cg,
     wuxing: gan5[cg] || "",
     shishen: getShiShen(dayGan, cg)
   }));
-  return {
+  const detail = {
     gan,
     zhi,
     wuxing: {
@@ -2122,6 +2096,10 @@ function createGanZhiDetail(gan, zhi, dayGan) {
     naYin: "\u6682\u65E0"
     // 纳音计算较复杂，暂不实现
   };
+  if (year) {
+    detail.year = year;
+  }
+  return detail;
 }
 
 const { PrismaClient: PrismaClient$1 } = pkg;
@@ -2135,13 +2113,13 @@ const paiPan_post = defineEventHandler(async (event) => {
     month: monthStr,
     day: dayStr,
     hour: hourStr,
-    gender
+    gender,
+    calendarType
   } = body;
   const year = parseInt(yearStr, 10);
   const month = parseInt(monthStr, 10);
   const day = parseInt(dayStr, 10);
   const hour = hourStr ? parseInt(hourStr, 10) : 0;
-  const isFemale = gender === "\u5973";
   if (isNaN(year) || isNaN(month) || isNaN(day)) {
     throw createError({
       statusCode: 400,
@@ -2179,7 +2157,14 @@ const paiPan_post = defineEventHandler(async (event) => {
     });
   }
   try {
-    const rawBaziData = getFullLunarBaziData(year, month, day, hour, gender);
+    const rawBaziData = getFullLunarBaziData(
+      year,
+      month,
+      day,
+      hour,
+      gender,
+      calendarType
+    );
     const yearGanZhi = {
       gan: rawBaziData.bazi.year[0],
       zhi: rawBaziData.bazi.year[1]
@@ -2203,16 +2188,24 @@ const paiPan_post = defineEventHandler(async (event) => {
       day: createGanZhiDetail(dayGanZhi.gan, dayGanZhi.zhi, dayGan),
       hour: createGanZhiDetail(hourGanZhi.gan, hourGanZhi.zhi, dayGan)
     };
-    const dayuns = calcDayuns(
-      yearGanZhi.gan,
-      monthGanZhi.gan,
-      monthGanZhi.zhi,
-      dayGan,
-      isFemale
-    );
+    const dayuns = rawBaziData.daYun.map((dy) => {
+      const [startAge, endAge] = dy.ageRange.split("-").map(Number);
+      return {
+        startAge,
+        endAge,
+        startYear: dy.startYear,
+        endYear: dy.endYear,
+        ganZhi: createGanZhiDetail(dy.ganZhi[0], dy.ganZhi[1], dayGan),
+        liunians: dy.liuNian.map(
+          (ln) => createGanZhiDetail(ln.ganZhi[0], ln.ganZhi[1], dayGan, ln.year)
+        )
+      };
+    });
     const resultPayload = {
       ...rawBaziData,
       // 保留原始信息，如公历、农历等
+      form: { year, month, day, hour, gender, calendarType },
+      // 将表单信息也存进去
       bazi: baziDetail,
       // 覆盖为详细的四柱对象
       dayun: dayuns
@@ -2225,6 +2218,7 @@ const paiPan_post = defineEventHandler(async (event) => {
         day,
         hour,
         gender,
+        // 性别是必填项
         result: JSON.parse(JSON.stringify(resultPayload))
       }
     });

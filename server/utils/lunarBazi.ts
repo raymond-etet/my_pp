@@ -1,6 +1,6 @@
 // server/utils/lunarBazi.ts - 使用 lunar-javascript 库的八字排盘算法
 
-import { Solar } from "lunar-javascript";
+import { Solar, Lunar } from "lunar-javascript";
 
 /**
  * 输入参数类型定义
@@ -11,6 +11,7 @@ export interface LunarBaziInput {
   day: number;
   hour: number;
   gender: "男" | "女";
+  calendarType: "solar" | "lunar"; // 新增历法类型
 }
 
 /**
@@ -28,6 +29,8 @@ export interface LunarBaziResult {
  * 完整排盘结果类型定义
  */
 export interface FullLunarBaziResult {
+  lunarDate: string; // 农历日期
+  solarDate: string; // 公历日期
   bazi: {
     year: string;
     month: string;
@@ -36,7 +39,8 @@ export interface FullLunarBaziResult {
   };
   daYun: Array<{
     ageRange: string;
-    yearRange: string;
+    startYear: number;
+    endYear: number;
     ganZhi: string;
     liuNian: Array<{
       year: number;
@@ -101,14 +105,34 @@ export function getFullLunarBaziData(
   month: number,
   day: number,
   hour: number,
-  gender: "男" | "女"
+  gender: "男" | "女",
+  calendarType: "solar" | "lunar" = "solar" // 默认为公历
 ): FullLunarBaziResult {
   try {
-    // 创建公历日期对象
-    const solar =
-      hour > 0
-        ? Solar.fromYmdHms(year, month, day, hour, 0, 0)
-        : Solar.fromYmd(year, month, day);
+    let solar: Solar;
+
+    // 根据历法类型创建日期对象
+    if (calendarType === "lunar") {
+      // 用户输入的是农历
+      // 注意：lunar-javascript 对于时辰的处理需要基于公历，
+      // 所以我们先用农历年月日找到对应的公历日期，再附加时辰
+      const lunarForDate = new (Lunar as any)(year, month, day);
+      const solarFromLunar = lunarForDate.getSolar();
+      solar = Solar.fromYmdHms(
+        solarFromLunar.getYear(),
+        solarFromLunar.getMonth(),
+        solarFromLunar.getDay(),
+        hour,
+        0,
+        0
+      );
+    } else {
+      // 用户输入的是公历
+      solar =
+        hour > 0
+          ? Solar.fromYmdHms(year, month, day, hour, 0, 0)
+          : Solar.fromYmd(year, month, day);
+    }
 
     // 转换为农历
     const lunar = solar.getLunar();
@@ -124,6 +148,10 @@ export function getFullLunarBaziData(
       hour: eightChar.getTime(),
     };
 
+    // 获取农历和公历日期字符串
+    const lunarDateStr = lunar.toString();
+    const solarDateStr = solar.toString();
+
     // 获取大运（如果时辰已知）
     let daYunResult: Array<any> = [];
     if (hour > 0) {
@@ -136,7 +164,8 @@ export function getFullLunarBaziData(
           const daYuns = yun.getDaYun();
           daYunResult = daYuns.slice(0, 10).map((dy: any) => ({
             ageRange: `${dy.getStartAge()}-${dy.getEndAge()}`,
-            yearRange: `${dy.getStartYear()}-${dy.getEndYear()}`,
+            startYear: dy.getStartYear(),
+            endYear: dy.getEndYear(),
             ganZhi: dy.getGanZhi(),
             liuNian: dy
               .getLiuNian()
@@ -171,6 +200,8 @@ export function getFullLunarBaziData(
     };
 
     return {
+      lunarDate: lunarDateStr,
+      solarDate: solarDateStr,
       bazi: baziResult,
       daYun: daYunResult,
       shiShen: shiShenResult,
@@ -180,6 +211,8 @@ export function getFullLunarBaziData(
     console.error("计算完整八字排盘时发生错误:", error);
     // 返回默认值
     return {
+      lunarDate: "未知",
+      solarDate: "未知",
       bazi: {
         year: "未知",
         month: "未知",
@@ -258,7 +291,14 @@ export function testLunarBaziCalculation(
   );
 
   try {
-    const result = getFullLunarBaziData(year, month, day, hour, gender);
+    const result = getFullLunarBaziData(
+      year,
+      month,
+      day,
+      hour,
+      gender,
+      "solar"
+    );
     console.log("计算结果:", JSON.stringify(result, null, 2));
     return result;
   } catch (error) {

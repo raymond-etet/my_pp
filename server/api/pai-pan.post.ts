@@ -3,7 +3,7 @@ import pkg from "@prisma/client";
 const { PrismaClient } = pkg;
 
 import { getFullLunarBaziData } from "../utils/lunarBazi";
-import { calcDayuns, createGanZhiDetail } from "../utils/baziCalc";
+import { createGanZhiDetail } from "../utils/baziCalc";
 import { defineEventHandler, readBody, createError } from "h3";
 
 const prisma = new PrismaClient({
@@ -18,6 +18,7 @@ export default defineEventHandler(async (event) => {
     day: dayStr,
     hour: hourStr,
     gender,
+    calendarType,
   } = body;
 
   const year = parseInt(yearStr, 10);
@@ -66,7 +67,14 @@ export default defineEventHandler(async (event) => {
 
   try {
     // 1. 从lunar-javascript获取基础八字干支字符串
-    const rawBaziData = getFullLunarBaziData(year, month, day, hour, gender);
+    const rawBaziData = getFullLunarBaziData(
+      year,
+      month,
+      day,
+      hour,
+      gender,
+      calendarType
+    );
 
     // 2. 拆分干支字符串为对象
     const yearGanZhi = {
@@ -96,18 +104,25 @@ export default defineEventHandler(async (event) => {
       hour: createGanZhiDetail(hourGanZhi.gan, hourGanZhi.zhi, dayGan),
     };
 
-    // 4. 使用新算法计算大运和流年
-    const dayuns = calcDayuns(
-      yearGanZhi.gan,
-      monthGanZhi.gan,
-      monthGanZhi.zhi,
-      dayGan,
-      isFemale
-    );
+    // 4. 转换大运和流年数据结构
+    const dayuns = rawBaziData.daYun.map((dy) => {
+      const [startAge, endAge] = dy.ageRange.split("-").map(Number);
+      return {
+        startAge: startAge,
+        endAge: endAge,
+        startYear: dy.startYear,
+        endYear: dy.endYear,
+        ganZhi: createGanZhiDetail(dy.ganZhi[0]!, dy.ganZhi[1]!, dayGan),
+        liunians: dy.liuNian.map((ln) =>
+          createGanZhiDetail(ln.ganZhi[0]!, ln.ganZhi[1]!, dayGan, ln.year)
+        ),
+      };
+    });
 
     // 5. 整合最终返回给前端的结果
     const resultPayload = {
       ...rawBaziData, // 保留原始信息，如公历、农历等
+      form: { year, month, day, hour, gender, calendarType }, // 将表单信息也存进去
       bazi: baziDetail, // 覆盖为详细的四柱对象
       dayun: dayuns, // 覆盖为新的大运数据
     };
@@ -119,7 +134,7 @@ export default defineEventHandler(async (event) => {
         month,
         day,
         hour,
-        gender,
+        gender, // 性别是必填项
         result: JSON.parse(JSON.stringify(resultPayload)),
       } as any,
     });

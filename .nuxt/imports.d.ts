@@ -30,7 +30,7 @@ export { requestIdleCallback, cancelIdleCallback } from '#app/compat/idle-callba
 export { setInterval } from '#app/compat/interval';
 export { showDialog, showConfirmDialog, showImagePreview, showNotify, showToast, showFailToast, showLoadingToast, showSuccessToast, closeDialog, setDialogDefaultOptions, resetDialogDefaultOptions, closeNotify, setNotifyDefaultOptions, resetNotifyDefaultOptions, closeToast, allowMultipleToast, setToastDefaultOptions, resetToastDefaultOptions } from 'vant';
 export { defineLazyHydrationComponent } from '#app/composables/lazy-hydration';
-export { getWuxingHexColor, getWuxingColorStyle, getWuxingColorClass } from '../utils/color';
+export { getWuxingHexColor, getWuxingColorStyle, hexToRgba, getWuxingColorClass } from '../utils/color';
 export { useUserStore } from '../stores/user';
 export { defineStore, acceptHMRUpdate, usePinia, storeToRefs } from '../node_modules/.pnpm/@pinia+nuxt@0.11.2_magicast_30c91551447dbb9e8459a4aa025b7935/node_modules/@pinia/nuxt/dist/runtime/composables';
 export { useNuxtDevTools } from '../node_modules/.pnpm/@nuxt+devtools@2.6.2_vite@7_2835afcb53cca4a1406d902c3ebb602a/node_modules/@nuxt/devtools/dist/runtime/use-nuxt-devtools';

@@ -2,7 +2,20 @@
   <div class="p-4">
     <h1 class="text-2xl font-bold text-center mb-6">八字排盘</h1>
 
-    <van-form>
+    <van-form @submit="onSubmit">
+      <!-- 历法选择 -->
+      <van-field name="calendarType" label="历法">
+        <template #input>
+          <van-radio-group
+            v-model="userStore.form.calendarType"
+            direction="horizontal"
+          >
+            <van-radio name="solar">公历</van-radio>
+            <van-radio name="lunar">农历</van-radio>
+          </van-radio-group>
+        </template>
+      </van-field>
+
       <!-- 年份输入 -->
       <van-field
         v-model.number="userStore.form.year"
@@ -32,7 +45,7 @@
       />
       <!-- 时辰输入 -->
       <van-field
-        v-model.number="userStore.form.hour"
+        v-model="userStore.form.hour"
         name="hour"
         label="时辰"
         placeholder="请输入出生时辰 (0-23)，未知可不填"
@@ -63,7 +76,7 @@
           round
           block
           type="primary"
-          @click="onSubmit"
+          native-type="submit"
           :loading="userStore.loading"
           loading-text="正在排盘..."
         >
@@ -82,6 +95,7 @@ const userStore = useUserStore();
 
 // 提交表单事件
 const onSubmit = async () => {
+  console.log("Form submitted!"); // 添加日志
   const result = await userStore.submitPaiPan();
   if (result && result.id) {
     // 使用 Nuxt 3 推荐的 navigateTo 方法进行路由跳转

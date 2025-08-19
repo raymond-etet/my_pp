@@ -42,19 +42,15 @@
     <!-- 结果展示 -->
     <div v-else-if="result" class="space-y-4">
       <!-- 生辰信息 -->
-      <section class="bg-white rounded-lg shadow p-4">
-        <h2 class="text-lg font-semibold text-gray-700 mb-2">基本信息</h2>
-        <div class="text-sm text-gray-600">
-          <p>
-            公历：{{
-              result.solar?.join(" ") ||
-              `${form.year}年 ${form.month}月 ${form.day}日 ${
-                form.hour ?? ""
-              }时`
-            }}
-          </p>
-          <p>农历：{{ result.lunar?.join(" ") || "N/A" }}</p>
-          <p>性别：{{ result.gender || form.gender }}</p>
+      <!-- 生辰信息 -->
+      <section class="bg-white rounded-lg shadow p-3">
+        <h2 class="text-md font-semibold text-gray-700 mb-1">基本信息</h2>
+        <div
+          class="grid grid-cols-2 gap-x-4 text-xs text-gray-600 leading-tight"
+        >
+          <p>公历：{{ result.solarDate || "N/A" }}</p>
+          <p>农历：{{ result.lunarDate || "N/A" }}</p>
+          <p>性别：{{ result.form?.gender || form.gender }}</p>
           <p>
             记录ID：<span class="font-mono">{{ result.id }}</span>
           </p>
@@ -77,7 +73,10 @@
         <h2 class="text-lg font-semibold text-gray-700 mb-2 pl-2">
           大运与流年
         </h2>
-        <DaYunFlow :dayuns="result.dayun" />
+        <DaYunFlow
+          :dayuns="result.dayun"
+          :birthYear="result.form?.year || form.year"
+        />
       </section>
     </div>
 
@@ -113,6 +112,11 @@ const {
   error: errorMsg,
   form,
 } = storeToRefs(userStore);
+
+// 为了在模板中安全地访问 result.form.year
+if (result.value && !result.value.form) {
+  result.value.form = form.value;
+}
 
 // --- 生命周期 ---
 onMounted(async () => {
