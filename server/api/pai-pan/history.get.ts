@@ -37,7 +37,15 @@ export default defineEventHandler(async (event) => {
     // 5. 返回完整的记录数据
     // record.result 是一个 JSON 对象，我们把它和 record 的其他字段合并返回
     // record.result 是一个 JSON 字符串，需要先解析
-    const result_json = JSON.parse(record.result as string);
+    // Prisma 已自动解析 JSON 字段，但我们需要验证它是一个对象
+    if (typeof record.result !== "object" || record.result === null) {
+      throw createError({
+        statusCode: 500,
+        statusMessage: "数据库中存储的排盘结果格式不正确",
+      });
+    }
+    const result_json = record.result;
+
     return {
       id: record.id,
       year: record.year,

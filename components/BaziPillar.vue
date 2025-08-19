@@ -10,9 +10,11 @@
       }}</span>
     </div>
     <div class="shishen-display text-sm text-gray-500 mb-2">
-      <span :style="getWuxingColorStyle(pillarData.wuxing.gan)">{{
-        pillarData.shishen.gan
-      }}</span>
+      <!-- 日柱天干特殊显示 -->
+      <span v-if="title === '日柱'" class="day-master-shishen"> 日主 </span>
+      <span v-else :style="getWuxingColorStyle(pillarData.wuxing.gan)">
+        {{ pillarData.shishen.gan }}
+      </span>
       <span :style="getWuxingColorStyle(pillarData.wuxing.zhi)" class="ml-2">{{
         pillarData.shishen.zhi
       }}</span>
@@ -61,5 +63,14 @@ defineProps<{
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(30px, 1fr));
   gap: 4px;
+}
+
+/* 日主渐变色样式 */
+.day-master-shishen {
+  background: linear-gradient(45deg, #f87171, #fbbf24);
+  color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+  font-weight: bold;
 }
 </style>

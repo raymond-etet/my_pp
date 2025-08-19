@@ -11,4 +11,6 @@ export default defineNuxtConfig({
     "@pinia/nuxt", // Pinia 状态管理
     "@vant/nuxt", // Vant UI 组件库
   ],
+  // 全局 CSS, 用于引入动画库等
+  css: ["animate.css/animate.min.css"],
 });

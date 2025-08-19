@@ -40,8 +40,8 @@ interface _GlobalComponents {
     'VanButton': typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/button/Button")['default']
     'VanCalendar': typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/calendar/Calendar")['default']
     'VanCard': typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/card/Card")['default']
-    'VanCascader': typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/cascader/Cascader")['default']
     'VanCell': typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/cell/Cell")['default']
+    'VanCascader': typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/cascader/Cascader")['default']
     'VanCellGroup': typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/cell-group/CellGroup")['default']
     'VanCheckbox': typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/checkbox/Checkbox")['default']
     'VanCheckboxGroup': typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/checkbox-group/CheckboxGroup")['default']
@@ -167,8 +167,8 @@ interface _GlobalComponents {
     'LazyVanButton': LazyComponent<typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/button/Button")['default']>
     'LazyVanCalendar': LazyComponent<typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/calendar/Calendar")['default']>
     'LazyVanCard': LazyComponent<typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/card/Card")['default']>
-    'LazyVanCascader': LazyComponent<typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/cascader/Cascader")['default']>
     'LazyVanCell': LazyComponent<typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/cell/Cell")['default']>
+    'LazyVanCascader': LazyComponent<typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/cascader/Cascader")['default']>
     'LazyVanCellGroup': LazyComponent<typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/cell-group/CellGroup")['default']>
     'LazyVanCheckbox': LazyComponent<typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/checkbox/Checkbox")['default']>
     'LazyVanCheckboxGroup': LazyComponent<typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/checkbox-group/CheckboxGroup")['default']>
@@ -300,8 +300,8 @@ export const VanBarrage: typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.
 export const VanButton: typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/button/Button")['default']
 export const VanCalendar: typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/calendar/Calendar")['default']
 export const VanCard: typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/card/Card")['default']
-export const VanCascader: typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/cascader/Cascader")['default']
 export const VanCell: typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/cell/Cell")['default']
+export const VanCascader: typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/cascader/Cascader")['default']
 export const VanCellGroup: typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/cell-group/CellGroup")['default']
 export const VanCheckbox: typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/checkbox/Checkbox")['default']
 export const VanCheckboxGroup: typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/checkbox-group/CheckboxGroup")['default']
@@ -427,8 +427,8 @@ export const LazyVanBarrage: LazyComponent<typeof import("../node_modules/.pnpm/
 export const LazyVanButton: LazyComponent<typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/button/Button")['default']>
 export const LazyVanCalendar: LazyComponent<typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/calendar/Calendar")['default']>
 export const LazyVanCard: LazyComponent<typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/card/Card")['default']>
-export const LazyVanCascader: LazyComponent<typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/cascader/Cascader")['default']>
 export const LazyVanCell: LazyComponent<typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/cell/Cell")['default']>
+export const LazyVanCascader: LazyComponent<typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/cascader/Cascader")['default']>
 export const LazyVanCellGroup: LazyComponent<typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/cell-group/CellGroup")['default']>
 export const LazyVanCheckbox: LazyComponent<typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/checkbox/Checkbox")['default']>
 export const LazyVanCheckboxGroup: LazyComponent<typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/checkbox-group/CheckboxGroup")['default']>

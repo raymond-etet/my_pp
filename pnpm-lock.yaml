@@ -20,6 +20,9 @@ importers:
       '@vant/nuxt':
         specifier: ^1.0.7
         version: 1.0.7(magicast@0.3.5)(vant@4.9.21(vue@3.5.18(typescript@5.9.2)))
+      animate.css:
+        specifier: ^4.1.1
+        version: 4.1.1
       h3:
         specifier: ^1.15.4
         version: 1.15.4
@@ -1656,6 +1659,9 @@ packages:
 
   alien-signals@2.0.6:
     resolution: {integrity: sha512-P3TxJSe31bUHBiblg59oU1PpaWPtmxF9GhJ/cB7OkgJ0qN/ifFSKUI25/v8ZhsT+lIG6ac8DpTOplXxORX6F3Q==}
+
+  animate.css@4.1.1:
+    resolution: {integrity: sha512-+mRmCTv6SbCmtYJCN4faJMNFVNN5EuCTTprDTAo7YzIGji2KADmakjVA3+8mVDkZ2Bf09vayB35lSQIex2+QaQ==}
 
   ansi-regex@5.0.1:
     resolution: {integrity: sha512-quJQXlTSUGL2LH9SUXo8VwsY4soanhgo6LNSm84E1LBcE8s3O0wpdiRzyR9z/ZZJMlMWv37qOOb9pdJlMUEKFQ==}
@@ -6133,6 +6139,8 @@ snapshots:
       require-from-string: 2.0.2
 
   alien-signals@2.0.6: {}
+
+  animate.css@4.1.1: {}
 
   ansi-regex@5.0.1: {}
 

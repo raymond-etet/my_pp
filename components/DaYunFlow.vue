@@ -4,13 +4,14 @@
     <div class="dayun-tabs flex space-x-2 overflow-x-auto pb-2 mb-4 border-b">
       <div
         v-for="(dayun, index) in dayuns"
-        :key="index"
+        :key="dayun.startAge"
         @click="selectDayun(index)"
         class="dayun-tab cursor-pointer px-4 py-2 rounded-lg text-center whitespace-nowrap"
         :class="{
           'bg-blue-500 text-white shadow-lg': activeIndex === index,
           'bg-gray-100 text-gray-700': activeIndex !== index,
         }"
+        :style="{ transitionDelay: `${index * 50}ms` }"
       >
         <div class="font-bold text-lg">
           <span :style="getWuxingColorStyle(dayun.ganZhi.wuxing.gan)">{{
@@ -45,7 +46,7 @@
     </div>
 
     <!-- 当前大运下的流年列表 -->
-    <div v-if="selectedDayun" class="liunian-list space-y-2">
+    <div v-if="selectedDayun" :key="activeIndex" class="liunian-list space-y-2">
       <h3 class="text-lg font-semibold mb-2">
         流年信息 ({{ selectedDayun.startAge }} - {{ selectedDayun.endAge }}岁)
       </h3>
@@ -146,6 +147,9 @@ watch(
 
 <style scoped>
 /* 优化滚动条样式 */
+.dayun-tabs {
+  scroll-behavior: smooth; /* 新增：平滑滚动效果 */
+}
 .dayun-tabs::-webkit-scrollbar {
   height: 4px;
 }

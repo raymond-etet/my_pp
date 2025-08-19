@@ -5,6 +5,7 @@
     "@prisma/client": "6.14.0",
     "@unocss/nuxt": "^66.4.2",
     "@vant/nuxt": "^1.0.7",
+    "animate.css": "^4.1.1",
     "h3": "^1.15.4",
     "lunar-javascript": "^1.7.3",
     "pinia": "^3.0.3"

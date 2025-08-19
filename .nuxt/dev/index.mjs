@@ -2269,7 +2269,13 @@ const history_get = defineEventHandler(async (event) => {
         statusMessage: "\u672A\u627E\u5230\u8BE5\u8BB0\u5F55"
       });
     }
-    const result_json = JSON.parse(record.result);
+    if (typeof record.result !== "object" || record.result === null) {
+      throw createError({
+        statusCode: 500,
+        statusMessage: "\u6570\u636E\u5E93\u4E2D\u5B58\u50A8\u7684\u6392\u76D8\u7ED3\u679C\u683C\u5F0F\u4E0D\u6B63\u786E"
+      });
+    }
+    const result_json = record.result;
     return {
       id: record.id,
       year: record.year,
