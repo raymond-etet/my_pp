@@ -17,131 +17,127 @@
 
     <div v-else>
       <div class="p-2">
-        <div
-          v-for="item in history"
-          :key="item.id"
-          class="history-card bg-white rounded-lg shadow-md mb-4 overflow-hidden"
-        >
-          <!-- 基本信息 -->
-          <div class="p-4 border-b border-gray-100">
-            <div class="flex justify-between items-start">
-              <div>
-                <h3 v-if="item.name" class="font-bold text-lg text-gray-800">
-                  {{ item.name }}
-                </h3>
-                <p class="text-sm text-gray-500 mt-1">
-                  {{ formatDate(item.createdAt) }}
-                </p>
-              </div>
-              <van-button
-                type="primary"
-                size="small"
-                @click="viewRecord(item.id)"
-              >
-                查看详情
-              </van-button>
-            </div>
-          </div>
-
-          <!-- 四柱展示 -->
+        <template v-for="item in history" :key="item.id">
+          <van-divider />
           <div
-            v-if="item.result && (item.result as any).bazi"
-            class="p-4 bg-gray-50"
+            class="history-card bg-white rounded-lg shadow-md mb-4 overflow-hidden cursor-pointer"
+            @click="viewRecord(item.id)"
           >
-            <h4 class="text-sm font-semibold text-gray-600 mb-3">四柱八字</h4>
-            <div class="grid grid-cols-4 gap-2">
-              <div class="text-center">
-                <div class="text-xs text-gray-500 mb-1">年柱</div>
-                <div class="pillar-compact">
-                  <div class="ganzhi text-lg font-serif">
-                    <span
-                      :style="
+            <!-- 基本信息 -->
+            <div class="p-4 border-b border-gray-100">
+              <div class="flex justify-between items-start">
+                <div>
+                  <h3 v-if="item.name" class="font-bold text-lg text-gray-800">
+                    {{ item.name }}
+                  </h3>
+                  <p class="text-sm text-gray-500 mt-1">
+                    {{ formatDate(item.createdAt) }}
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- 四柱展示 -->
+            <div
+              v-if="item.result && (item.result as any).bazi"
+              class="p-4 bg-gray-50"
+            >
+              <h4 class="text-sm font-semibold text-gray-600 mb-3">四柱八字</h4>
+              <div class="grid grid-cols-4 gap-2">
+                <div class="text-center">
+                  <div class="text-xs text-gray-500 mb-1">年柱</div>
+                  <div class="pillar-compact">
+                    <div class="ganzhi text-lg font-serif">
+                      <span
+                        :style="
                         getWuxingColorStyle((item.result as any).bazi.year.wuxing.gan)
                       "
-                    >
-                      {{ (item.result as any).bazi.year.gan }}
-                    </span>
-                    <span
-                      :style="
+                      >
+                        {{ (item.result as any).bazi.year.gan }}
+                      </span>
+                      <span
+                        :style="
                         getWuxingColorStyle((item.result as any).bazi.year.wuxing.zhi)
                       "
-                    >
-                      {{ (item.result as any).bazi.year.zhi }}
-                    </span>
+                      >
+                        {{ (item.result as any).bazi.year.zhi }}
+                      </span>
+                    </div>
                   </div>
                 </div>
-              </div>
 
-              <div class="text-center">
-                <div class="text-xs text-gray-500 mb-1">月柱</div>
-                <div class="pillar-compact">
-                  <div class="ganzhi text-lg font-serif">
-                    <span
-                      :style="
+                <div class="text-center">
+                  <div class="text-xs text-gray-500 mb-1">月柱</div>
+                  <div class="pillar-compact">
+                    <div class="ganzhi text-lg font-serif">
+                      <span
+                        :style="
                         getWuxingColorStyle((item.result as any).bazi.month.wuxing.gan)
                       "
-                    >
-                      {{ (item.result as any).bazi.month.gan }}
-                    </span>
-                    <span
-                      :style="
+                      >
+                        {{ (item.result as any).bazi.month.gan }}
+                      </span>
+                      <span
+                        :style="
                         getWuxingColorStyle((item.result as any).bazi.month.wuxing.zhi)
                       "
-                    >
-                      {{ (item.result as any).bazi.month.zhi }}
-                    </span>
+                      >
+                        {{ (item.result as any).bazi.month.zhi }}
+                      </span>
+                    </div>
                   </div>
                 </div>
-              </div>
 
-              <div class="text-center">
-                <div class="text-xs text-gray-500 mb-1">日柱</div>
-                <div class="pillar-compact">
-                  <div class="ganzhi text-lg font-serif">
-                    <span
-                      :style="dayMasterStyle((item.result as any).bazi.day.wuxing.gan)"
-                    >
-                      {{ (item.result as any).bazi.day.gan }}
-                    </span>
-                    <span
-                      :style="
+                <div class="text-center">
+                  <div class="text-xs text-gray-500 mb-1">日柱</div>
+                  <div class="pillar-compact">
+                    <div class="ganzhi text-lg font-serif">
+                      <span
+                        :style="dayMasterStyle((item.result as any).bazi.day.wuxing.gan)"
+                      >
+                        {{ (item.result as any).bazi.day.gan }}
+                      </span>
+                      <span
+                        :style="
                         getWuxingColorStyle((item.result as any).bazi.day.wuxing.zhi)
                       "
-                    >
-                      {{ (item.result as any).bazi.day.zhi }}
-                    </span>
+                      >
+                        {{ (item.result as any).bazi.day.zhi }}
+                      </span>
+                    </div>
                   </div>
                 </div>
-              </div>
 
-              <div class="text-center">
-                <div class="text-xs text-gray-500 mb-1">时柱</div>
-                <div class="pillar-compact">
-                  <div
-                    v-if="(item.result as any).bazi.hour"
-                    class="ganzhi text-lg font-serif"
-                  >
-                    <span
-                      :style="
+                <div class="text-center">
+                  <div class="text-xs text-gray-500 mb-1">时柱</div>
+                  <div class="pillar-compact">
+                    <div
+                      v-if="(item.result as any).bazi.hour"
+                      class="ganzhi text-lg font-serif"
+                    >
+                      <span
+                        :style="
                         getWuxingColorStyle((item.result as any).bazi.hour.wuxing.gan)
                       "
-                    >
-                      {{ (item.result as any).bazi.hour.gan }}
-                    </span>
-                    <span
-                      :style="
+                      >
+                        {{ (item.result as any).bazi.hour.gan }}
+                      </span>
+                      <span
+                        :style="
                         getWuxingColorStyle((item.result as any).bazi.hour.wuxing.zhi)
                       "
-                    >
-                      {{ (item.result as any).bazi.hour.zhi }}
-                    </span>
+                      >
+                        {{ (item.result as any).bazi.hour.zhi }}
+                      </span>
+                    </div>
+                    <div v-else class="text-sm text-gray-400">未知</div>
                   </div>
-                  <div v-else class="text-sm text-gray-400">未知</div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
+          <van-divider />
+        </template>
       </div>
 
       <van-empty
