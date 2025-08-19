@@ -2,16 +2,19 @@
   <div class="pillar-card bg-white rounded-lg shadow-md p-3 text-center">
     <div class="pillar-title font-bold text-gray-600 mb-2">{{ title }}</div>
     <div class="ganzhi-display text-4xl font-serif mb-2">
-      <span :class="getWuxingColorClass(pillarData.wuxing.gan)">{{
+      <span :style="getWuxingColorStyle(pillarData.wuxing.gan)">{{
         pillarData.gan
       }}</span>
-      <span :class="getWuxingColorClass(pillarData.wuxing.zhi)">{{
+      <span :style="getWuxingColorStyle(pillarData.wuxing.zhi)">{{
         pillarData.zhi
       }}</span>
     </div>
     <div class="shishen-display text-sm text-gray-500 mb-2">
-      <span :class="getWuxingColorClass(pillarData.wuxing.gan)">{{
+      <span :style="getWuxingColorStyle(pillarData.wuxing.gan)">{{
         pillarData.shishen.gan
+      }}</span>
+      <span :style="getWuxingColorStyle(pillarData.wuxing.zhi)" class="ml-2">{{
+        pillarData.shishen.zhi
       }}</span>
     </div>
     <div class="canggan-grid mt-3 pt-3 border-t border-gray-200">
@@ -20,10 +23,10 @@
         :key="cg.char"
         class="canggan-item text-xs"
       >
-        <div :class="getWuxingColorClass(cg.wuxing)" class="font-mono">
+        <div :style="getWuxingColorStyle(cg.wuxing)" class="font-mono">
           {{ cg.char }}
         </div>
-        <div :class="getWuxingColorClass(cg.wuxing)">{{ cg.shishen }}</div>
+        <div :style="getWuxingColorStyle(cg.wuxing)">{{ cg.shishen }}</div>
       </div>
     </div>
   </div>
@@ -31,7 +34,7 @@
 
 <script setup lang="ts">
 import { defineProps } from "vue";
-import { getWuxingColorClass } from "~/utils/color";
+import { getWuxingColorStyle } from "@/utils/color";
 
 // 定义组件接收的 props
 interface GanZhiDetail {
