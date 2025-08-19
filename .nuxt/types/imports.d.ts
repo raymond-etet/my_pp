@@ -4,15 +4,15 @@ declare global {
   const abortNavigation: typeof import('../../node_modules/.pnpm/nuxt@4.0.3_@netlify+blobs@9_8184dc6e3cc90353bbc56ec2966327b6/node_modules/nuxt/dist/app/composables/router')['abortNavigation']
   const acceptHMRUpdate: typeof import('../../node_modules/.pnpm/@pinia+nuxt@0.11.2_magicast_30c91551447dbb9e8459a4aa025b7935/node_modules/@pinia/nuxt/dist/runtime/composables')['acceptHMRUpdate']
   const addRouteMiddleware: typeof import('../../node_modules/.pnpm/nuxt@4.0.3_@netlify+blobs@9_8184dc6e3cc90353bbc56ec2966327b6/node_modules/nuxt/dist/app/composables/router')['addRouteMiddleware']
-  const allowMultipleToast: typeof import('../../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/lib/vant.cjs')['allowMultipleToast']
+  const allowMultipleToast: typeof import('vant')['allowMultipleToast']
   const callOnce: typeof import('../../node_modules/.pnpm/nuxt@4.0.3_@netlify+blobs@9_8184dc6e3cc90353bbc56ec2966327b6/node_modules/nuxt/dist/app/composables/once')['callOnce']
   const cancelIdleCallback: typeof import('../../node_modules/.pnpm/nuxt@4.0.3_@netlify+blobs@9_8184dc6e3cc90353bbc56ec2966327b6/node_modules/nuxt/dist/app/compat/idle-callback')['cancelIdleCallback']
   const clearError: typeof import('../../node_modules/.pnpm/nuxt@4.0.3_@netlify+blobs@9_8184dc6e3cc90353bbc56ec2966327b6/node_modules/nuxt/dist/app/composables/error')['clearError']
   const clearNuxtData: typeof import('../../node_modules/.pnpm/nuxt@4.0.3_@netlify+blobs@9_8184dc6e3cc90353bbc56ec2966327b6/node_modules/nuxt/dist/app/composables/asyncData')['clearNuxtData']
   const clearNuxtState: typeof import('../../node_modules/.pnpm/nuxt@4.0.3_@netlify+blobs@9_8184dc6e3cc90353bbc56ec2966327b6/node_modules/nuxt/dist/app/composables/state')['clearNuxtState']
-  const closeDialog: typeof import('../../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/lib/vant.cjs')['closeDialog']
-  const closeNotify: typeof import('../../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/lib/vant.cjs')['closeNotify']
-  const closeToast: typeof import('../../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/lib/vant.cjs')['closeToast']
+  const closeDialog: typeof import('vant')['closeDialog']
+  const closeNotify: typeof import('vant')['closeNotify']
+  const closeToast: typeof import('vant')['closeToast']
   const computed: typeof import('../../node_modules/.pnpm/vue@3.5.18_typescript@5.9.2/node_modules/vue')['computed']
   const createError: typeof import('../../node_modules/.pnpm/nuxt@4.0.3_@netlify+blobs@9_8184dc6e3cc90353bbc56ec2966327b6/node_modules/nuxt/dist/app/composables/error')['createError']
   const customRef: typeof import('../../node_modules/.pnpm/vue@3.5.18_typescript@5.9.2/node_modules/vue')['customRef']
@@ -89,28 +89,28 @@ declare global {
   const refreshNuxtData: typeof import('../../node_modules/.pnpm/nuxt@4.0.3_@netlify+blobs@9_8184dc6e3cc90353bbc56ec2966327b6/node_modules/nuxt/dist/app/composables/asyncData')['refreshNuxtData']
   const reloadNuxtApp: typeof import('../../node_modules/.pnpm/nuxt@4.0.3_@netlify+blobs@9_8184dc6e3cc90353bbc56ec2966327b6/node_modules/nuxt/dist/app/composables/chunk')['reloadNuxtApp']
   const requestIdleCallback: typeof import('../../node_modules/.pnpm/nuxt@4.0.3_@netlify+blobs@9_8184dc6e3cc90353bbc56ec2966327b6/node_modules/nuxt/dist/app/compat/idle-callback')['requestIdleCallback']
-  const resetDialogDefaultOptions: typeof import('../../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/lib/vant.cjs')['resetDialogDefaultOptions']
-  const resetNotifyDefaultOptions: typeof import('../../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/lib/vant.cjs')['resetNotifyDefaultOptions']
-  const resetToastDefaultOptions: typeof import('../../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/lib/vant.cjs')['resetToastDefaultOptions']
+  const resetDialogDefaultOptions: typeof import('vant')['resetDialogDefaultOptions']
+  const resetNotifyDefaultOptions: typeof import('vant')['resetNotifyDefaultOptions']
+  const resetToastDefaultOptions: typeof import('vant')['resetToastDefaultOptions']
   const resolveComponent: typeof import('../../node_modules/.pnpm/vue@3.5.18_typescript@5.9.2/node_modules/vue')['resolveComponent']
-  const setDialogDefaultOptions: typeof import('../../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/lib/vant.cjs')['setDialogDefaultOptions']
+  const setDialogDefaultOptions: typeof import('vant')['setDialogDefaultOptions']
   const setInterval: typeof import('../../node_modules/.pnpm/nuxt@4.0.3_@netlify+blobs@9_8184dc6e3cc90353bbc56ec2966327b6/node_modules/nuxt/dist/app/compat/interval')['setInterval']
-  const setNotifyDefaultOptions: typeof import('../../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/lib/vant.cjs')['setNotifyDefaultOptions']
+  const setNotifyDefaultOptions: typeof import('vant')['setNotifyDefaultOptions']
   const setPageLayout: typeof import('../../node_modules/.pnpm/nuxt@4.0.3_@netlify+blobs@9_8184dc6e3cc90353bbc56ec2966327b6/node_modules/nuxt/dist/app/composables/router')['setPageLayout']
   const setResponseStatus: typeof import('../../node_modules/.pnpm/nuxt@4.0.3_@netlify+blobs@9_8184dc6e3cc90353bbc56ec2966327b6/node_modules/nuxt/dist/app/composables/ssr')['setResponseStatus']
-  const setToastDefaultOptions: typeof import('../../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/lib/vant.cjs')['setToastDefaultOptions']
+  const setToastDefaultOptions: typeof import('vant')['setToastDefaultOptions']
   const shallowReactive: typeof import('../../node_modules/.pnpm/vue@3.5.18_typescript@5.9.2/node_modules/vue')['shallowReactive']
   const shallowReadonly: typeof import('../../node_modules/.pnpm/vue@3.5.18_typescript@5.9.2/node_modules/vue')['shallowReadonly']
   const shallowRef: typeof import('../../node_modules/.pnpm/vue@3.5.18_typescript@5.9.2/node_modules/vue')['shallowRef']
-  const showConfirmDialog: typeof import('../../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/lib/vant.cjs')['showConfirmDialog']
-  const showDialog: typeof import('../../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/lib/vant.cjs')['showDialog']
+  const showConfirmDialog: typeof import('vant')['showConfirmDialog']
+  const showDialog: typeof import('vant')['showDialog']
   const showError: typeof import('../../node_modules/.pnpm/nuxt@4.0.3_@netlify+blobs@9_8184dc6e3cc90353bbc56ec2966327b6/node_modules/nuxt/dist/app/composables/error')['showError']
-  const showFailToast: typeof import('../../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/lib/vant.cjs')['showFailToast']
-  const showImagePreview: typeof import('../../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/lib/vant.cjs')['showImagePreview']
-  const showLoadingToast: typeof import('../../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/lib/vant.cjs')['showLoadingToast']
-  const showNotify: typeof import('../../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/lib/vant.cjs')['showNotify']
-  const showSuccessToast: typeof import('../../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/lib/vant.cjs')['showSuccessToast']
-  const showToast: typeof import('../../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/lib/vant.cjs')['showToast']
+  const showFailToast: typeof import('vant')['showFailToast']
+  const showImagePreview: typeof import('vant')['showImagePreview']
+  const showLoadingToast: typeof import('vant')['showLoadingToast']
+  const showNotify: typeof import('vant')['showNotify']
+  const showSuccessToast: typeof import('vant')['showSuccessToast']
+  const showToast: typeof import('vant')['showToast']
   const storeToRefs: typeof import('../../node_modules/.pnpm/@pinia+nuxt@0.11.2_magicast_30c91551447dbb9e8459a4aa025b7935/node_modules/@pinia/nuxt/dist/runtime/composables')['storeToRefs']
   const toRaw: typeof import('../../node_modules/.pnpm/vue@3.5.18_typescript@5.9.2/node_modules/vue')['toRaw']
   const toRef: typeof import('../../node_modules/.pnpm/vue@3.5.18_typescript@5.9.2/node_modules/vue')['toRef']
@@ -123,6 +123,7 @@ declare global {
   const useAppConfig: typeof import('../../node_modules/.pnpm/nuxt@4.0.3_@netlify+blobs@9_8184dc6e3cc90353bbc56ec2966327b6/node_modules/nuxt/dist/app/config')['useAppConfig']
   const useAsyncData: typeof import('../../node_modules/.pnpm/nuxt@4.0.3_@netlify+blobs@9_8184dc6e3cc90353bbc56ec2966327b6/node_modules/nuxt/dist/app/composables/asyncData')['useAsyncData']
   const useAttrs: typeof import('../../node_modules/.pnpm/vue@3.5.18_typescript@5.9.2/node_modules/vue')['useAttrs']
+  const useAuthStore: typeof import('../../stores/auth')['useAuthStore']
   const useCookie: typeof import('../../node_modules/.pnpm/nuxt@4.0.3_@netlify+blobs@9_8184dc6e3cc90353bbc56ec2966327b6/node_modules/nuxt/dist/app/composables/cookie')['useCookie']
   const useCssModule: typeof import('../../node_modules/.pnpm/vue@3.5.18_typescript@5.9.2/node_modules/vue')['useCssModule']
   const useCssVars: typeof import('../../node_modules/.pnpm/vue@3.5.18_typescript@5.9.2/node_modules/vue')['useCssVars']
@@ -214,15 +215,15 @@ declare module 'vue' {
     readonly abortNavigation: UnwrapRef<typeof import('../../node_modules/.pnpm/nuxt@4.0.3_@netlify+blobs@9_8184dc6e3cc90353bbc56ec2966327b6/node_modules/nuxt/dist/app/composables/router')['abortNavigation']>
     readonly acceptHMRUpdate: UnwrapRef<typeof import('../../node_modules/.pnpm/@pinia+nuxt@0.11.2_magicast_30c91551447dbb9e8459a4aa025b7935/node_modules/@pinia/nuxt/dist/runtime/composables')['acceptHMRUpdate']>
     readonly addRouteMiddleware: UnwrapRef<typeof import('../../node_modules/.pnpm/nuxt@4.0.3_@netlify+blobs@9_8184dc6e3cc90353bbc56ec2966327b6/node_modules/nuxt/dist/app/composables/router')['addRouteMiddleware']>
-    readonly allowMultipleToast: UnwrapRef<typeof import('../../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/lib/vant.cjs')['allowMultipleToast']>
+    readonly allowMultipleToast: UnwrapRef<typeof import('vant')['allowMultipleToast']>
     readonly callOnce: UnwrapRef<typeof import('../../node_modules/.pnpm/nuxt@4.0.3_@netlify+blobs@9_8184dc6e3cc90353bbc56ec2966327b6/node_modules/nuxt/dist/app/composables/once')['callOnce']>
     readonly cancelIdleCallback: UnwrapRef<typeof import('../../node_modules/.pnpm/nuxt@4.0.3_@netlify+blobs@9_8184dc6e3cc90353bbc56ec2966327b6/node_modules/nuxt/dist/app/compat/idle-callback')['cancelIdleCallback']>
     readonly clearError: UnwrapRef<typeof import('../../node_modules/.pnpm/nuxt@4.0.3_@netlify+blobs@9_8184dc6e3cc90353bbc56ec2966327b6/node_modules/nuxt/dist/app/composables/error')['clearError']>
     readonly clearNuxtData: UnwrapRef<typeof import('../../node_modules/.pnpm/nuxt@4.0.3_@netlify+blobs@9_8184dc6e3cc90353bbc56ec2966327b6/node_modules/nuxt/dist/app/composables/asyncData')['clearNuxtData']>
     readonly clearNuxtState: UnwrapRef<typeof import('../../node_modules/.pnpm/nuxt@4.0.3_@netlify+blobs@9_8184dc6e3cc90353bbc56ec2966327b6/node_modules/nuxt/dist/app/composables/state')['clearNuxtState']>
-    readonly closeDialog: UnwrapRef<typeof import('../../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/lib/vant.cjs')['closeDialog']>
-    readonly closeNotify: UnwrapRef<typeof import('../../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/lib/vant.cjs')['closeNotify']>
-    readonly closeToast: UnwrapRef<typeof import('../../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/lib/vant.cjs')['closeToast']>
+    readonly closeDialog: UnwrapRef<typeof import('vant')['closeDialog']>
+    readonly closeNotify: UnwrapRef<typeof import('vant')['closeNotify']>
+    readonly closeToast: UnwrapRef<typeof import('vant')['closeToast']>
     readonly computed: UnwrapRef<typeof import('../../node_modules/.pnpm/vue@3.5.18_typescript@5.9.2/node_modules/vue')['computed']>
     readonly createError: UnwrapRef<typeof import('../../node_modules/.pnpm/nuxt@4.0.3_@netlify+blobs@9_8184dc6e3cc90353bbc56ec2966327b6/node_modules/nuxt/dist/app/composables/error')['createError']>
     readonly customRef: UnwrapRef<typeof import('../../node_modules/.pnpm/vue@3.5.18_typescript@5.9.2/node_modules/vue')['customRef']>
@@ -299,28 +300,28 @@ declare module 'vue' {
     readonly refreshNuxtData: UnwrapRef<typeof import('../../node_modules/.pnpm/nuxt@4.0.3_@netlify+blobs@9_8184dc6e3cc90353bbc56ec2966327b6/node_modules/nuxt/dist/app/composables/asyncData')['refreshNuxtData']>
     readonly reloadNuxtApp: UnwrapRef<typeof import('../../node_modules/.pnpm/nuxt@4.0.3_@netlify+blobs@9_8184dc6e3cc90353bbc56ec2966327b6/node_modules/nuxt/dist/app/composables/chunk')['reloadNuxtApp']>
     readonly requestIdleCallback: UnwrapRef<typeof import('../../node_modules/.pnpm/nuxt@4.0.3_@netlify+blobs@9_8184dc6e3cc90353bbc56ec2966327b6/node_modules/nuxt/dist/app/compat/idle-callback')['requestIdleCallback']>
-    readonly resetDialogDefaultOptions: UnwrapRef<typeof import('../../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/lib/vant.cjs')['resetDialogDefaultOptions']>
-    readonly resetNotifyDefaultOptions: UnwrapRef<typeof import('../../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/lib/vant.cjs')['resetNotifyDefaultOptions']>
-    readonly resetToastDefaultOptions: UnwrapRef<typeof import('../../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/lib/vant.cjs')['resetToastDefaultOptions']>
+    readonly resetDialogDefaultOptions: UnwrapRef<typeof import('vant')['resetDialogDefaultOptions']>
+    readonly resetNotifyDefaultOptions: UnwrapRef<typeof import('vant')['resetNotifyDefaultOptions']>
+    readonly resetToastDefaultOptions: UnwrapRef<typeof import('vant')['resetToastDefaultOptions']>
     readonly resolveComponent: UnwrapRef<typeof import('../../node_modules/.pnpm/vue@3.5.18_typescript@5.9.2/node_modules/vue')['resolveComponent']>
-    readonly setDialogDefaultOptions: UnwrapRef<typeof import('../../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/lib/vant.cjs')['setDialogDefaultOptions']>
+    readonly setDialogDefaultOptions: UnwrapRef<typeof import('vant')['setDialogDefaultOptions']>
     readonly setInterval: UnwrapRef<typeof import('../../node_modules/.pnpm/nuxt@4.0.3_@netlify+blobs@9_8184dc6e3cc90353bbc56ec2966327b6/node_modules/nuxt/dist/app/compat/interval')['setInterval']>
-    readonly setNotifyDefaultOptions: UnwrapRef<typeof import('../../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/lib/vant.cjs')['setNotifyDefaultOptions']>
+    readonly setNotifyDefaultOptions: UnwrapRef<typeof import('vant')['setNotifyDefaultOptions']>
     readonly setPageLayout: UnwrapRef<typeof import('../../node_modules/.pnpm/nuxt@4.0.3_@netlify+blobs@9_8184dc6e3cc90353bbc56ec2966327b6/node_modules/nuxt/dist/app/composables/router')['setPageLayout']>
     readonly setResponseStatus: UnwrapRef<typeof import('../../node_modules/.pnpm/nuxt@4.0.3_@netlify+blobs@9_8184dc6e3cc90353bbc56ec2966327b6/node_modules/nuxt/dist/app/composables/ssr')['setResponseStatus']>
-    readonly setToastDefaultOptions: UnwrapRef<typeof import('../../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/lib/vant.cjs')['setToastDefaultOptions']>
+    readonly setToastDefaultOptions: UnwrapRef<typeof import('vant')['setToastDefaultOptions']>
     readonly shallowReactive: UnwrapRef<typeof import('../../node_modules/.pnpm/vue@3.5.18_typescript@5.9.2/node_modules/vue')['shallowReactive']>
     readonly shallowReadonly: UnwrapRef<typeof import('../../node_modules/.pnpm/vue@3.5.18_typescript@5.9.2/node_modules/vue')['shallowReadonly']>
     readonly shallowRef: UnwrapRef<typeof import('../../node_modules/.pnpm/vue@3.5.18_typescript@5.9.2/node_modules/vue')['shallowRef']>
-    readonly showConfirmDialog: UnwrapRef<typeof import('../../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/lib/vant.cjs')['showConfirmDialog']>
-    readonly showDialog: UnwrapRef<typeof import('../../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/lib/vant.cjs')['showDialog']>
+    readonly showConfirmDialog: UnwrapRef<typeof import('vant')['showConfirmDialog']>
+    readonly showDialog: UnwrapRef<typeof import('vant')['showDialog']>
     readonly showError: UnwrapRef<typeof import('../../node_modules/.pnpm/nuxt@4.0.3_@netlify+blobs@9_8184dc6e3cc90353bbc56ec2966327b6/node_modules/nuxt/dist/app/composables/error')['showError']>
-    readonly showFailToast: UnwrapRef<typeof import('../../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/lib/vant.cjs')['showFailToast']>
-    readonly showImagePreview: UnwrapRef<typeof import('../../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/lib/vant.cjs')['showImagePreview']>
-    readonly showLoadingToast: UnwrapRef<typeof import('../../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/lib/vant.cjs')['showLoadingToast']>
-    readonly showNotify: UnwrapRef<typeof import('../../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/lib/vant.cjs')['showNotify']>
-    readonly showSuccessToast: UnwrapRef<typeof import('../../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/lib/vant.cjs')['showSuccessToast']>
-    readonly showToast: UnwrapRef<typeof import('../../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/lib/vant.cjs')['showToast']>
+    readonly showFailToast: UnwrapRef<typeof import('vant')['showFailToast']>
+    readonly showImagePreview: UnwrapRef<typeof import('vant')['showImagePreview']>
+    readonly showLoadingToast: UnwrapRef<typeof import('vant')['showLoadingToast']>
+    readonly showNotify: UnwrapRef<typeof import('vant')['showNotify']>
+    readonly showSuccessToast: UnwrapRef<typeof import('vant')['showSuccessToast']>
+    readonly showToast: UnwrapRef<typeof import('vant')['showToast']>
     readonly storeToRefs: UnwrapRef<typeof import('../../node_modules/.pnpm/@pinia+nuxt@0.11.2_magicast_30c91551447dbb9e8459a4aa025b7935/node_modules/@pinia/nuxt/dist/runtime/composables')['storeToRefs']>
     readonly toRaw: UnwrapRef<typeof import('../../node_modules/.pnpm/vue@3.5.18_typescript@5.9.2/node_modules/vue')['toRaw']>
     readonly toRef: UnwrapRef<typeof import('../../node_modules/.pnpm/vue@3.5.18_typescript@5.9.2/node_modules/vue')['toRef']>
@@ -333,6 +334,7 @@ declare module 'vue' {
     readonly useAppConfig: UnwrapRef<typeof import('../../node_modules/.pnpm/nuxt@4.0.3_@netlify+blobs@9_8184dc6e3cc90353bbc56ec2966327b6/node_modules/nuxt/dist/app/config')['useAppConfig']>
     readonly useAsyncData: UnwrapRef<typeof import('../../node_modules/.pnpm/nuxt@4.0.3_@netlify+blobs@9_8184dc6e3cc90353bbc56ec2966327b6/node_modules/nuxt/dist/app/composables/asyncData')['useAsyncData']>
     readonly useAttrs: UnwrapRef<typeof import('../../node_modules/.pnpm/vue@3.5.18_typescript@5.9.2/node_modules/vue')['useAttrs']>
+    readonly useAuthStore: UnwrapRef<typeof import('../../stores/auth')['useAuthStore']>
     readonly useCookie: UnwrapRef<typeof import('../../node_modules/.pnpm/nuxt@4.0.3_@netlify+blobs@9_8184dc6e3cc90353bbc56ec2966327b6/node_modules/nuxt/dist/app/composables/cookie')['useCookie']>
     readonly useCssModule: UnwrapRef<typeof import('../../node_modules/.pnpm/vue@3.5.18_typescript@5.9.2/node_modules/vue')['useCssModule']>
     readonly useCssVars: UnwrapRef<typeof import('../../node_modules/.pnpm/vue@3.5.18_typescript@5.9.2/node_modules/vue')['useCssVars']>

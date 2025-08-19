@@ -15,7 +15,6 @@ generator client {
 // “排盘”数据模型定义
 model PaiPan {
   id        Int      @id @default(autoincrement()) // 唯一ID，自增
-  name      String?  // 用户名（可选）
   year      Int      // 出生年份
   month     Int      // 出生月份
   day       Int      // 出生日期
@@ -23,4 +22,19 @@ model PaiPan {
   gender    String   // 性别
   createdAt DateTime @default(now()) // 记录创建时间
   result    Json     // 存储计算后的完整排盘结果，JSON格式
+
+  // 与User模型关联
+  user   User @relation(fields: [userId], references: [id])
+  userId Int
+}
+
+// 用户数据模型
+model User {
+  id        Int      @id @default(autoincrement()) // 唯一ID，自增
+  username  String   @unique // 用户名，唯一
+  password  String   // 密码（存储加密后的哈希值）
+  createdAt DateTime @default(now()) // 账户创建时间
+
+  // 关联排盘记录
+  paiPans PaiPan[]
 }

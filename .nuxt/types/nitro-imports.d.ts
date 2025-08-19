@@ -92,6 +92,7 @@ declare global {
   const nayins: typeof import('../../server/utils/baziData')['nayins']
   const nitroPlugin: typeof import('../../node_modules/.pnpm/nitropack@2.12.4_@netlify+blobs@9.1.2/node_modules/nitropack/dist/runtime/internal/plugin')['nitroPlugin']
   const parseCookies: typeof import('../../node_modules/.pnpm/h3@1.15.4/node_modules/h3')['parseCookies']
+  const prisma: typeof import('../../server/utils/prisma')['default']
   const promisifyNodeListener: typeof import('../../node_modules/.pnpm/h3@1.15.4/node_modules/h3')['promisifyNodeListener']
   const proxyRequest: typeof import('../../node_modules/.pnpm/h3@1.15.4/node_modules/h3')['proxyRequest']
   const readBody: typeof import('../../node_modules/.pnpm/h3@1.15.4/node_modules/h3')['readBody']
@@ -162,3 +163,4 @@ export { defineAppConfig } from 'D:/code_all/bazi/my_pp/node_modules/.pnpm/nuxt@
 export { getShiShen, getCangGan, createGanZhiDetail } from 'D:/code_all/bazi/my_pp/server/utils/baziCalc';
 export { Gan, Zhi, gan5, zhi5, cangGan, fiveElementsColor, ten_deities, nayins } from 'D:/code_all/bazi/my_pp/server/utils/baziData';
 export { getLunarBazi, getFullLunarBaziData, testLunarBaziCalculation } from 'D:/code_all/bazi/my_pp/server/utils/lunarBazi';
+export { default as prisma } from 'D:/code_all/bazi/my_pp/server/utils/prisma';

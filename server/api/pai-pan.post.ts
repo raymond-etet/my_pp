@@ -1,16 +1,18 @@
 // server/api/pai-pan.post.ts
-import pkg from "@prisma/client";
-const { PrismaClient } = pkg;
-
 import { getFullLunarBaziData } from "../utils/lunarBazi";
 import { createGanZhiDetail } from "../utils/baziCalc";
-import { defineEventHandler, readBody, createError } from "h3";
-
-const prisma = new PrismaClient({
-  log: ["query", "info", "warn", "error"],
-});
+import prisma from "~/server/utils/prisma";
 
 export default defineEventHandler(async (event) => {
+  // 1. 检查用户是否已登录
+  const user = event.context.user;
+  if (!user) {
+    throw createError({
+      statusCode: 401,
+      statusMessage: "用户未登录",
+    });
+  }
+
   const body = await readBody(event);
   const {
     year: yearStr,
@@ -136,7 +138,8 @@ export default defineEventHandler(async (event) => {
         hour,
         gender, // 性别是必填项
         result: JSON.parse(JSON.stringify(resultPayload)),
-      } as any,
+        userId: user.userId, // 关联用户ID
+      },
     });
 
     // 7. 返回完整结果

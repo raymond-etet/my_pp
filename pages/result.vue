@@ -81,14 +81,12 @@
     </div>
 
     <!-- 无数据状态 -->
+    <!-- 无数据且无ID查询时，引导用户去首页 -->
     <div v-else class="text-center py-20">
-      <p class="text-gray-500">此命盘记录不存在或已失效。</p>
-      <button
-        @click="goToHome"
-        class="mt-6 px-6 py-2 bg-blue-500 text-white rounded-full shadow-md hover:bg-blue-600"
-      >
-        重新排盘
-      </button>
+      <p class="text-gray-500">没有排盘记录。</p>
+      <van-button type="primary" class="mt-4" @click="goToHome">
+        去排盘
+      </van-button>
     </div>
   </div>
 </template>
@@ -122,14 +120,15 @@ if (result.value && !result.value.form) {
 onMounted(async () => {
   const id = route.query.id as string | undefined;
 
-  // 如果 store 中没有结果，但 URL 中有 id，则从后端获取
-  // 这种场景通常是分享链接或刷新页面
-  if (!result.value && id) {
-    await userStore.fetchPaiPanById(id);
-  } else if (!result.value && !id) {
-    // 如果既没有结果也没有id，可能是直接访问了/result页面
-    errorMsg.value = "没有有效的命盘信息，请先从首页输入生辰。";
+  // 场景1：从分享链接或历史记录进入，URL中带id
+  if (id) {
+    // 如果当前store的结果不是这个id的，或者store中没结果，则重新获取
+    if (!result.value || result.value.id !== parseInt(id)) {
+      await userStore.fetchPaiPanById(id);
+    }
   }
+  // 场景2：从底部导航“排盘结果”进入，URL中没有id
+  // 此时result依赖Pinia的状态，如果Pinia中没有，则页面会显示“没有排盘记录”
 });
 
 // --- 方法 ---

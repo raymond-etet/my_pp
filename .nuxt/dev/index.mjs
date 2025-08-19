@@ -3,9 +3,10 @@ import { Server } from 'node:http';
 import { resolve, dirname, join } from 'node:path';
 import nodeCrypto from 'node:crypto';
 import { parentPort, threadId } from 'node:worker_threads';
-import { defineEventHandler, handleCacheHeaders, splitCookiesString, createEvent, fetchWithEvent, isEvent, eventHandler, setHeaders, sendRedirect, proxyRequest, getRequestHeader, setResponseHeaders, setResponseStatus, send, getRequestHeaders, setResponseHeader, appendResponseHeader, getRequestURL, getResponseHeader, removeResponseHeader, createError, getQuery as getQuery$1, readBody, createApp, createRouter as createRouter$1, toNodeListener, lazyEventHandler, getResponseStatus, getRouterParam, getResponseStatusText } from 'file://D:/code_all/bazi/my_pp/node_modules/.pnpm/h3@1.15.4/node_modules/h3/dist/index.mjs';
+import { defineEventHandler, handleCacheHeaders, splitCookiesString, createEvent, fetchWithEvent, isEvent, eventHandler, setHeaders, sendRedirect, proxyRequest, getRequestHeader, setResponseHeaders, setResponseStatus, send, getRequestHeaders, setResponseHeader, appendResponseHeader, getRequestURL, getResponseHeader, removeResponseHeader, createError, getRequestPath, getHeader, getQuery as getQuery$1, readBody, createApp, createRouter as createRouter$1, toNodeListener, lazyEventHandler, getResponseStatus, getRouterParam, getResponseStatusText } from 'file://D:/code_all/bazi/my_pp/node_modules/.pnpm/h3@1.15.4/node_modules/h3/dist/index.mjs';
 import { escapeHtml } from 'file://D:/code_all/bazi/my_pp/node_modules/.pnpm/@vue+shared@3.5.18/node_modules/@vue/shared/dist/shared.cjs.js';
-import pkg from 'file://D:/code_all/bazi/my_pp/node_modules/.pnpm/@prisma+client@6.14.0_prism_1307bfd5debd11780ac8d9f5d0df4285/node_modules/@prisma/client/default.js';
+import bcrypt from 'file://D:/code_all/bazi/my_pp/node_modules/.pnpm/bcrypt@6.0.0/node_modules/bcrypt/bcrypt.js';
+import jwt from 'file://D:/code_all/bazi/my_pp/node_modules/.pnpm/jsonwebtoken@9.0.2/node_modules/jsonwebtoken/index.js';
 import { Lunar, Solar } from 'file://D:/code_all/bazi/my_pp/node_modules/.pnpm/lunar-javascript@1.7.3/node_modules/lunar-javascript/index.js';
 import { createRenderer, getRequestDependencies, getPreloadLinks, getPrefetchLinks } from 'file://D:/code_all/bazi/my_pp/node_modules/.pnpm/vue-bundle-renderer@2.1.2/node_modules/vue-bundle-renderer/dist/runtime.mjs';
 import { parseURL, withoutBase, joinURL, getQuery, withQuery, withTrailingSlash, decodePath, withLeadingSlash, withoutTrailingSlash, joinRelativeURL } from 'file://D:/code_all/bazi/my_pp/node_modules/.pnpm/ufo@1.6.1/node_modules/ufo/dist/index.mjs';
@@ -35,6 +36,7 @@ import { captureRawStackTrace, parseRawStackTrace } from 'file://D:/code_all/baz
 import { promises } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { dirname as dirname$1, resolve as resolve$1 } from 'file://D:/code_all/bazi/my_pp/node_modules/.pnpm/pathe@2.0.3/node_modules/pathe/dist/index.mjs';
+import { PrismaClient } from 'file://D:/code_all/bazi/my_pp/node_modules/.pnpm/@prisma+client@6.14.0_prism_1307bfd5debd11780ac8d9f5d0df4285/node_modules/@prisma/client/default.js';
 import { walkResolver } from 'file://D:/code_all/bazi/my_pp/node_modules/.pnpm/unhead@2.0.14/node_modules/unhead/dist/utils.mjs';
 
 const serverAssets = [{"baseName":"server","dir":"D:/code_all/bazi/my_pp/server/assets"}];
@@ -1205,6 +1207,45 @@ const _ZQoRih = eventHandler((event) => {
   return readAsset(id);
 });
 
+var _a;
+const prismaClientSingleton = () => {
+  return new PrismaClient();
+};
+const prisma = (_a = globalThis.__prisma) != null ? _a : prismaClientSingleton();
+globalThis.__prisma = prisma;
+
+const JWT_SECRET$1 = "your-super-secret-key-that-should-be-in-env-file";
+const _VHx3Yj = defineEventHandler(async (event) => {
+  const publicRoutes = ["/api/auth/login", "/api/auth/register"];
+  const path = getRequestPath(event);
+  if (publicRoutes.includes(path)) {
+    return;
+  }
+  if (!path.startsWith("/api/")) {
+    return;
+  }
+  const authHeader = getHeader(event, "Authorization");
+  if (!authHeader || !authHeader.startsWith("Bearer ")) {
+    return;
+  }
+  const token = authHeader.substring(7);
+  try {
+    const decoded = jwt.verify(token, JWT_SECRET$1);
+    const user = await prisma.user.findUnique({
+      where: { id: decoded.userId },
+      select: { id: true, username: true }
+      // 只选择需要的字段
+    });
+    if (user) {
+      event.context.user = {
+        userId: user.id,
+        username: user.username
+      };
+    }
+  } catch (error) {
+  }
+});
+
 const VueResolver = (_, value) => {
   return isRef(value) ? toValue(value) : value;
 };
@@ -1523,12 +1564,19 @@ async function getIslandContext(event) {
   return ctx;
 }
 
+const _lazy_LLZ5I8 = () => Promise.resolve().then(function () { return login_post$1; });
+const _lazy_dAB4z0 = () => Promise.resolve().then(function () { return me_get$1; });
+const _lazy_VWJwvT = () => Promise.resolve().then(function () { return register_post$1; });
 const _lazy_Yu9wG8 = () => Promise.resolve().then(function () { return paiPan_post$1; });
 const _lazy_l1JEnX = () => Promise.resolve().then(function () { return history_get$1; });
 const _lazy_YUC4DA = () => Promise.resolve().then(function () { return renderer$1; });
 
 const handlers = [
   { route: '', handler: _ZQoRih, lazy: false, middleware: true, method: undefined },
+  { route: '', handler: _VHx3Yj, lazy: false, middleware: true, method: undefined },
+  { route: '/api/auth/login', handler: _lazy_LLZ5I8, lazy: true, middleware: false, method: "post" },
+  { route: '/api/auth/me', handler: _lazy_dAB4z0, lazy: true, middleware: false, method: "get" },
+  { route: '/api/auth/register', handler: _lazy_VWJwvT, lazy: true, middleware: false, method: "post" },
   { route: '/api/pai-pan', handler: _lazy_Yu9wG8, lazy: true, middleware: false, method: "post" },
   { route: '/api/pai-pan/history', handler: _lazy_l1JEnX, lazy: true, middleware: false, method: "get" },
   { route: '/__nuxt_error', handler: _lazy_YUC4DA, lazy: true, middleware: false, method: undefined },
@@ -1861,6 +1909,147 @@ const styles$1 = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
   default: styles
 }, Symbol.toStringTag, { value: 'Module' }));
 
+const JWT_SECRET = "your-super-secret-key-that-should-be-in-env-file";
+const login_post = defineEventHandler(async (event) => {
+  try {
+    const body = await readBody(event);
+    const { username, password } = body;
+    if (!username || !password) {
+      throw createError({
+        statusCode: 400,
+        statusMessage: "\u7528\u6237\u540D\u548C\u5BC6\u7801\u4E0D\u80FD\u4E3A\u7A7A"
+      });
+    }
+    const user = await prisma.user.findUnique({
+      where: { username }
+    });
+    if (!user) {
+      throw createError({
+        statusCode: 401,
+        // Unauthorized
+        statusMessage: "\u7528\u6237\u540D\u6216\u5BC6\u7801\u9519\u8BEF"
+      });
+    }
+    const isPasswordValid = await bcrypt.compare(password, user.password);
+    if (!isPasswordValid) {
+      throw createError({
+        statusCode: 401,
+        // Unauthorized
+        statusMessage: "\u7528\u6237\u540D\u6216\u5BC6\u7801\u9519\u8BEF"
+      });
+    }
+    const token = jwt.sign(
+      {
+        userId: user.id,
+        username: user.username
+      },
+      JWT_SECRET,
+      { expiresIn: "7d" }
+      // Token 有效期为 7 天
+    );
+    return {
+      token,
+      user: {
+        id: user.id,
+        username: user.username
+      }
+    };
+  } catch (error) {
+    if (error.statusCode) {
+      throw error;
+    }
+    console.error("\u767B\u5F55\u5931\u8D25:", error);
+    throw createError({
+      statusCode: 500,
+      statusMessage: "\u670D\u52A1\u5668\u5185\u90E8\u9519\u8BEF\uFF0C\u767B\u5F55\u5931\u8D25"
+    });
+  }
+});
+
+const login_post$1 = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
+  __proto__: null,
+  default: login_post
+}, Symbol.toStringTag, { value: 'Module' }));
+
+const me_get = defineEventHandler((event) => {
+  const user = event.context.user;
+  if (!user) {
+    throw createError({
+      statusCode: 401,
+      // Unauthorized
+      statusMessage: "\u7528\u6237\u672A\u8BA4\u8BC1\u6216 Token \u65E0\u6548"
+    });
+  }
+  return {
+    user: {
+      id: user.userId,
+      username: user.username
+    }
+  };
+});
+
+const me_get$1 = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
+  __proto__: null,
+  default: me_get
+}, Symbol.toStringTag, { value: 'Module' }));
+
+const SALT_ROUNDS = 10;
+const register_post = defineEventHandler(async (event) => {
+  try {
+    const body = await readBody(event);
+    const { username, password } = body;
+    if (!username || !password) {
+      throw createError({
+        statusCode: 400,
+        statusMessage: "\u7528\u6237\u540D\u548C\u5BC6\u7801\u4E0D\u80FD\u4E3A\u7A7A"
+      });
+    }
+    if (password.length < 6) {
+      throw createError({
+        statusCode: 400,
+        statusMessage: "\u5BC6\u7801\u957F\u5EA6\u4E0D\u80FD\u5C11\u4E8E6\u4F4D"
+      });
+    }
+    const existingUser = await prisma.user.findUnique({
+      where: { username }
+    });
+    if (existingUser) {
+      throw createError({
+        statusCode: 409,
+        // Conflict
+        statusMessage: "\u8BE5\u7528\u6237\u540D\u5DF2\u88AB\u6CE8\u518C"
+      });
+    }
+    const hashedPassword = await bcrypt.hash(password, SALT_ROUNDS);
+    const user = await prisma.user.create({
+      data: {
+        username,
+        password: hashedPassword
+      }
+    });
+    setResponseStatus(event, 201);
+    return {
+      id: user.id,
+      username: user.username,
+      createdAt: user.createdAt
+    };
+  } catch (error) {
+    if (error.statusCode) {
+      throw error;
+    }
+    console.error("\u6CE8\u518C\u5931\u8D25:", error);
+    throw createError({
+      statusCode: 500,
+      statusMessage: "\u670D\u52A1\u5668\u5185\u90E8\u9519\u8BEF\uFF0C\u6CE8\u518C\u5931\u8D25"
+    });
+  }
+});
+
+const register_post$1 = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
+  __proto__: null,
+  default: register_post
+}, Symbol.toStringTag, { value: 'Module' }));
+
 function getFullLunarBaziData(year, month, day, hour, gender, calendarType = "solar") {
   try {
     let solar;
@@ -2102,11 +2291,14 @@ function createGanZhiDetail(gan, zhi, dayGan, year) {
   return detail;
 }
 
-const { PrismaClient: PrismaClient$1 } = pkg;
-const prisma$1 = new PrismaClient$1({
-  log: ["query", "info", "warn", "error"]
-});
 const paiPan_post = defineEventHandler(async (event) => {
+  const user = event.context.user;
+  if (!user) {
+    throw createError({
+      statusCode: 401,
+      statusMessage: "\u7528\u6237\u672A\u767B\u5F55"
+    });
+  }
   const body = await readBody(event);
   const {
     year: yearStr,
@@ -2211,7 +2403,7 @@ const paiPan_post = defineEventHandler(async (event) => {
       dayun: dayuns
       // 覆盖为新的大运数据
     };
-    const savedRecord = await prisma$1.paiPan.create({
+    const savedRecord = await prisma.paiPan.create({
       data: {
         year,
         month,
@@ -2219,7 +2411,9 @@ const paiPan_post = defineEventHandler(async (event) => {
         hour,
         gender,
         // 性别是必填项
-        result: JSON.parse(JSON.stringify(resultPayload))
+        result: JSON.parse(JSON.stringify(resultPayload)),
+        userId: user.userId
+        // 关联用户ID
       }
     });
     return {
@@ -2240,53 +2434,40 @@ const paiPan_post$1 = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.definePrope
   default: paiPan_post
 }, Symbol.toStringTag, { value: 'Module' }));
 
-const { PrismaClient } = pkg;
-const prisma = new PrismaClient();
 const history_get = defineEventHandler(async (event) => {
-  const query = getQuery$1(event);
-  const id = parseInt(query.id, 10);
-  if (isNaN(id)) {
+  const user = event.context.user;
+  if (!user) {
     throw createError({
-      statusCode: 400,
-      statusMessage: "ID \u65E0\u6548"
+      statusCode: 401,
+      statusMessage: "\u7528\u6237\u672A\u767B\u5F55"
     });
   }
   try {
-    const record = await prisma.paiPan.findUnique({
+    const historyRecords = await prisma.paiPan.findMany({
       where: {
-        id
+        userId: user.userId
+        // 只查找属于当前用户的记录
+      },
+      select: {
+        id: true,
+        year: true,
+        month: true,
+        day: true,
+        hour: true,
+        gender: true,
+        createdAt: true
+      },
+      orderBy: {
+        createdAt: "desc"
+        // 按创建时间降序排序
       }
     });
-    if (!record) {
-      throw createError({
-        statusCode: 404,
-        statusMessage: "\u672A\u627E\u5230\u8BE5\u8BB0\u5F55"
-      });
-    }
-    if (typeof record.result !== "object" || record.result === null) {
-      throw createError({
-        statusCode: 500,
-        statusMessage: "\u6570\u636E\u5E93\u4E2D\u5B58\u50A8\u7684\u6392\u76D8\u7ED3\u679C\u683C\u5F0F\u4E0D\u6B63\u786E"
-      });
-    }
-    const result_json = record.result;
-    return {
-      id: record.id,
-      year: record.year,
-      month: record.month,
-      day: record.day,
-      hour: record.hour,
-      ...result_json
-      // 将解析后的 JSON 结果展开
-    };
+    return historyRecords;
   } catch (error) {
-    if (error.statusCode) {
-      throw error;
-    }
     console.error("\u67E5\u8BE2\u5386\u53F2\u8BB0\u5F55\u5931\u8D25:", error);
     throw createError({
       statusCode: 500,
-      statusMessage: "\u670D\u52A1\u5668\u5185\u90E8\u9519\u8BEF"
+      statusMessage: "\u670D\u52A1\u5668\u5185\u90E8\u9519\u8BEF\uFF0C\u67E5\u8BE2\u5386\u53F2\u8BB0\u5F55\u5931\u8D25"
     });
   }
 });

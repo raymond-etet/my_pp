@@ -55,10 +55,10 @@ interface _GlobalComponents {
     'VanContactList': typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/contact-list/ContactList")['default']
     'VanCountDown': typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/count-down/CountDown")['default']
     'VanCoupon': typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/coupon/Coupon")['default']
-    'VanCouponCell': typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/coupon-cell/CouponCell")['default']
     'VanCouponList': typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/coupon-list/CouponList")['default']
     'VanDatePicker': typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/date-picker/DatePicker")['default']
     'VanDialog': typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/dialog/Dialog")['default']
+    'VanCouponCell': typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/coupon-cell/CouponCell")['default']
     'VanDivider': typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/divider/Divider")['default']
     'VanDropdownItem': typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/dropdown-item/DropdownItem")['default']
     'VanDropdownMenu': typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/dropdown-menu/DropdownMenu")['default']
@@ -82,8 +82,8 @@ interface _GlobalComponents {
     'VanNotify': typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/notify/Notify")['default']
     'VanNumberKeyboard': typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/number-keyboard/NumberKeyboard")['default']
     'VanOverlay': typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/overlay/Overlay")['default']
-    'VanPasswordInput': typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/password-input/PasswordInput")['default']
     'VanPagination': typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/pagination/Pagination")['default']
+    'VanPasswordInput': typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/password-input/PasswordInput")['default']
     'VanPicker': typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/picker/Picker")['default']
     'VanPickerGroup': typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/picker-group/PickerGroup")['default']
     'VanPopover': typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/popover/Popover")['default']
@@ -182,10 +182,10 @@ interface _GlobalComponents {
     'LazyVanContactList': LazyComponent<typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/contact-list/ContactList")['default']>
     'LazyVanCountDown': LazyComponent<typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/count-down/CountDown")['default']>
     'LazyVanCoupon': LazyComponent<typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/coupon/Coupon")['default']>
-    'LazyVanCouponCell': LazyComponent<typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/coupon-cell/CouponCell")['default']>
     'LazyVanCouponList': LazyComponent<typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/coupon-list/CouponList")['default']>
     'LazyVanDatePicker': LazyComponent<typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/date-picker/DatePicker")['default']>
     'LazyVanDialog': LazyComponent<typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/dialog/Dialog")['default']>
+    'LazyVanCouponCell': LazyComponent<typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/coupon-cell/CouponCell")['default']>
     'LazyVanDivider': LazyComponent<typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/divider/Divider")['default']>
     'LazyVanDropdownItem': LazyComponent<typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/dropdown-item/DropdownItem")['default']>
     'LazyVanDropdownMenu': LazyComponent<typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/dropdown-menu/DropdownMenu")['default']>
@@ -209,8 +209,8 @@ interface _GlobalComponents {
     'LazyVanNotify': LazyComponent<typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/notify/Notify")['default']>
     'LazyVanNumberKeyboard': LazyComponent<typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/number-keyboard/NumberKeyboard")['default']>
     'LazyVanOverlay': LazyComponent<typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/overlay/Overlay")['default']>
-    'LazyVanPasswordInput': LazyComponent<typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/password-input/PasswordInput")['default']>
     'LazyVanPagination': LazyComponent<typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/pagination/Pagination")['default']>
+    'LazyVanPasswordInput': LazyComponent<typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/password-input/PasswordInput")['default']>
     'LazyVanPicker': LazyComponent<typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/picker/Picker")['default']>
     'LazyVanPickerGroup': LazyComponent<typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/picker-group/PickerGroup")['default']>
     'LazyVanPopover': LazyComponent<typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/popover/Popover")['default']>
@@ -315,10 +315,10 @@ export const VanContactEdit: typeof import("../node_modules/.pnpm/vant@4.9.21_vu
 export const VanContactList: typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/contact-list/ContactList")['default']
 export const VanCountDown: typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/count-down/CountDown")['default']
 export const VanCoupon: typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/coupon/Coupon")['default']
-export const VanCouponCell: typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/coupon-cell/CouponCell")['default']
 export const VanCouponList: typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/coupon-list/CouponList")['default']
 export const VanDatePicker: typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/date-picker/DatePicker")['default']
 export const VanDialog: typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/dialog/Dialog")['default']
+export const VanCouponCell: typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/coupon-cell/CouponCell")['default']
 export const VanDivider: typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/divider/Divider")['default']
 export const VanDropdownItem: typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/dropdown-item/DropdownItem")['default']
 export const VanDropdownMenu: typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/dropdown-menu/DropdownMenu")['default']
@@ -342,8 +342,8 @@ export const VanNoticeBar: typeof import("../node_modules/.pnpm/vant@4.9.21_vue@
 export const VanNotify: typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/notify/Notify")['default']
 export const VanNumberKeyboard: typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/number-keyboard/NumberKeyboard")['default']
 export const VanOverlay: typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/overlay/Overlay")['default']
-export const VanPasswordInput: typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/password-input/PasswordInput")['default']
 export const VanPagination: typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/pagination/Pagination")['default']
+export const VanPasswordInput: typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/password-input/PasswordInput")['default']
 export const VanPicker: typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/picker/Picker")['default']
 export const VanPickerGroup: typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/picker-group/PickerGroup")['default']
 export const VanPopover: typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/popover/Popover")['default']
@@ -442,10 +442,10 @@ export const LazyVanContactEdit: LazyComponent<typeof import("../node_modules/.p
 export const LazyVanContactList: LazyComponent<typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/contact-list/ContactList")['default']>
 export const LazyVanCountDown: LazyComponent<typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/count-down/CountDown")['default']>
 export const LazyVanCoupon: LazyComponent<typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/coupon/Coupon")['default']>
-export const LazyVanCouponCell: LazyComponent<typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/coupon-cell/CouponCell")['default']>
 export const LazyVanCouponList: LazyComponent<typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/coupon-list/CouponList")['default']>
 export const LazyVanDatePicker: LazyComponent<typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/date-picker/DatePicker")['default']>
 export const LazyVanDialog: LazyComponent<typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/dialog/Dialog")['default']>
+export const LazyVanCouponCell: LazyComponent<typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/coupon-cell/CouponCell")['default']>
 export const LazyVanDivider: LazyComponent<typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/divider/Divider")['default']>
 export const LazyVanDropdownItem: LazyComponent<typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/dropdown-item/DropdownItem")['default']>
 export const LazyVanDropdownMenu: LazyComponent<typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/dropdown-menu/DropdownMenu")['default']>
@@ -469,8 +469,8 @@ export const LazyVanNoticeBar: LazyComponent<typeof import("../node_modules/.pnp
 export const LazyVanNotify: LazyComponent<typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/notify/Notify")['default']>
 export const LazyVanNumberKeyboard: LazyComponent<typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/number-keyboard/NumberKeyboard")['default']>
 export const LazyVanOverlay: LazyComponent<typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/overlay/Overlay")['default']>
-export const LazyVanPasswordInput: LazyComponent<typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/password-input/PasswordInput")['default']>
 export const LazyVanPagination: LazyComponent<typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/pagination/Pagination")['default']>
+export const LazyVanPasswordInput: LazyComponent<typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/password-input/PasswordInput")['default']>
 export const LazyVanPicker: LazyComponent<typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/picker/Picker")['default']>
 export const LazyVanPickerGroup: LazyComponent<typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/picker-group/PickerGroup")['default']>
 export const LazyVanPopover: LazyComponent<typeof import("../node_modules/.pnpm/vant@4.9.21_vue@3.5.18_typescript@5.9.2_/node_modules/vant/es/popover/Popover")['default']>
