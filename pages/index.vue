@@ -32,6 +32,23 @@
         </template>
       </van-field>
 
+      <!-- 便捷年代选择 -->
+      <div class="mb-4">
+        <van-radio-group
+          v-model="selectedDecade"
+          direction="horizontal"
+          @change="onDecadeChange"
+        >
+          <van-radio name="50后">50后</van-radio>
+          <van-radio name="60后">60后</van-radio>
+          <van-radio name="70后">70后</van-radio>
+          <van-radio name="80后">80后</van-radio>
+          <van-radio name="90后">90后</van-radio>
+          <van-radio name="00后">00后</van-radio>
+          <van-radio name="10后">10后</van-radio>
+          <van-radio name="20后">20后</van-radio>
+        </van-radio-group>
+      </div>
       <!-- 出生日期选择 -->
       <van-field
         v-model="birthDateText"
@@ -138,6 +155,21 @@ const currentDate = ref([
   String(form.value.month).padStart(2, "0"),
   String(form.value.day).padStart(2, "0"),
 ]);
+
+const selectedDecade = ref("");
+const onDecadeChange = (val: string) => {
+  const num = parseInt(val, 10);
+  const start = num >= 50 ? 1900 + num : 2000 + num;
+  const mid = start + 5;
+  form.value.year = mid;
+  form.value.month = 1;
+  form.value.day = 1;
+  currentDate.value = [
+    String(mid),
+    String(1).padStart(2, "0"),
+    String(1).padStart(2, "0"),
+  ];
+};
 
 // 时辰选项
 const hourColumns = [
