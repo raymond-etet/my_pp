@@ -2,6 +2,10 @@ import { defineNuxtConfig } from "nuxt/config";
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
+  devServer: {
+    host: "0.0.0.0", // 允许局域网访问
+    port: 3000,
+  },
   // 开发工具，用于调试和分析 Nuxt 应用
   devtools: { enabled: true },
 
